@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.hejun.baseinfo.entity">
+	<class name="BiUserLog" table="bi_user_log">
+		<id name="id" column="id" type="java.lang.String" length="36">
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="customIP" column="custom_ip" update="true"
+			insert="true" type="java.lang.String" not-null="false" unique="false"
+			length="100">
+		</property>
+		
+		<property name="title" column="title" update="true"
+			insert="true" type="java.lang.String" not-null="false" unique="false"
+			length="200">
+		</property>
+		
+		<property name="url" column="url" update="true"
+			insert="true" type="java.lang.String" not-null="false" unique="false"
+			length="300">
+		</property>
+		
+		<property name="times" column="times" update="true"
+			insert="true" not-null="false" unique="false"
+			length="200">
+		</property>
+		
+		<property name="content" column="content"
+			update="true" insert="true" type="java.lang.String" not-null="false"
+			unique="false" length="1000">
+		</property>
+		
+		<property name="isFormat" column="is_format" update="true"
+			insert="true" type="java.lang.String" not-null="false" unique="false"
+			length="1">
+		</property>
+		
+		
+		<!-- Many-To-One attributes -->
+		<many-to-one name="biUserInfo" insert="true"
+			update="true" not-null="false" lazy="false">
+			<column name="bi_user_info" />
+		</many-to-one>
+		
+		<property name="createDate" column="create_date" update="true"
+			insert="true" type="java.util.Date" not-null="false" unique="false"
+			length="0">
+		</property>
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,59 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+           http://www.springframework.org/schema/mvc  
+           http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+           http://www.springframework.org/schema/context   
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+           
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+            	<!-- 公共模块 -->
+				<value>i18n/messages_global</value>
+                <value>i18n/messages_btn_input_value</value>
+				
+				<value>i18n/baseinfo/messages_bi_menu</value>
+				<value>i18n/baseinfo/messages_bi_organ</value>
+				<value>i18n/baseinfo/messages_bi_param</value>
+				<value>i18n/baseinfo/messages_bi_employee</value>
+				<value>i18n/baseinfo/messages_bi_role</value>
+				<value>i18n/baseinfo/messages_bi_classroom</value>
+				<value>i18n/baseinfo/messages_bi_userlog</value>
+				
+				<value>i18n/teachmanage/messages_tm_class</value>
+				<value>i18n/teachmanage/messages_tm_class_stu</value>
+				<value>i18n/teachmanage/messages_tm_class_stufee</value>
+				<value>i18n/teachmanage/messages_tm_class_stufee_record</value>
+				
+				<value>i18n/finance/messages_f_pay_record</value>
+				<value>i18n/finance/messages_f_other_fee</value>
+				
+				<value>i18n/teachplan/messages_tp_course</value>
+				
+				<value>i18n/teachprocess/messages_tpc_homework</value>
+				<value>i18n/teachprocess/messages_tpc_homework_score</value>
+				<value>i18n/teachprocess/messages_tpc_jindu</value>
+				<value>i18n/teachprocess/messages_tpc_process</value>
+				<value>i18n/teachprocess/messages_tpc_remark</value>
+				<value>i18n/teachprocess/messages_tpc_recall</value>
+				<value>i18n/teachprocess/messages_tpc_stu_attend</value>
+				
+				<value>i18n/student/messages_stu_consult</value>
+				<value>i18n/student/messages_stu_consult_process</value>
+				<value>i18n/student/messages_stu_baseinfo</value>
+				<value>i18n/student/messages_stu_enroll</value>
+				<value>i18n/student/messages_stu_leave_class</value>
+				<value>i18n/student/messages_stu_change_class</value>
+				<value>i18n/student/messages_stu_stop_class</value>
+				<value>i18n/student/messages_stu_earnest</value>
+				
+            </list>
+        </property>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+    </bean>
+	
+</beans>  

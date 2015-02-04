@@ -1,0 +1,12 @@
+/**********************************
+
+Name: cmxform Styles
+
+***********************************/
+
+label.error {color: red;padding-left:5px;font-style: italic;margin-left:5px;}
+div.error { display: none; }
+textarea.error{ border: 1px solid red;}
+select.error{ border: 1px solid red;}
+input.error { border: 1px solid red; }
+#form1.cmx#form1 .gray * { color: gray; }
