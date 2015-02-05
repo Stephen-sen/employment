@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="com.hejun.baseinfo.entity">
-	<class name="BiUserLog" table="bi_user_log">
+<hibernate-mapping package="com.zhangmin.base.entity">
+	<class name="UserLog" table="user_log">
 		<id name="id" column="id" type="java.lang.String" length="36">
 			<generator class="uuid.hex"></generator>
 		</id>
@@ -32,16 +32,10 @@
 			unique="false" length="1000">
 		</property>
 		
-		<property name="isFormat" column="is_format" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false"
-			length="1">
-		</property>
-		
-		
 		<!-- Many-To-One attributes -->
-		<many-to-one name="biUserInfo" insert="true"
+		<many-to-one name="userInfo" insert="true"
 			update="true" not-null="false" lazy="false">
-			<column name="bi_user_info" />
+			<column name="user_info" />
 		</many-to-one>
 		
 		<property name="createDate" column="create_date" update="true"

@@ -3,7 +3,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.hejun.baseinfo.entity" >
-	<class name="BiUserRole" table="bi_user_role">
+	<class name="UserRole" table="user_role">
 	<cache usage="read-write" />
 		<id name="id" column="id" type="java.lang.String" length="36">
 			<generator class="uuid.hex">
@@ -32,27 +32,15 @@
 			<column name="create_user" />
 		</many-to-one>
 		
-		<many-to-one name="biUserInfo" not-null="false"  lazy="false"
+		<many-to-one name="userInfo" not-null="false"  lazy="false"
 			update="true" insert="true" cascade="none">
-			<column name="bi_user_info" />
+			<column name="user_info" />
 		</many-to-one>
 
-		<many-to-one name="biOrgan" not-null="false" update="true"  lazy="false" 
+		<many-to-one name="role" not-null="false" update="true"  lazy="false" 
 			insert="true" cascade="none">
-			<column name="bi_organ" />
+			<column name="role" />
 		</many-to-one>
-		
-		<many-to-one name="biRole" not-null="false" update="true"  lazy="false" 
-			insert="true" cascade="none">
-			<column name="bi_role" />
-		</many-to-one>
-		
-		<many-to-one name="rightBiOrgan" not-null="false" update="true"  lazy="false" 
-			insert="true" cascade="none">
-			<column name="right_bi_organ" />
-		</many-to-one>
-		
-		
 		
 	</class>
 </hibernate-mapping>

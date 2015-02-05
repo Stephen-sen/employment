@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="com.hejun.baseinfo.entity">
-	<class table="bi_user_info" name="BiUserInfo">
+<hibernate-mapping package="com.zhangmin.base.entity">
+	<class table="user_info" name="UserInfo">
 	<cache usage="read-write" />
 		<id name="id" type="java.lang.String" column="id" length="36">
 			<generator class="uuid.hex">
@@ -21,16 +21,13 @@
 		<property name="tel" type="java.lang.String" column="tel"
 			length="40" unique="false" not-null="false" insert="true" update="true" />
 			
-		<property name="cnName" type="java.lang.String" column="cn_name"
-			length="40" unique="false" not-null="false" insert="true" update="true" />
-			
-		<property name="enName" type="java.lang.String" column="en_name"
+		<property name="nickName" type="java.lang.String" column="nick_name"
 			length="40" unique="false" not-null="false" insert="true" update="true" />
 			
 		<property name="status" type="java.lang.String" column="status"
 			length="2" unique="false" not-null="false" insert="true" update="true" />
 			
-		<property name="biEmployeeId" type="java.lang.String" column="bi_employee_id"
+		<property name="StudentId" type="java.lang.String" column="student_id"
 			length="36" unique="false" not-null="false" insert="true" update="true" />
 			
 		<property name="lastLoginDate" type="java.util.Date" column="last_login_date"
