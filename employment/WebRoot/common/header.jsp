@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
-<%@ page import="com.framework.constant.Global" %>
+<%@ page import="com.zhangmin.constant.Global" %>
 <% 
 	request.setAttribute("user", request.getSession().getAttribute(Global.USER_INFO)); 
 	request.setAttribute("btnStr", request.getSession().getAttribute(Global.USER_BUTTON_STR)); 

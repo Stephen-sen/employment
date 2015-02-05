@@ -49,9 +49,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/hibernate-validator-4.1.0.Final.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/httpclient-4.1.2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/httpcore-4.1.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ini4j-0.5.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-core-asl-1.7.1.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-mapper-asl-1.7.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/javassist-3.9.0.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jms-1.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jmxri-1.2.1.jar"/>
@@ -112,5 +109,8 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xmlpull-1.1.3.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xpp3_min-1.1.4c.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xstream-1.4.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ini4j-0.5.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-core-asl-1.7.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-mapper-asl-1.7.1.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
