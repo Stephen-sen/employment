@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>网站管理员登陆</title>
+    <title>管理员登陆</title>
 <style type="text/css">
 <!--
 body {
@@ -55,7 +55,7 @@ window.attachEvent("onload", correctPNG);
 </script>
 
 
-<link href="images/skin.css" rel="stylesheet" type="text/css">
+<link href="../themes/images/skin.css" rel="stylesheet" type="text/css">
 <body>
 <table width="100%" height="166" border="0" cellpadding="0" cellspacing="0">
   <tr>
@@ -77,7 +77,7 @@ window.attachEvent("onload", correctPNG);
                   <td height="149">&nbsp;</td>
                 </tr>
                 <tr>
-                  <td height="80" align="right" valign="top"><img src="images/logo.png" width="279" height="68"></td>
+                  <td height="80" align="right" valign="top"><img src="../themes/images/logo.png" width="279" height="68"></td>
                 </tr>
                 <tr>
                   <td height="198" align="right" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -95,8 +95,8 @@ window.attachEvent("onload", correctPNG);
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
-                      <td width="30%" height="40"><img src="images/icon-demo.gif" width="16" height="16"><a href="http://www.nongfuit.com" target="_blank" class="left_txt3"> 使用说明</a> </td>
-                      <td width="35%"><img src="images/icon-login-seaver.gif" width="16" height="16"><a href="http://www.nongfuit.com" class="left_txt3"> 在线客服</a></td>
+                      <td width="30%" height="40"><img src="../themes/images/icon-demo.gif" width="16" height="16"><a href="http://www.nongfuit.com" target="_blank" class="left_txt3"> 使用说明</a> </td>
+                      <td width="35%"><img src="../themes/images/icon-login-seaver.gif" width="16" height="16"><a href="http://www.nongfuit.com" class="left_txt3"> 在线客服</a></td>
                     </tr>
                   </table></td>
                 </tr>
@@ -108,13 +108,14 @@ window.attachEvent("onload", correctPNG);
         <td width="50%" valign="bottom"><table width="100%" height="59" border="0" align="center" cellpadding="0" cellspacing="0">
             <tr>
               <td width="4%">&nbsp;</td>
-              <td width="96%" height="38"><span class="login_txt_bt">登陆信息网后台管理</span></td>
+              <td width="96%" height="38"><span class="login_txt_bt">登陆就业能力分析后台管理</span></td>
             </tr>
             <tr>
               <td>&nbsp;</td>
               <td height="21"><table cellSpacing="0" cellPadding="0" width="100%" border="0" id="table211" height="328">
                   <tr>
-                    <td height="164" colspan="2" align="middle"><form name="myform" action="index.html" method="post">
+                    <td height="164" colspan="2" align="middle">
+                    <form name="myform" action="index.jsp" method="post">
                         <table cellSpacing="0" cellPadding="0" width="100%" border="0" height="143" id="table212">
                           <tr>
                             <td width="13%" height="38" class="top_hui_text"><span class="login_txt">管理员：&nbsp;&nbsp; </span></td>
@@ -123,7 +124,7 @@ window.attachEvent("onload", correctPNG);
                           <tr>
                             <td width="13%" height="35" class="top_hui_text"><span class="login_txt"> 密 码： &nbsp;&nbsp; </span></td>
                             <td height="35" colspan="2" class="top_hui_text"><input class="editbox4" type="password" size="20" name="password">
-                              <img src="images/luck.gif" width="19" height="18"> </td>
+                              <img src="../themes/images/luck.gif" width="19" height="18"> </td>
                           </tr>
                           <tr>
                             <td width="13%" height="35" ><span class="login_txt">验证码：</span></td>
@@ -140,7 +141,7 @@ window.attachEvent("onload", correctPNG);
                     </form></td>
                   </tr>
                   <tr>
-                    <td width="433" height="164" align="right" valign="bottom"><img src="images/login-wel.gif" width="242" height="138"></td>
+                    <td width="433" height="164" align="right" valign="bottom"><img src="../themes/images/login-wel.gif" width="242" height="138"></td>
                     <td width="57" align="right" valign="bottom">&nbsp;</td>
                   </tr>
               </table></td>
@@ -153,7 +154,7 @@ window.attachEvent("onload", correctPNG);
   <tr>
     <td height="20"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="login-buttom-bg">
       <tr>
-        <td align="center"><span class="login-buttom-txt">Copyright &copy; 2009-2010 www.nongfuit.com</span></td>
+        <td align="center"><span class="login-buttom-txt">Copyright &copy; 2014-2015 www.nongfuit.com</span></td>
       </tr>
     </table></td>
   </tr>

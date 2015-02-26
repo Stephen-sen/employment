@@ -40,16 +40,16 @@ function showsubmenu(sid) {
 }
 </script>
 <base target="main">
-<link href="images/skin.css" rel="stylesheet" type="text/css">
+<link href="../themes/images/skin.css" rel="stylesheet" type="text/css">
 </head>
 <body leftmargin="0" topmargin="0">
 <table width="100%" height="64" border="0" cellpadding="0" cellspacing="0" class="admin_topbg">
   <tr>
-    <td width="61%" height="64"><img src="images/logo.gif" width="262" height="64"></td>
+    <td width="61%" height="64"><img src="../themes/images/logo.gif" width="262" height="64"></td>
     <td width="39%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="74%" height="38" class="admin_txt">管理员：<b></b> 您好,感谢登陆使用！</td>
-        <td width="22%"><a href="#" target="_self" onClick="logout();"><img src="images/out.gif" alt="安全退出" width="46" height="20" border="0"></a></td>
+        <td width="22%"><a href="#" target="_self" onClick="logout();"><img src="../themes/images/out.gif" alt="安全退出" width="46" height="20" border="0"></a></td>
         <td width="4%">&nbsp;</td>
       </tr>
       <tr>
