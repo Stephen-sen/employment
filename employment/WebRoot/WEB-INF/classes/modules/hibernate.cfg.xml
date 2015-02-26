@@ -17,7 +17,7 @@
 	<mapping resource="modules/baseinfo/hibernate-conf/Param.hbm.xml" />
 	<mapping resource="modules/baseinfo/hibernate-conf/ParamMenu.hbm.xml" />
 	<mapping resource="modules/baseinfo/hibernate-conf/Role.hbm.xml" />
-	<mapping resource="modules/baseinfo/hibernate-conf/Menu.hbm.xml" />
+	<mapping resource="modules/baseinfo/hibernate-conf/RoleMenu.hbm.xml" />
 	<mapping resource="modules/baseinfo/hibernate-conf/UserInfo.hbm.xml" />
 	<mapping resource="modules/baseinfo/hibernate-conf/UserLog.hbm.xml" />
 	<mapping resource="modules/baseinfo/hibernate-conf/UserRole.hbm.xml" />

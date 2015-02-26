@@ -2,9 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="com.hejun.baseinfo.entity" >
+<hibernate-mapping package="com.zhangmin.base.entity" >
 	<class name="UserRole" table="user_role">
-	<cache usage="read-write" />
 		<id name="id" column="id" type="java.lang.String" length="36">
 			<generator class="uuid.hex">
 			</generator>

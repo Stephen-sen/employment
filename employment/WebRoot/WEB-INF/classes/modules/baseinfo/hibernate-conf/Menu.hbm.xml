@@ -4,23 +4,33 @@
 
 <hibernate-mapping package="com.zhangmin.base.entity">
 	<class name="Menu" table="menu">
-	<cache usage="read-write" />
 		<id name="id" column="id" type="java.lang.String" length="36">
 			<generator class="uuid.hex"></generator>
 		</id>
-		
-		<property name="name" column="name" type="java.lang.String" length="200"/>
-		<property name="sequence" column="sequence" type="java.lang.Integer"/>
-		<property name="shortName" column="short_name" type="java.lang.String" length="50"/>
-		<property name="isChangYong" column="is_chang_yong" type="java.lang.String" length="50"/>
-		<property name="menuCode" column="menu_code" type="java.lang.String" length="200"/>
-		<property name="description" column="description" type="java.lang.String" not-null="false" length="200"/>
-		<property name="logo" column="logo" type="java.lang.String" length="200"/>
-		<property name="url" column="url" type="java.lang.String" length="200"/>		
-		<property name="menuType" column="menu_type"  type="java.lang.String" length="2"/>
-		<property name="preId" column="pre_id"  type="java.lang.String" length="36"/>
-		<property name="flag" column="flag"  type="java.lang.String" length="1"/>
-		<property name="buttonCode" column="button_code"  type="java.lang.String" length="10"/>
+
+		<property name="name" column="name" type="java.lang.String"
+			length="200" />
+		<property name="sequence" column="sequence" type="java.lang.Integer" />
+		<property name="shortName" column="short_name" type="java.lang.String"
+			length="50" />
+		<property name="isChangYong" column="is_chang_yong" type="java.lang.String"
+			length="50" />
+		<property name="menuCode" column="menu_code" type="java.lang.String"
+			length="200" />
+		<property name="description" column="description" type="java.lang.String"
+			not-null="false" length="200" />
+		<property name="logo" column="logo" type="java.lang.String"
+			length="200" />
+		<property name="url" column="url" type="java.lang.String"
+			length="200" />
+		<property name="menuType" column="menu_type" type="java.lang.String"
+			length="2" />
+		<property name="preId" column="pre_id" type="java.lang.String"
+			length="36" />
+		<property name="flag" column="flag" type="java.lang.String"
+			length="1" />
+		<property name="buttonCode" column="button_code" type="java.lang.String"
+			length="10" />
 	</class>
 </hibernate-mapping>
 
