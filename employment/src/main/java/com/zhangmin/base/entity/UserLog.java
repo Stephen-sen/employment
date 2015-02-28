@@ -20,7 +20,7 @@ public class UserLog extends BaseEntity{
 	private String url;
 	private String times;
 	private String content;
-	private UserInfo userInfo;
+	private String userInfo;
 	/**
 	 * @return the customIP
 	 */
@@ -84,13 +84,13 @@ public class UserLog extends BaseEntity{
 	/**
 	 * @return the userInfo
 	 */
-	public UserInfo getUserInfo() {
+	public String getUserInfo() {
 		return userInfo;
 	}
 	/**
 	 * @param userInfo the userInfo to set
 	 */
-	public void setUserInfo(UserInfo userInfo) {
+	public void setUserInfo(String userInfo) {
 		this.userInfo = userInfo;
 	}
 }

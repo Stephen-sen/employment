@@ -55,7 +55,7 @@ body {
         <td width="40%" valign="top"><table width="100%" height="144" border="0" cellpadding="0" cellspacing="0" class="line_table">
           <tbody><tr>
             <td width="7%" height="27" background="themes/images/news-title-bg.gif"><img src="themes/images/news-title-bg.gif" width="2" height="27"></td>
-            <td width="93%" background="themes/images/news-title-bg.gif" class="left_bt2">最新动态</td>
+            <td width="93%" background="themes/images/news-title-bg.gif" class="left_bt2">招聘公告</td>
           </tr>
           <tr>
             <td height="102" valign="top">&nbsp;</td>

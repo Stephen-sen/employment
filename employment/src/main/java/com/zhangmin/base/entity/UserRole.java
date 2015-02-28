@@ -16,8 +16,8 @@ package com.zhangmin.base.entity;
 public class UserRole extends BaseEntity{
 
 	private String isDefault;
-	private UserInfo userInfo;
-	private Role role;
+	private String userId;
+	private String roleId;
 	/**
 	 * @return the isDefault
 	 */
@@ -31,27 +31,28 @@ public class UserRole extends BaseEntity{
 		this.isDefault = isDefault;
 	}
 	/**
-	 * @return the userInfo
+	 * @return the userId
 	 */
-	public UserInfo getUserInfo() {
-		return userInfo;
+	public String getUserId() {
+		return userId;
 	}
 	/**
-	 * @param userInfo the userInfo to set
+	 * @param userId the userId to set
 	 */
-	public void setUserInfo(UserInfo userInfo) {
-		this.userInfo = userInfo;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	/**
-	 * @return the role
+	 * @return the roleId
 	 */
-	public Role getRole() {
-		return role;
+	public String getRoleId() {
+		return roleId;
 	}
 	/**
-	 * @param role the role to set
+	 * @param roleId the roleId to set
 	 */
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
 	}
+	
 }

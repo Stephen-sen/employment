@@ -26,9 +26,9 @@ public abstract class BaseEntity {
 
 	private String id;
 	private Date createDate;
-	private UserInfo createUser;
+	private String createUser;
 	private Date updateDate;
-	private UserInfo updateUser;
+	private String updateUser;
 	private String flag;
 	private String sort;
 	private String sortSequence;
@@ -55,28 +55,28 @@ public abstract class BaseEntity {
 	/**
 	 * @return the createUser
 	 */
-	public UserInfo getCreateUser() {
+	public String getCreateUser() {
 		return createUser;
 	}
 
 	/**
 	 * @param createUser the createUser to set
 	 */
-	public void setCreateUser(UserInfo createUser) {
+	public void setCreateUser(String createUser) {
 		this.createUser = createUser;
 	}
 
 	/**
 	 * @return the updateUser
 	 */
-	public UserInfo getUpdateUser() {
+	public String getUpdateUser() {
 		return updateUser;
 	}
 
 	/**
 	 * @param updateUser the updateUser to set
 	 */
-	public void setUpdateUser(UserInfo updateUser) {
+	public void setUpdateUser(String updateUser) {
 		this.updateUser = updateUser;
 	}
 

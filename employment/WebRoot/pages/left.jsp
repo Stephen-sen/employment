@@ -148,7 +148,7 @@ H1 a {
 <table width="100%" height="280" border="0" cellpadding="0" cellspacing="0" bgcolor="#EEF2FB">
   <tr>
     <td width="182" valign="top"><div id="container">
-      <h1 class="type"><a href="javascript:void(0)">网站常规管理</a></h1>
+      <h1 class="type"><a href="javascript:void(0)">学生信息管理</a></h1>
       <div class="content">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
@@ -156,18 +156,12 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="http://www.nongfuit.com" target="main">基本设置</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">邮件设置</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">广告设置</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">114增加</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">114管理</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">联系方式</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">汇款方式</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">增加链接</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">管理链接</a></li>
+          <li><a href="http://www.nongfuit.com" target="main">学生信息录入</a></li>
+          <li><a href="http://www.nongfuit.com" target="main">学生信息查询</a></li>
+          <li><a href="http://www.nongfuit.com" target="main">学生信息修改</a></li>
         </ul>
       </div>
-      <h1 class="type"><a href="javascript:void(0)">栏目分类管理</a></h1>
+      <h1 class="type"><a href="javascript:void(0)">公司信息管理</a></h1>
       <div class="content">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
@@ -175,18 +169,12 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="http://www.nongfuit.com" target="main">信息分类</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">信息类型</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">资讯分类</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">地区设置</a></li>
-          <li><a target="main" href="http://www.nongfuit.com">市场联盟</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">商家类型</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">商家星级</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">商品分类</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">商品类型</a></li>
+           <li><a href="http://www.nongfuit.com" target="main">公司信息录入</a></li>
+           <li><a href="http://www.nongfuit.com" target="main">公司信息查询</a></li>
+           <li><a href="http://www.nongfuit.com" target="main">公司信息修改</a></li>
         </ul>
       </div>
-      <h1 class="type"><a href="javascript:void(0)">栏目内容管理</a></h1>
+      <h1 class="type"><a href="javascript:void(0)">就业数据维护</a></h1>
       <div class="content">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
@@ -194,21 +182,24 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-		  <li><a href="http://www.nongfuit.com" target="main">信息管理</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">张贴管理</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">增加商家</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">管理商家</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">发布资讯</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">资讯管理</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">市场联盟</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">名片管理</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">商城管理</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">商品管理</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">商城留言</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">商城公告</a></li>
+		  <li><a href="http://www.nongfuit.com" target="main">就业权值录入</a></li>
+          <li><a href="http://www.nongfuit.com" target="main">就业权值查询</a></li>
+          <li><a href="http://www.nongfuit.com" target="main">就业权值修改</a></li>
         </ul>
       </div>
-      <h1 class="type"><a href="javascript:void(0)">注册用户管理</a></h1>
+      <h1 class="type"><a href="javascript:void(0)">就业能力管理</a></h1>
+      <div class="content">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><img src="../themes/images/menu_topline.gif" width="182" height="5" /></td>
+          </tr>
+        </table>
+        <ul class="MM">
+          <li><a href="http://www.nongfuit.com" target="main">就业能力分析</a></li>
+        </ul>
+      </div>
+    </div>
+    <h1 class="type"><a href="javascript:void(0)">注册用户管理</a></h1>
       <div class="content">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
@@ -219,9 +210,21 @@ H1 a {
           <li><a href="http://www.nongfuit.com" target="main">会员管理</a></li>
           <li><a href="http://www.nongfuit.com" target="main">留言管理</a></li>
           <li><a href="http://www.nongfuit.com" target="main">回复管理</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">订单管理</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">举报管理</a></li>
           <li><a href="http://www.nongfuit.com" target="main">评论管理</a></li>
+        </ul>
+      </div>
+    </div>
+    <h1 class="type"><a href="javascript:void(0)">角色权限管理</a></h1>
+      <div class="content">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><img src="../themes/images/menu_topline.gif" width="182" height="5" /></td>
+          </tr>
+        </table>
+        <ul class="MM">
+          <li><a href="http://www.nongfuit.com" target="main">角色新增</a></li>
+          <li><a href="http://www.nongfuit.com" target="main">角色查询</a></li>
+          <li><a href="http://www.nongfuit.com" target="main">角色修改</a></li>
         </ul>
       </div>
     </div>

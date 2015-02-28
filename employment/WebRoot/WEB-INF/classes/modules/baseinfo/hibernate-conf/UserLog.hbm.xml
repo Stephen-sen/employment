@@ -32,11 +32,10 @@
 			unique="false" length="1000">
 		</property>
 		
-		<!-- Many-To-One attributes -->
-		<many-to-one name="userInfo" insert="true"
-			update="true" not-null="false" lazy="false">
-			<column name="user_info" />
-		</many-to-one>
+		<property name="userInfo" column="userId"
+			update="true" insert="true" type="java.lang.String" not-null="false"
+			unique="false" length="36">
+		</property>
 		
 		<property name="createDate" column="create_date" update="true"
 			insert="true" type="java.util.Date" not-null="false" unique="false"
