@@ -9,6 +9,7 @@ package com.action.support;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONArray;
 
@@ -21,9 +22,12 @@ import net.sf.json.JSONArray;
 public class BaseAction {
 	protected HttpServletRequest request;
 	protected HttpServletResponse response;
+	protected HttpSession session;
 
 	protected JSONArray result;
 
+	protected String messageCode="01";
+	
 	public JSONArray getResult() {
 		return result;
 	}
@@ -54,6 +58,34 @@ public class BaseAction {
 
 	public void setResponse(HttpServletResponse response) {
 		this.response = response;
+	}
+
+	/**
+	 * @return the session
+	 */
+	public HttpSession getSession() {
+		return session;
+	}
+
+	/**
+	 * @param session the session to set
+	 */
+	public void setSession(HttpSession session) {
+		this.session = session;
+	}
+
+	/**
+	 * @return the messageCode
+	 */
+	public String getMessageCode() {
+		return messageCode;
+	}
+
+	/**
+	 * @param messageCode the messageCode to set
+	 */
+	public void setMessageCode(String messageCode) {
+		this.messageCode = messageCode;
 	}
 
 }

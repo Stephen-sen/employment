@@ -1,7 +1,9 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ page import="com.zhangmin.constant.Global" %>
+<% 
+	request.setAttribute("path",request.getContextPath());
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ path + "/"; 
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -83,20 +85,16 @@ window.attachEvent("onload", correctPNG);
                   <td height="198" align="right" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td width="35%">&nbsp;</td>
-                      <td height="25" colspan="2" class="left_txt"><p>1- 地区商家信息网门户站建立的首选方案...</p></td>
+                      <td height="25" colspan="2" class="left_txt"><p><font size="5px">温馨提醒：</font></p></td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
-                      <td height="25" colspan="2" class="left_txt"><p>2- 一站通式的整合方式，方便用户使用...</p></td>
+                      <td height="25" colspan="2" class="left_txt"><p><p><font size="3px">如果您没有账户，请在这里注册！</font></p></td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
-                      <td height="25" colspan="2" class="left_txt"><p>3- 强大的后台系统，管理内容易如反掌...</p></td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td width="30%" height="40"><img src="themes/images/icon-demo.gif" width="16" height="16"><a href="http://www.nongfuit.com" target="_blank" class="left_txt3"> 使用说明</a> </td>
-                      <td width="35%"><img src="themes/images/icon-login-seaver.gif" width="16" height="16"><a href="http://www.nongfuit.com" class="left_txt3"> 在线客服</a></td>
+                      <td width="30%" height="40"><img src="themes/images/icon-demo.gif" width="16" height="16"><a href="http://www.nongfuit.com" target="_blank" class="left_txt3"> 注册</a> </td>
+                      <td width="35%"><img src="themes/images/icon-login-seaver.gif" width="16" height="16"><a href="http://www.nongfuit.com" class="left_txt3"> 使用说明</a></td>
                     </tr>
                   </table></td>
                 </tr>
@@ -115,11 +113,11 @@ window.attachEvent("onload", correctPNG);
               <td height="21"><table cellSpacing="0" cellPadding="0" width="100%" border="0" id="table211" height="328">
                   <tr>
                     <td height="164" colspan="2" align="middle">
-                    <form name="myform" action="index.jsp" method="post">
+                    <form name="form1" action="${path }/dologin.do" method="post">
                         <table cellSpacing="0" cellPadding="0" width="100%" border="0" height="143" id="table212">
                           <tr>
                             <td width="13%" height="38" class="top_hui_text"><span class="login_txt">管理员：&nbsp;&nbsp; </span></td>
-                            <td height="38" colspan="2" class="top_hui_text"><input name="username" class="editbox4" value="" size="20">                            </td>
+                            <td height="38" colspan="2" class="top_hui_text"><input name="userName" class="editbox4" size="20">                            </td>
                           </tr>
                           <tr>
                             <td width="13%" height="35" class="top_hui_text"><span class="login_txt"> 密 码： &nbsp;&nbsp; </span></td>
@@ -128,7 +126,7 @@ window.attachEvent("onload", correctPNG);
                           </tr>
                           <tr>
                             <td width="13%" height="35" ><span class="login_txt">验证码：</span></td>
-                            <td height="35" colspan="2" class="top_hui_text"><input class=wenbenkuang name=verifycode type=text value="" maxLength=4 size=10>
+                            <td height="35" colspan="2" class="top_hui_text"><input class=wenbenkuang name="verifycode" type=text  maxLength=4 size=10>
                               </td>
                           </tr>
                           <tr>
