@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseAction;
-import com.duruxin.util.MD5;
 import com.zhangmin.base.entity.UserInfo;
 import com.zhangmin.constant.Const;
 import com.zhangmin.constant.Global;
 import com.zhangmin.constant.Util;
 import com.zhangmin.user.service.UserInfoService;
+import com.zhaosen.util.MD5;
 
 /**
  * ClassName: LoginAction 

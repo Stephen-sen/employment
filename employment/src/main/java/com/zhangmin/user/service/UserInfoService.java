@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zhangmin.base.entity.UserInfo;
-import com.zhangmin.constant.Util;
 import com.zhangmin.user.dao.UserInfoDao;
+import com.zhaosen.util.DateUtil;
 
 /**
  * ClassName: UserInfoService 
@@ -35,7 +35,7 @@ public class UserInfoService {
 	}
 	
 	public void updateLastLoginDate(UserInfo user){
-		String createDate = Util.convertDateToString(new Date(), Util.DATE_FORMAT_yyyyMMddhhmmss);
+		String createDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
 		user.setLastLoginDate(createDate);
 		userInfoDao.updateLoginDate(user);
 	}

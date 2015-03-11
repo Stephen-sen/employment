@@ -7,7 +7,8 @@
  */
 package com.zhangmin.constant;
 
-import com.duruxin.util.MD5;
+import com.zhaosen.util.MD5;
+
 
 /**
  * ClassName: Test 

@@ -9,7 +9,7 @@ package com.zhangmin.base.entity;
 
 import java.util.Date;
 
-import com.duruxin.util.DateUtil;
+import com.zhaosen.util.DateUtil;
 
 /**
  * ClassName: BaseEntity 
