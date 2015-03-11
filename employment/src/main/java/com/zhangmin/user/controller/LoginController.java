@@ -8,8 +8,6 @@
 package com.zhangmin.user.controller;
 
 
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseAction;
-import com.alibaba.fastjson.util.Base64;
 import com.duruxin.util.MD5;
 import com.zhangmin.base.entity.UserInfo;
 import com.zhangmin.constant.Const;
