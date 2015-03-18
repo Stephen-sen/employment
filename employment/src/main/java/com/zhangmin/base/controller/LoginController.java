@@ -5,7 +5,7 @@
  * @author 张敏
  * @date 2015-3-10
  */
-package com.zhangmin.user.controller;
+package com.zhangmin.base.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseAction;
 import com.zhangmin.base.entity.UserInfo;
+import com.zhangmin.base.service.UserInfoService;
 import com.zhangmin.constant.Const;
 import com.zhangmin.constant.Global;
 import com.zhangmin.constant.Util;
-import com.zhangmin.user.service.UserInfoService;
 import com.zhaosen.util.MD5;
 
 /**
@@ -39,6 +39,18 @@ public class LoginController extends BaseAction{
 	
 	private MD5 md5 = new MD5();
 	
+	/**
+	 * 
+	 * @Description: 用户登录管理
+	 * @param @param session
+	 * @param @param user
+	 * @param @param request
+	 * @param @return   
+	 * @return ModelAndView  
+	 * @throws
+	 * @author 张敏
+	 * @date 2015-3-16
+	 */
 	@RequestMapping(value = "/dologin", method = { RequestMethod.GET,RequestMethod.POST })
 	public ModelAndView doLogin(HttpSession session,UserInfo user,HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
@@ -56,12 +68,12 @@ public class LoginController extends BaseAction{
 			if(flag){
 				UserInfo param = new UserInfo();
 				param.setUserName(user.getUserName());
-				param.setPassword(md5.getMD5ofStr(user.getPassword()));
+				param.setPassWord(md5.getMD5ofStr(user.getPassWord()));
 				UserInfo userInfo = userInfoService.getUserInfo(param);
 				if(userInfo == null){
 					super.setMessageCode(Const.USER_USERNAME_NOT_FOUND);
 				}else{
-					if(!userInfo.getPassword().endsWith(param.getPassword())){
+					if(!userInfo.getPassWord().endsWith(param.getPassWord())){
 						super.setMessageCode(Const.USER_PASSWORD_FAIL);
 					}
 					else{
@@ -99,6 +111,13 @@ public class LoginController extends BaseAction{
 	@RequestMapping(value = "/right", method = { RequestMethod.GET,RequestMethod.POST })
 	public ModelAndView right(HttpSession session,HttpServletRequest request){
 		ModelAndView andView = new ModelAndView("right");
+		return andView;
+	}
+	
+	@RequestMapping(value = "/logout", method = { RequestMethod.GET,RequestMethod.POST })
+	public ModelAndView logout(HttpSession session,HttpServletRequest request){
+		session.removeAttribute(Global.USER_INFO);
+		ModelAndView andView = new ModelAndView("login");
 		return andView;
 	}
 }

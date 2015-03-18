@@ -1,17 +1,19 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--  
+ * @version 1.0.01
+ * @author zhangmin
+-->
 <html>
 <head>
+<%@ include file="/common/header.jsp"%>
+</head>
 <title> - 管理页面</title>
 <script language=JavaScript>
 function logout(){
 	if (confirm("您确定要退出控制面板吗？"))
-	top.location = "out.asp";
+	top.location = "/emp/logout.do";
 	return false;
 }
 </script>
@@ -48,7 +50,7 @@ function showsubmenu(sid) {
     <td width="61%" height="64"><img src="themes/images/logo.gif" width="262" height="64"></td>
     <td width="39%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="74%" height="38" class="admin_txt">管理员：<b></b> 您好,感谢登陆使用！</td>
+        <td width="74%" height="38" class="admin_txt">管理员：<b>${user.userName}</b> 您好,感谢登陆使用！</td>
         <td width="22%"><a href="#" target="_self" onClick="logout();"><img src="themes/images/out.gif" alt="安全退出" width="46" height="20" border="0"></a></td>
         <td width="4%">&nbsp;</td>
       </tr>

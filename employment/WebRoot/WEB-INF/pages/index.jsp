@@ -15,7 +15,7 @@
 	<frame src="${path }/admin_top.do" noresize="noresize" frameborder="NO" name="topFrame" scrolling="no" marginwidth="0" marginheight="0" target="main" />
   <frameset cols="200,*"  rows="560,*" id="frame">
 	<frame src="${path }/left.do" name="leftFrame" noresize="noresize" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" target="main" />
-	<frame src="${path }/right.do" name="main" marginwidth="0" marginheight="0" frameborder="0" scrolling="auto" target="_self" />
+	<frame src="${path }/right.do" name="main" marginwidth="0" marginheight="0" frameborder="0" scrolling="true" target="_self" />
   </frameset>
 <noframes>
   <body></body>

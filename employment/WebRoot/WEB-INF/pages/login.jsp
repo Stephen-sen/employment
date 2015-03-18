@@ -54,6 +54,12 @@ function correctPNG()
     }    
 }
 window.attachEvent("onload", correctPNG);
+
+function redirect(){
+	window.location = "/emp/userController/regist.do";
+	return false;
+}
+
 </script>
 
 
@@ -93,7 +99,7 @@ window.attachEvent("onload", correctPNG);
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
-                      <td width="30%" height="40"><img src="themes/images/icon-demo.gif" width="16" height="16"><a href="http://www.nongfuit.com" target="_blank" class="left_txt3"> 注册</a> </td>
+                      <td width="30%" height="40"><img src="themes/images/icon-demo.gif" width="16" height="16"><a href="javascript:redirect();" class="left_txt3" onclick="redirect"> 注册</a> </td>
                       <td width="35%"><img src="themes/images/icon-login-seaver.gif" width="16" height="16"><a href="http://www.nongfuit.com" class="left_txt3"> 使用说明</a></td>
                     </tr>
                   </table></td>
@@ -121,7 +127,7 @@ window.attachEvent("onload", correctPNG);
                           </tr>
                           <tr>
                             <td width="13%" height="35" class="top_hui_text"><span class="login_txt"> 密 码： &nbsp;&nbsp; </span></td>
-                            <td height="35" colspan="2" class="top_hui_text"><input class="editbox4" type="password" size="20" name="password">
+                            <td height="35" colspan="2" class="top_hui_text"><input class="editbox4" type="passWord" size="20" name="passWord">
                               <img src="themes/images/luck.gif" width="19" height="18"> </td>
                           </tr>
                           <tr>

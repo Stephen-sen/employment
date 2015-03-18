@@ -20,14 +20,13 @@
 <link rel="stylesheet" type="text/css" href="${path}/themes/css/style.css">
 <link rel="stylesheet" type="text/css" href="${path}/themes/jqueryui/south-street/jquery.ui.all.css">
 <link rel="stylesheet" type="text/css" href="${path}/themes/validate/css/validate.css">
-<link rel="stylesheet" type="text/css" href="${path}/themes/ztree/css/zTreeStyle/zTreeStyle.css">
 <link rel="stylesheet" type="text/css" href="${path}/themes/vtip/vtip.css">
 <script type="text/javascript" src="${path}/themes/js/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="${path}/themes/js/jquery.metadata.js"></script>
 <script type="text/javascript" src="${path}/themes/jqueryui/js/jquery-ui-1.10.3.custom.min.js"></script>
 <script type="text/javascript" src="${path}/themes/jqueryui/ui/i18n/jquery.ui.datepicker-zh-CN.min.js"></script>
+<script type="text/javascript" src="${path}/themes/jqueryui/My97DatePicker/WdatePicker.js"/>"></script>
 <script type="text/javascript" src="${path}/themes/jqueryui/ui/jquery.ui.autocomplete.min.js"></script>
-<script type="text/javascript" src="${path}/themes/ztree/js/jquery.ztree.all-3.5.min.js"></script>
 <script type="text/javascript" src="${path}/themes/js/global.js"></script>
 <script type="text/javascript" src="${path}/themes/js/rowspan.js"></script>
 <script type="text/javascript" src="${path}/themes/js/jquery.cookie.js"></script>
@@ -35,16 +34,7 @@
 <script type="text/javascript" src="${path}/themes/validate/js/jquery.validate.js"></script>
 <script type="text/javascript" src="${path}/themes/vtip/vtip-min.js"></script>
 <script type="text/javascript">
-    
-    function back1(){
-    	winload("${path}/main/back1.do");
-    }
-
-    function back2(){
-    	winload("${path}/main/back2.do");
-    }
-
-	
 	$(document).ready(function() {
 		if("${messageCode}"=="PARAM_ERROR"){jqueryUIAlert("操作失败，缺少参数或者参数错误!");}
+	})
 </script>

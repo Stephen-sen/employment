@@ -1,7 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+<% 
+	request.setAttribute("path",request.getContextPath());
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ path + "/"; 
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -156,9 +157,9 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="http://www.nongfuit.com" target="main">学生信息录入</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">学生信息查询</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">学生信息修改</a></li>
+          <li><a href="http://www.nongfuit.com" target="main">个人信息录入</a></li>
+          <li><a href="http://www.nongfuit.com" target="main">个人信息查询</a></li>
+          <li><a href="http://www.nongfuit.com" target="main">个人信息修改</a></li>
         </ul>
       </div>
       <h1 class="type"><a href="javascript:void(0)">公司信息管理</a></h1>
@@ -207,7 +208,8 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="http://www.nongfuit.com" target="main">会员管理</a></li>
+          <li><a href="${path}/userController/list.do" target="main">用户管理</a></li>
+          <li><a href="${path}/userController/registList.do" target="main">注册审核</a></li>
           <li><a href="http://www.nongfuit.com" target="main">留言管理</a></li>
           <li><a href="http://www.nongfuit.com" target="main">回复管理</a></li>
           <li><a href="http://www.nongfuit.com" target="main">评论管理</a></li>

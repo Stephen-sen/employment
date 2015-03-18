@@ -16,7 +16,9 @@ package com.zhangmin.base.entity;
 public class UserInfo extends BaseEntity{
 
 	private String userName;
-	private String password;
+	private String enName;
+	private String sex;
+	private String passWord;
 	private String email;
 	private String tel;
 	private String nickName;
@@ -35,17 +37,43 @@ public class UserInfo extends BaseEntity{
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
 	/**
-	 * @return the password
+	 * @return the enName
 	 */
-	public String getPassword() {
-		return password;
+	public String getEnName() {
+		return enName;
 	}
 	/**
-	 * @param password the password to set
+	 * @param enName the enName to set
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setEnName(String enName) {
+		this.enName = enName;
+	}
+	/**
+	 * @return the sex
+	 */
+	public String getSex() {
+		return sex;
+	}
+	/**
+	 * @param sex the sex to set
+	 */
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	
+	/**
+	 * @return the passWord
+	 */
+	public String getPassWord() {
+		return passWord;
+	}
+	/**
+	 * @param passWord the passWord to set
+	 */
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
 	}
 	/**
 	 * @return the email

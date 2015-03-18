@@ -25,9 +25,9 @@ public abstract class BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	private String id;
-	private Date createDate;
+	private String createDate;
 	private String createUser;
-	private Date updateDate;
+	private String updateDate;
 	private String updateUser;
 	private String flag;
 	private String sort;
@@ -92,20 +92,20 @@ public abstract class BaseEntity {
 		this.id = id;
 	}
 
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 
 
-	public Date getUpdateDate() {
+	public String getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(String updateDate) {
 		this.updateDate = updateDate;
 	}
 
@@ -116,34 +116,6 @@ public abstract class BaseEntity {
 
 	public void setFlag(String flag) {
 		this.flag = flag;
-	}
-	//将数据库的日期"2014-1-22 19:46:50"转换成字符串格式"2014-01-22"
-	public String getCreateDateString() {
-		String date = "";
-		if(null!=getCreateDate()){
-			date = DateUtil.convertDateToString(getCreateDate(), DateUtil.DATE_FORMAT_yyyyMMdd);
-		}
-		return date;
-	}
-	//将页面字符串日期"Wed Jan 22 19:46:50 CST 2014"转换成日期类型"2014-1-22 19:46:50"，存到数据库
-	public void setCreateDateString(String value) {
-		if(null!=value && !"".equals(value)){
-			setCreateDate(DateUtil.convertStringToDate(value, DateUtil.DATE_FORMAT_yyyyMMdd));
-		}
-	}
-	
-	public String getUpdateDateString() {
-		String date = "";
-		if(null!=getUpdateDate()){
-			date = DateUtil.convertDateToString(getUpdateDate(), DateUtil.DATE_FORMAT_yyyyMMdd);
-		}
-		return date;
-	}
-	
-	public void setUpdateDateString(String value) {
-		if(null!=value && !"".equals(value)){
-			setUpdateDate(DateUtil.convertStringToDate(value, DateUtil.DATE_FORMAT_yyyyMMdd));
-		}
 	}
 
 	public String getMemo() {

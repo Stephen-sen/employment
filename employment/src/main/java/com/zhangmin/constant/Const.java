@@ -46,4 +46,6 @@ public class Const {
     public static final int ERR_OLDPWD = 203;    //原密码错误
     public static final int ERR_ACCOUNT_EQUIP = 204;    //账号设备匹配错误
     public static final int ERR_UNACTIVE_EQUIP = 205;    //账号设备匹配错误
+    
+    public static final int status = 0;//0：待审核，1:正常，2：注销，3：审核不同
 }

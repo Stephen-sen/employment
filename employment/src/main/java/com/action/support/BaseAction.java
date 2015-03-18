@@ -7,9 +7,14 @@
  */
 package com.action.support;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.zhangmin.constant.Global;
 
 import net.sf.json.JSONArray;
 
@@ -87,5 +92,42 @@ public class BaseAction {
 	public void setMessageCode(String messageCode) {
 		this.messageCode = messageCode;
 	}
-
+	/**
+	 * 从session中取得用户pageSize数据;
+	 * @param request
+	 * @return 如果session中不存在，则取出默认值；
+	 */
+	protected int getCookiesPageSize(HttpServletRequest request){
+		int pageSize=Global.DEFAULT_PAGE_SIZE;
+		if(!StringUtils.isEmpty( getCookiesValue("pageSize",request))){
+			pageSize= Integer.parseInt(getCookiesValue("pageSize",request));
+		}
+		return pageSize;
+	}
+	
+	/**
+	 * 从cookies 上取相应的值，如果找不到返回''
+	 * @param key
+	 * @param request
+	 * @return
+	 */
+	protected String getCookiesValue(String key,HttpServletRequest request){
+		String keyval = "";
+		Cookie cookies[] = request.getCookies(); // 将适用目录下所有Cookie读入并存入cookies数组中
+		Cookie sCookie = null;
+		String sname = null;
+		if (cookies == null) // 如果没有任何cookie
+		{
+		} else {
+			for (int i = 0; i < cookies.length; i++) // 循环列出所有可用的Cookie
+			{
+				sCookie = cookies[i];
+				sname = sCookie.getName();
+				if (sname.equals(key)) {
+					keyval = sCookie.getValue();
+				}
+			}
+		}
+		return keyval;
+	}
 }
