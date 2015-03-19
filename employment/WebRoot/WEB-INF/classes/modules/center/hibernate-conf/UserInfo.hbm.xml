@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zhangmin.center.entity">
+	<class table="user_info" name="UserInfo">
+		<id name="id" type="java.lang.String" column="id" length="36">
+			<generator class="uuid.hex">
+			</generator>
+		</id>
+		<property name="userName" type="java.lang.String" column="user_name"
+			length="100" unique="false" not-null="true" insert="true" update="true" />
+
+		<property name="sex" type="java.lang.String" column="sex"
+			length="2" unique="false" not-null="true" insert="true" update="true" />
+		<property name="age" type="java.lang.String" column="age"
+			length="3" unique="false" not-null="false" insert="true" update="true" />
+
+		<property name="birthDate" type="java.lang.String" column="birthDate"
+			length="100" unique="false" not-null="false" insert="true" update="true" />
+		<property name="passWord" type="java.lang.String" column="pass_word"
+			length="200" unique="false" not-null="true" insert="true" update="true" />
+
+		<property name="email" type="java.lang.String" column="email"
+			length="100" unique="false" not-null="false" insert="true" update="true" />
+		<property name="address" column="address" update="true"
+			insert="true" type="java.lang.String" not-null="false" unique="false">
+		</property>
+		<property name="tel" type="java.lang.String" column="tel"
+			length="40" unique="false" not-null="false" insert="true" update="true" />
+
+		<property name="status" type="java.lang.String" column="status"
+			length="2" unique="false" not-null="false" insert="true" update="true" />
+
+		<property name="createDate" type="java.lang.String" column="regist_date"
+			unique="false" not-null="false" insert="true" update="true" />
+
+		<property name="updateDate" type="java.lang.String" column="update_date"
+			unique="false" not-null="false" insert="true" update="true" />
+
+		<property name="lastLoginDate" type="java.lang.String"
+			column="last_login_date" unique="false" not-null="false" insert="true"
+			update="true" />
+
+		<property name="flag" column="flag" update="true" insert="true"
+			type="java.lang.String" not-null="false" unique="false" length="2">
+		</property>
+		
+		<many-to-one name="major" not-null="false" update="true"
+			lazy="false" insert="true" cascade="none">
+			<column name="major_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

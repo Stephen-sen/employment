@@ -8,29 +8,26 @@
 			<generator class="uuid.hex"></generator>
 		</id>
 
-		<property name="name" column="name" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false"
-			length="40">
+		<property name="name" column="name" update="true" insert="true"
+			type="java.lang.String" not-null="false" unique="false" length="40">
 		</property>
-		<property name="position" column="position" update="true"
+		<property name="staffNum" column="staffNum" update="true"
 			insert="true" type="java.lang.String" not-null="false" unique="false"
-			length="20">
+			length="6">
 		</property>
-		<property name="description" column="description" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false"
-		>
+		<property name="buildDate" column="buildDate" update="true"
+			insert="true" type="java.lang.String" not-null="false" unique="false">
 		</property>
-		<property name="demand" column="demand" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false"
-			>
+		<property name="address" column="address" update="true"
+			insert="true" type="java.lang.String" not-null="false" unique="false">
 		</property>
-		<property name="score" column="score" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false"
-			length="4">
-		</property>
-		<property name="flag" column="flag" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false"
-			length="2">
+		<property name="createDate" type="java.lang.String" column="create_date"
+			unique="false" not-null="false" insert="true" update="true" />
+
+		<property name="updateDate" type="java.lang.String" column="update_date"
+			unique="false" not-null="false" insert="true" update="true" />
+		<property name="flag" column="flag" update="true" insert="true"
+			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>
 	</class>
 </hibernate-mapping>

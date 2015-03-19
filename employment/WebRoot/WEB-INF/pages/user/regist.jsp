@@ -65,17 +65,6 @@
 										<span style="color:red">*</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="ltd4">昵称</td>
-                                    <td class="rtd4">
-                                        <input  autocomplete="off" id="nickTxt" type="text"  name="nickName" class="required width-p40" maxlength="50" />
-                                    	<span style="color:red">*</span>
-									</td>
-                                    <td class="ltd4">英文名</td>
-                                    <td class="rtd4">
-                                        <input  autocomplete="off" id="enNameTxt" type="text"  name="enName" class=" width-p40" maxlength="50" />
-                                    </td>
-                                </tr>
 								 <tr>
                                     <td class="ltd4">电话 </td>
                                     <td class="rtd4">
