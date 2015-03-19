@@ -16,9 +16,9 @@ import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
-import com.action.support.BaseAction;
+import com.action.support.BaseController;
 
-public class PictureCheckCode extends BaseAction {
+public class PictureCheckCode extends BaseController {
 
 	// 生成色彩验证码的代码
 	public void getVerify() throws ServletException, IOException {

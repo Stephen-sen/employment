@@ -3,7 +3,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.zhangmin.center.entity">
-	<class name="Company" table="company">
+	<class name="Major" table="major">
 		<id name="id" column="id" type="java.lang.String" length="36">
 			<generator class="uuid.hex"></generator>
 		</id>
@@ -11,21 +11,17 @@
 		<property name="name" column="name" update="true" insert="true"
 			type="java.lang.String" not-null="false" unique="false" length="40">
 		</property>
-		<property name="staffNum" column="staffNum" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false"
-			length="6">
-		</property>
-		<property name="buildDate" column="buildDate" update="true"
+		
+		<property name="description" column="description" update="true"
 			insert="true" type="java.lang.String" not-null="false" unique="false">
 		</property>
-		<property name="address" column="address" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false">
-		</property>
-		<property name="createDate" type="java.lang.String" column="create_date"
+		
+		<property name="createDate" type="java.lang.String" column="createDate_date"
 			unique="false" not-null="false" insert="true" update="true" />
 
 		<property name="updateDate" type="java.lang.String" column="update_date"
 			unique="false" not-null="false" insert="true" update="true" />
+			
 		<property name="flag" column="flag" update="true" insert="true"
 			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>

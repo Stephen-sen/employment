@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.action.support.BaseAction;
-import com.zhangmin.base.entity.UserInfo;
-import com.zhangmin.base.service.UserInfoService;
+import com.action.support.BaseController;
+import com.zhangmin.center.entity.UserInfo;
+import com.zhangmin.center.service.UserInfoService;
 import com.zhangmin.constant.Const;
 import com.zhangmin.constant.Global;
 import com.zhangmin.constant.Util;
@@ -32,7 +32,7 @@ import com.zhaosen.util.MD5;
  * @date 2015-3-10
  */
 @Controller
-public class LoginController extends BaseAction{
+public class LoginController extends BaseController{
 	
 	@Autowired
 	private UserInfoService userInfoService;

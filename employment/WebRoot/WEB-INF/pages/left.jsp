@@ -149,57 +149,6 @@ H1 a {
 <table width="100%" height="280" border="0" cellpadding="0" cellspacing="0" bgcolor="#EEF2FB">
   <tr>
     <td width="182" valign="top"><div id="container">
-      <h1 class="type"><a href="javascript:void(0)">学生信息管理</a></h1>
-      <div class="content">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td><img src="themes/images/menu_topline.gif" width="182" height="5" /></td>
-          </tr>
-        </table>
-        <ul class="MM">
-          <li><a href="http://www.nongfuit.com" target="main">个人信息录入</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">个人信息查询</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">个人信息修改</a></li>
-        </ul>
-      </div>
-      <h1 class="type"><a href="javascript:void(0)">公司信息管理</a></h1>
-      <div class="content">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td><img src="themes/images/menu_topline.gif" width="182" height="5" /></td>
-          </tr>
-        </table>
-        <ul class="MM">
-           <li><a href="http://www.nongfuit.com" target="main">公司信息录入</a></li>
-           <li><a href="http://www.nongfuit.com" target="main">公司信息查询</a></li>
-           <li><a href="http://www.nongfuit.com" target="main">公司信息修改</a></li>
-        </ul>
-      </div>
-      <h1 class="type"><a href="javascript:void(0)">就业数据维护</a></h1>
-      <div class="content">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td><img src="themes/images/menu_topline.gif" width="182" height="5" /></td>
-          </tr>
-        </table>
-        <ul class="MM">
-		  <li><a href="http://www.nongfuit.com" target="main">就业权值录入</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">就业权值查询</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">就业权值修改</a></li>
-        </ul>
-      </div>
-      <h1 class="type"><a href="javascript:void(0)">就业能力管理</a></h1>
-      <div class="content">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td><img src="themes/images/menu_topline.gif" width="182" height="5" /></td>
-          </tr>
-        </table>
-        <ul class="MM">
-          <li><a href="http://www.nongfuit.com" target="main">就业能力分析</a></li>
-        </ul>
-      </div>
-    </div>
     <h1 class="type"><a href="javascript:void(0)">注册用户管理</a></h1>
       <div class="content">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -208,15 +157,14 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="${path}/userController/list.do" target="main">用户管理</a></li>
+          <li><a href="${path}/userController/list.do" target="main">注册查询</a></li>
           <li><a href="${path}/userController/registList.do" target="main">注册审核</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">留言管理</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">回复管理</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">评论管理</a></li>
+          <li><a href="${path }/right.do" target="main">留言管理</a></li>
+          <li><a href="${path }/right.do" target="main">回复管理</a></li>
+          <li><a href="${path }/right.do" target="main">评论管理</a></li>
         </ul>
       </div>
-    </div>
-    <h1 class="type"><a href="javascript:void(0)">角色权限管理</a></h1>
+      <h1 class="type"><a href="javascript:void(0)">企业信息管理</a></h1>
       <div class="content">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
@@ -224,13 +172,40 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="http://www.nongfuit.com" target="main">角色新增</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">角色查询</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">角色修改</a></li>
+           <li><a href="${path}/positionController/list.do" target="main">职位信息查询</a></li>
+           <li><a href="${path}/positionController/view.do" target="main">职位信息录入</a></li>
+           <li><a href="${path }/companyController/list.do" target="main">企业信息查询</a></li>
+           <li><a href="${path }/companyController/view.do" target="main">企业信息录入</a></li>
         </ul>
       </div>
-    </div>
-        <h1 class="type"><a href="javascript:void(0)">其它参数管理</a></h1>
+    <h1 class="type"><a href="javascript:void(0)">就业能力管理</a></h1>
+      <div class="content">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><img src="themes/images/menu_topline.gif" width="182" height="5" /></td>
+          </tr>
+        </table>
+        <ul class="MM">
+         <li><a href="${path }/abilityController/list.do" target="main">就业权值查询</a></li>
+         <li><a href="${path }/abilityController/view.do" target="main">就业权值录入</a></li>
+         <li><a href="${path }/majorController/list.do" target="main">专业信息查询</a></li>
+         <li><a href="${path }/majorController/view.do" target="main">专业信息录入</a></li>
+         <li><a href="${path }/right.do" target="main">个人就业能力分析</a></li>
+        </ul>
+      </div>
+     <h1 class="type"><a href="javascript:void(0)">个人信息管理</a></h1>
+      <div class="content">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><img src="themes/images/menu_topline.gif" width="182" height="5" /></td>
+          </tr>
+        </table>
+        <ul class="MM">
+          <li><a href="${path }/right.do" target="main">个人信息查询</a></li>
+          <li><a href="${path }/right.do" target="main">密码修改</a></li>
+        </ul>
+      </div>
+        <h1 class="type"><a href="javascript:void(0)">系统管理</a></h1>
       <div class="content">
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
@@ -238,13 +213,11 @@ H1 a {
             </tr>
           </table>
         <ul class="MM">
-            <li><a href="http://www.nongfuit.com" target="main">管理设置</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">主机状态</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">攻击状态</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">登陆记录</a></li>
-          <li><a href="http://www.nongfuit.com" target="main">运行状态</a></li>
+           <li><a href="${path }/right.do" target="main">角色新增</a></li>
+          <li><a href="${path }/right.do" target="main">角色查询</a></li>
+          <li><a href="${path }/right.do" target="main">角色修改</a></li>
+          <li><a href="${path }/right.do" target="main">登陆记录</a></li>
         </ul>
-      </div>
       </div>
         <script type="text/javascript">
 		var contents = document.getElementsByClassName('content');

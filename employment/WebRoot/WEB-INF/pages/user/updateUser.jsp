@@ -68,25 +68,36 @@ function onSubmit(){
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="ltd4">昵称</td>
+                                    <td class="ltd4">专业</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="nickTxt" type="text"  name="nickName" value="${userInfo.nickName }" class="required width-p40" maxlength="50" />
+                                        <input  autocomplete="off" id="majorTxt" type="text"  name="userInfo.major" value="" class="width-p40" maxlength="50" />
                                     	<span style="color:red">*</span>
 									</td>
-                                    <td class="ltd4">英文名</td>
+                                    <td class="ltd4">出生日期</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="enNameTxt" type="text"  name="enName"value="${userInfo.enName }" class=" width-p40" maxlength="50" />
+                                        <input  name="birthDate" value="${userInfo.birthDate }" class="width-p40" type="text" autocomplete="off"
+												onfocus="WdatePicker({skin:'whyGreen',readOnly:'true'})" />
                                     </td>
                                 </tr>
-								 <tr>
+                                <tr>
+                                    <td class="ltd4">地址 </td>
+                                    <td class="rtd4">
+                                        <input  autocomplete="off" id="addressTxt" type="text"  name="address" value="${userInfo.address }"class=" width-p80" maxlength="50" />
+                                        <span class="color-red">*</span>
+                                    </td>
                                     <td class="ltd4">电话 </td>
                                     <td class="rtd4">
                                         <input  autocomplete="off" id="telTxt" type="text"  name="tel" value="${userInfo.tel }"class=" width-p40" maxlength="50" />
                                         <span class="color-red">*</span>
                                     </td>
+                                </tr>
+								 <tr>
                                     <td class="ltd4">邮箱</td>
                                     <td class="rtd4">
                                         <input  autocomplete="email" id="emailTxt" type="text"  name="email"value="${userInfo.email}" class=" width-p40" maxlength="100" />
+                                    </td>
+                                     <td class="ltd4"></td>
+                                     <td class="rtd4">
                                     </td>
                                 </tr>
 								<tr>

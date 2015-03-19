@@ -11,17 +11,17 @@ import com.zhangmin.base.entity.BaseEntity;
 
 /**
  * ClassName: company 
- * @Description: 企业基类
+ * @Description: 企业实体类
  * @author 张敏
  * @date 2015-2-28
  */
 public class Company extends BaseEntity {
 
 	private String name;
-	private String position; //职位
-	private String description; //描述
-	private String demand;//要求
-	private String score;//每样要求分值
+	private String buildDate;//公司创建日期
+	private String address;//公司地址
+	private String staffNum;//公司人数
+	
 	/**
 	 * @return the name
 	 */
@@ -35,53 +35,40 @@ public class Company extends BaseEntity {
 		this.name = name;
 	}
 	/**
-	 * @return the position
+	 * @return the buildDate
 	 */
-	public String getPosition() {
-		return position;
+	public String getBuildDate() {
+		return buildDate;
 	}
 	/**
-	 * @param position the position to set
+	 * @param buildDate the buildDate to set
 	 */
-	public void setPosition(String position) {
-		this.position = position;
+	public void setBuildDate(String buildDate) {
+		this.buildDate = buildDate;
 	}
 	/**
-	 * @return the description
+	 * @return the staffNum
 	 */
-	public String getDescription() {
-		return description;
+	public String getStaffNum() {
+		return staffNum;
 	}
 	/**
-	 * @param description the description to set
+	 * @param staffNum the staffNum to set
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setStaffNum(String staffNum) {
+		this.staffNum = staffNum;
 	}
 	/**
-	 * @return the demand
+	 * @return the address
 	 */
-	public String getDemand() {
-		return demand;
+	public String getAddress() {
+		return address;
 	}
 	/**
-	 * @param demand the demand to set
+	 * @param address the address to set
 	 */
-	public void setDemand(String demand) {
-		this.demand = demand;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	/**
-	 * @return the score
-	 */
-	public String getScore() {
-		return score;
-	}
-	/**
-	 * @param score the score to set
-	 */
-	public void setScore(String score) {
-		this.score = score;
-	}
-	
 	
 }

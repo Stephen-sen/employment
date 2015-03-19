@@ -18,15 +18,18 @@
 	<mapping resource="modules/baseinfo/hibernate-conf/ParamMenu.hbm.xml" />
 	<mapping resource="modules/baseinfo/hibernate-conf/Role.hbm.xml" />
 	<mapping resource="modules/baseinfo/hibernate-conf/RoleMenu.hbm.xml" />
-	<mapping resource="modules/baseinfo/hibernate-conf/UserInfo.hbm.xml" />
 	<mapping resource="modules/baseinfo/hibernate-conf/UserLog.hbm.xml" />
 	<mapping resource="modules/baseinfo/hibernate-conf/UserRole.hbm.xml" />
 	
 	<!-- 核心文件 -->
-	<mapping resource="modules/center/hibernate-conf/Assessment.hbm.xml" />
+	<mapping resource="modules/center/hibernate-conf/Ability.hbm.xml" />
+	<mapping resource="modules/center/hibernate-conf/Major.hbm.xml" />
+	<mapping resource="modules/center/hibernate-conf/Position.hbm.xml" />
+	<mapping resource="modules/center/hibernate-conf/UserInfo.hbm.xml" />
 	<mapping resource="modules/center/hibernate-conf/Company.hbm.xml" />
-	<mapping resource="modules/center/hibernate-conf/Student.hbm.xml" />
-	<mapping resource="modules/center/hibernate-conf/Type.hbm.xml" />
+	<mapping resource="modules/center/hibernate-conf/Com_Abi.hbm.xml" />
+	<mapping resource="modules/center/hibernate-conf/Com_Pos.hbm.xml" />
+	<mapping resource="modules/center/hibernate-conf/Stu_Abi.hbm.xml" />
 
 </session-factory>
 </hibernate-configuration>

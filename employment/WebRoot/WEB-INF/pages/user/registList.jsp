@@ -52,9 +52,9 @@ $(document).ready(function() {
 	                                        <td class="rtd8">
 	                                            <input  class="width-p45" value="${userInfo.userName }" autocomplete="off" type="text" name="userName" maxlength="40" />
 	                                        </td>
-											<td class="ltd8">昵称 </td>
+	                                        <td class="ltd8">电话</td>
 	                                        <td class="rtd8">
-												<input  class="width-p45" value="${userInfo.nickName }" autocomplete="off" type="text" name="nickName" maxlength="40" />
+	                                        	<input type="text" value="${userInfo.tel }" autocomplete="off" class="width-p45" name="tel" maxlength="11"/>
 	                                        </td>
 	                                    </tr>
 	                                    <tr>
@@ -63,13 +63,7 @@ $(document).ready(function() {
 	                                            <input  name="createDate" value="${userInfo.createDate }" class="width-p45" type="text" autocomplete="off"
 												onfocus="WdatePicker({skin:'whyGreen',readOnly:'true'})" />
 	                                        </td>
-	                                    	<td class="ltd8">电话</td>
-	                                        <td class="rtd8">
-	                                        	<input type="text" value="${userInfo.tel }" autocomplete="off" class="width-p45" name="tel" maxlength="11"/>
-	                                        </td>
-	                                    </tr>
-	                                     <tr>
-	                                    	<td class="ltd8">状态</td>
+	                                        <td class="ltd8">状态</td>
 	                                        <td class="rtd8">
 	                                        	<select id="statusSelect" name="status" class="required width-p40">
 											<option value="1">通过</option>
@@ -97,10 +91,11 @@ $(document).ready(function() {
                             <thead>
                                 <tr>
                                     <th>序号</th>
-									<th>用户名</th>
-									<th>英文名</th>
+									<th>姓名</th>
+									<th>专业</th>
 									<th>性别</th>
-                                    <th>昵称</th>
+									<th>出生日期</th>
+									<th>年龄</th>
                                     <th>电话</th>
 									<th>邮箱</th>
                                     <th>注册日期</th>
@@ -114,13 +109,14 @@ $(document).ready(function() {
                                         <td class="tb-left-bg" style="text-align: center">
                                          ${pagedata.start+s.index+1}
                                         </td>
-                                        <td> ${item.userName} </td> 
-										<td> ${item.enName} </td>
+                                        <td> ${item.userName} </td>
+                                         <td> ${item.major.name} </td>  
 										<td>
 										<c:if test="${item.sex == 'M'}">男</c:if>
 										<c:if test="${item.sex == 'W'}">女</c:if>
 										  </td>
-										<td> ${item.nickName} </td>
+										<td> ${item.birthDate} </td>
+										<td> ${item.age} </td>
 										<td> ${item.tel} </td>
 										<td> ${item.email} </td>
 										<td> ${item.createDate} </td>
