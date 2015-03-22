@@ -20,6 +20,7 @@ public class UserInfo extends BaseEntity{
 	private String userName;
 	private String sex;
 	private String passWord;
+	private String newPwd;
 	private String address;
 	private String birthDate;
 	private String age;
@@ -65,6 +66,18 @@ public class UserInfo extends BaseEntity{
 	 */
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
+	}
+	/**
+	 * @return the newPwd
+	 */
+	public String getNewPwd() {
+		return newPwd;
+	}
+	/**
+	 * @param newPwd the newPwd to set
+	 */
+	public void setNewPwd(String newPwd) {
+		this.newPwd = newPwd;
 	}
 	/**
 	 * @return the email

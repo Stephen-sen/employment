@@ -7,18 +7,22 @@
  */
 package com.zhangmin.center.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseController;
+import com.zhangmin.center.entity.Major;
 import com.zhangmin.center.entity.UserInfo;
+import com.zhangmin.center.service.MajorService;
 import com.zhangmin.center.service.UserInfoService;
+import com.zhangmin.constant.Const;
 import com.zhaosen.base.Page;
 import com.zhaosen.util.MD5;
 
@@ -34,6 +38,8 @@ public class UserController  extends BaseController{
 
 	@Autowired
 	private UserInfoService userInfoService;
+	@Autowired
+	private MajorService majorService;
 	
 	private MD5 md5 = new MD5();
 	/**
@@ -49,6 +55,8 @@ public class UserController  extends BaseController{
 	@RequestMapping(value = "/userController/regist")
 	public ModelAndView addView(HttpServletRequest request) throws Exception{
 		ModelAndView mav=new ModelAndView("user/regist");
+		List<Major> majorList=majorService.majorList();
+		mav.addObject("majorList", majorList);
 		return mav;
 		}
 	
@@ -65,7 +73,7 @@ public class UserController  extends BaseController{
 	 * @author 张敏
 	 * @date 2015-3-16
 	 */
-	@RequestMapping(value = "/userController/save", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/userController/save")
 	public ModelAndView save(HttpServletRequest request,HttpSession session,UserInfo user) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
@@ -97,6 +105,8 @@ public class UserController  extends BaseController{
 			int pageSize=this.getCookiesPageSize(request);
 			Page pagedData = userInfoService.getPagedUserInfo(userInfo, pageNo,pageSize);
 			view.addObject("pagedData", pagedData );
+			List<Major> majorList=majorService.majorList();
+			view.addObject("majorList", majorList);
 			view.setViewName("user/userList");
 		}
 		catch (Exception e) {
@@ -116,7 +126,7 @@ public class UserController  extends BaseController{
 	 * @author 张敏
 	 * @date 2015-3-16
 	 */
-	@RequestMapping(value = "/userController/delete", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/userController/delete")
 	public ModelAndView delete(UserInfo userInfo,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
@@ -141,12 +151,16 @@ public class UserController  extends BaseController{
 	 * @author 张敏
 	 * @date 2015-3-16
 	 */
-	@RequestMapping(value = "/userController/find", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/userController/find")
 	public ModelAndView find(HttpServletRequest request,UserInfo userInfo) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
+			String type = request.getParameter("type");
 			userInfo = userInfoService.findUserById(userInfo.getId());
 			view.addObject("userInfo",userInfo);
+			view.addObject("type",type);
+			List<Major> majorList=majorService.majorList();
+			view.addObject("majorList", majorList);
 			view.setViewName("user/updateUser");
 		}
 		catch (Exception e) {
@@ -166,12 +180,18 @@ public class UserController  extends BaseController{
 	 * @author 张敏
 	 * @date 2015-3-16
 	 */
-	@RequestMapping(value = "/userController/update", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/userController/update")
 	public ModelAndView update(UserInfo userInfo,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
 			userInfoService.updateUser(userInfo);
-			view=list(new UserInfo(),pageNo,request);
+			String type = request.getParameter("type");
+			if(type.equals("updatePersional")){
+				view.setViewName("right");
+			}else{
+				view=list(new UserInfo(),pageNo,request);
+			}
+			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -187,7 +207,7 @@ public class UserController  extends BaseController{
 	 * @author 张敏
 	 * @date 2015-3-16
 	 */
-	@RequestMapping(value = "/userController/statusMan", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/userController/statusMan")
 	public ModelAndView statusMan(UserInfo userInfo,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
@@ -248,6 +268,32 @@ public class UserController  extends BaseController{
 				userInfoService.registPass(userInfo);
 				
 				view=registList(new UserInfo(),pageNo,request);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return view;
+		}
+	
+	@RequestMapping(value = "/userController/detail")
+	public ModelAndView persionalInfo(HttpServletRequest request) throws Exception{
+		ModelAndView view =new ModelAndView();
+		try{
+			view.setViewName("user/persionalInfo");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return view;
+		}
+	
+	@RequestMapping(value = "/userController/resetPasw")
+	public ModelAndView updatePasw(HttpServletRequest request,Integer pageNo,UserInfo userInfo) throws Exception{
+		ModelAndView view =new ModelAndView();
+		try{
+			userInfoService.updatePasw(userInfo);
+			view=list(userInfo,pageNo,request);
+			view.addObject("messageCode", Const.MSG_SUCCESS);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

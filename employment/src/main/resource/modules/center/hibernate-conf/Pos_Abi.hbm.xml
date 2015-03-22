@@ -3,19 +3,15 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.zhangmin.center.entity">
-	<class name="Com_Pos" table="com_pos">
+	<class name="Pos_Abi" table="pos_abi">
 		<id name="id" column="id" type="java.lang.String" length="36">
 			<generator class="uuid.hex"></generator>
 		</id>
-		<property name="description" column="description" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false">
+
+		<property name="score" column="score" update="true" insert="true"
+			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>
-		<property name="salary" column="salary" update="true" insert="true"
-			type="java.lang.Double" not-null="false" unique="false" length="6">
-		</property>
-		<property name="demand" column="demand" update="true" insert="true"
-			type="java.lang.String" not-null="false" unique="false">
-		</property>
+		
 		<property name="createDate" type="java.lang.String" column="createDate_date"
 			unique="false" not-null="false" insert="true" update="true" />
 
@@ -25,14 +21,19 @@
 			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>
 		
+		<many-to-one name="position" not-null="false" update="true"
+			lazy="false" insert="true" cascade="none">
+			<column name="position_id"/>
+		</many-to-one>
+		
 		<many-to-one name="company" not-null="false" update="true"
 			lazy="false" insert="true" cascade="none">
 			<column name="company_id"/>
 		</many-to-one>
 		
-		<many-to-one name="position" not-null="false" update="true"
+		<many-to-one name="ability" not-null="false" update="true"
 			lazy="false" insert="true" cascade="none">
-			<column name="position_id"/>
+			<column name="ability_id"/>
 		</many-to-one>
 	</class>
 </hibernate-mapping>

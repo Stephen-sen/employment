@@ -15,13 +15,16 @@ import com.zhangmin.base.entity.BaseEntity;
  * @author 张敏
  * @date 2015-3-18
  */
-public class Com_Pos extends BaseEntity {
+public class Job extends BaseEntity {
 
 	private Company company; 
-	private Position position; 
+	private Position position;
+	private String contactPerson;
+	private String contactTel;
 	private String description; //职位描述
 	private Double salary; //薪水
 	private String demand;//要求
+	private String[] abilityArry;//suzhi
 	/**
 	 * @return the company
 	 */
@@ -33,6 +36,30 @@ public class Com_Pos extends BaseEntity {
 	 */
 	public void setCompany(Company company) {
 		this.company = company;
+	}
+	/**
+	 * @return the contactPerson
+	 */
+	public String getContactPerson() {
+		return contactPerson;
+	}
+	/**
+	 * @param contactPerson the contactPerson to set
+	 */
+	public void setContactPerson(String contactPerson) {
+		this.contactPerson = contactPerson;
+	}
+	/**
+	 * @return the contactTel
+	 */
+	public String getContactTel() {
+		return contactTel;
+	}
+	/**
+	 * @param contactTel the contactTel to set
+	 */
+	public void setContactTel(String contactTel) {
+		this.contactTel = contactTel;
 	}
 	/**
 	 * @return the position
@@ -81,6 +108,18 @@ public class Com_Pos extends BaseEntity {
 	 */
 	public void setDemand(String demand) {
 		this.demand = demand;
+	}
+	/**
+	 * @return the abilityArry
+	 */
+	public String[] getAbilityArry() {
+		return abilityArry;
+	}
+	/**
+	 * @param abilityArry the abilityArry to set
+	 */
+	public void setAbilityArry(String[] abilityArry) {
+		this.abilityArry = abilityArry;
 	}
 	
 	

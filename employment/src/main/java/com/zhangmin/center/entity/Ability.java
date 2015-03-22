@@ -21,7 +21,8 @@ public class Ability extends BaseEntity {
 	private String assessmentType;//考核类型（01：一级考核，02：二级考核）
 	private String description;//考核内容描述
 	private String maxScore;//考核内容描述
-	private String preId;//二级考核id
+	private Ability preId;//二级考核id
+	private String preName;//二级考核名称
 
 	/**
 	 * @return the name
@@ -79,18 +80,33 @@ public class Ability extends BaseEntity {
 		this.maxScore = maxScore;
 	}
 
+
 	/**
 	 * @return the preId
 	 */
-	public String getPreId() {
+	public Ability getPreId() {
 		return preId;
 	}
 
 	/**
 	 * @param preId the preId to set
 	 */
-	public void setPreId(String preId) {
+	public void setPreId(Ability preId) {
 		this.preId = preId;
+	}
+
+	/**
+	 * @return the preName
+	 */
+	public String getPreName() {
+		return preName;
+	}
+
+	/**
+	 * @param preName the preName to set
+	 */
+	public void setPreName(String preName) {
+		this.preName = preName;
 	}
 	
 }

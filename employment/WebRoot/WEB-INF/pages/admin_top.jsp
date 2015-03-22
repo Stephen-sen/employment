@@ -29,19 +29,8 @@ function showsubmenu(sid) {
 }
 </script>
 <meta http-equiv=Content-Type content=text/html;charset=gb2312>
-<meta http-equiv="refresh" content="60">
-<script language=JavaScript1.2>
-function showsubmenu(sid) {
-	var whichEl = eval("submenu" + sid);
-	var menuTitle = eval("menuTitle" + sid);
-	if (whichEl.style.display == "none"){
-		eval("submenu" + sid + ".style.display=\"\";");
-	}else{
-		eval("submenu" + sid + ".style.display=\"none\";");
-	}
-}
-</script>
-<base target="main">
+<%--<meta http-equiv="refresh" content="60">
+--%><base target="main">
 <link href="themes/images/skin.css" rel="stylesheet" type="text/css">
 </head>
 <body leftmargin="0" topmargin="0">

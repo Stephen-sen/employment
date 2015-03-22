@@ -27,8 +27,8 @@
 	<mapping resource="modules/center/hibernate-conf/Position.hbm.xml" />
 	<mapping resource="modules/center/hibernate-conf/UserInfo.hbm.xml" />
 	<mapping resource="modules/center/hibernate-conf/Company.hbm.xml" />
-	<mapping resource="modules/center/hibernate-conf/Com_Abi.hbm.xml" />
-	<mapping resource="modules/center/hibernate-conf/Com_Pos.hbm.xml" />
+	<mapping resource="modules/center/hibernate-conf/Pos_Abi.hbm.xml" />
+	<mapping resource="modules/center/hibernate-conf/Job.hbm.xml" />
 	<mapping resource="modules/center/hibernate-conf/Stu_Abi.hbm.xml" />
 
 </session-factory>

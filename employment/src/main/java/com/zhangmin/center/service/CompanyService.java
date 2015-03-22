@@ -70,18 +70,23 @@ public class CompanyService {
 	}
 	
 	public void updateCompany(Company company){
-		Company majorInfo = findCompanyById(company.getId());
-		company.setCreateDate(majorInfo.getCreateDate());
+		Company companyInfo = findCompanyById(company.getId());
+		company.setCreateDate(companyInfo.getCreateDate());
 		String updateDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
 		company.setUpdateDate(updateDate);
-		company.setFlag(majorInfo.getFlag());
+		company.setFlag(companyInfo.getFlag());
 		companyDao.update(company);
 	}
 	
-	public void deleteMajor(String majorId){
-		Company company = findCompanyById(majorId);
+	public void deleteCompany(String companyId){
+		Company company = findCompanyById(companyId);
 		if(company != null){
 			companyDao.realDel(company);
 		}
+	}
+	
+	public List<Company> getCompanyInfo(){
+		String hql="from Company where flag = 'y'";
+		return companyDao.find(hql);
 	}
 }

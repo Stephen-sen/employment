@@ -9,8 +9,10 @@ package com.zhangmin.base.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.action.support.BaseController;
 import com.zhangmin.constant.Stat;
 
 
@@ -20,7 +22,8 @@ import com.zhangmin.constant.Stat;
  * @author 张敏
  * @date 2015-3-16
  */
-public class MainController {
+@Controller
+public class MainController extends BaseController{
 
 	@RequestMapping("/main/back")
 	public String back(HttpServletRequest request) throws Exception{
@@ -31,22 +34,5 @@ public class MainController {
 		}catch(Exception e){ 
 			throw e;
 		}
-	}
-	
-	/**
-	 * 获取用户请求地址及参数 
-	 * @param request
-	 * @return
-	 */
-	public String getSessionListUrl(HttpServletRequest request){
-		String url="/main/index.do";
-		Stat urlStat=(Stat)request.getSession().getAttribute("urlStat");
-		if(null!=urlStat){
-			Object urlObj=urlStat.pop();
-			if(null!=urlObj){
-				url=urlObj.toString();
-			}
-		}
-		return url;
 	}
 }

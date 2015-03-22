@@ -8,6 +8,8 @@
 package com.zhangmin.center.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,7 @@ public class AbilityController extends BaseController {
 	private AbilityService abilityService;
 	/**
 	 * 
-	 * @Description: 跳转到就业权值新增界面
+	 * @Description: 跳转到素质信息新增界面
 	 * @param @return   
 	 * @return ModelAndView  
 	 * @author 张敏
@@ -42,12 +44,14 @@ public class AbilityController extends BaseController {
 	@RequestMapping(value="/abilityController/view")
 	public ModelAndView view(){
 		ModelAndView view = new ModelAndView();
+		List<Ability> preAbilityList = abilityService.findPreAbility();
+		view.addObject("preAbilityList", preAbilityList);
 		view.setViewName("/ability/addAbility");
 		return view;
 	}
 	/**
 	 * 
-	 * @Description: 保存就业权值信息
+	 * @Description: 保存素质信息信息
 	 * @param @param ability
 	 * @param @param pageNo
 	 * @param @param request
@@ -70,7 +74,7 @@ public class AbilityController extends BaseController {
 	}
 	/**
 	 * 
-	 * @Description: 查询就业权值信息
+	 * @Description: 查询素质信息信息
 	 * @param @param pageNo
 	 * @param @param request
 	 * @param @return   
@@ -100,6 +104,8 @@ public class AbilityController extends BaseController {
 		try {
 			Ability abilityInfo = abilityService.findAbilityById(ability.getId());
 			view.addObject("abilityInfo", abilityInfo);
+			List<Ability> preAbilityList = abilityService.findPreAbility();
+			view.addObject("preAbilityList", preAbilityList);
 			view.setViewName("/ability/updateAbility");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -124,7 +130,7 @@ public class AbilityController extends BaseController {
 	public ModelAndView delete(Ability ability,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
-			abilityService.deleteMajor(ability.getId());
+			abilityService.deleteAbility(ability.getId());
 			view= list(pageNo,request);
 		}
 		catch (Exception e) {

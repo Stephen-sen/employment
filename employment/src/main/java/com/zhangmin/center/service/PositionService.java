@@ -78,10 +78,15 @@ public class PositionService {
 		positionDao.update(position);
 	}
 	
-	public void deleteMajor(String majorId){
-		Position position = findPositionById(majorId);
+	public void deletePosition(String positionId){
+		Position position = findPositionById(positionId);
 		if(position != null){
 			positionDao.realDel(position);
 		}
+	}
+	
+	public List<Position> getPositionInfo(){
+		String hql="from Position where flag = 'y'";
+		return positionDao.find(hql);
 	}
 }

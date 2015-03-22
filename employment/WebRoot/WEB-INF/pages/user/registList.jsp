@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="/common/tagslib.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!--  
  * @version 1.0.01
@@ -65,7 +64,7 @@ $(document).ready(function() {
 	                                        </td>
 	                                        <td class="ltd8">状态</td>
 	                                        <td class="rtd8">
-	                                        	<select id="statusSelect" name="status" class="required width-p40">
+	                                        	<select id="statusSelect" name="status" class="required width-p45">
 											<option value="1">通过</option>
 											<option value="3">不通过</option>
 										</select>
@@ -110,7 +109,7 @@ $(document).ready(function() {
                                          ${pagedata.start+s.index+1}
                                         </td>
                                         <td> ${item.userName} </td>
-                                         <td> ${item.major.name} </td>  
+                                         <td> ${item.major.name}</td>  
 										<td>
 										<c:if test="${item.sex == 'M'}">男</c:if>
 										<c:if test="${item.sex == 'W'}">女</c:if>

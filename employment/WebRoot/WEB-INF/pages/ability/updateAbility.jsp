@@ -11,6 +11,10 @@
 </head>
 <script type="text/javascript">
 
+$(document).ready(function() {
+	$("#form1").validate();
+	$("#preIdSelect").val("${abilityInfo.preId.id}");
+});
 	function back() {
 		history.go(-1);
 	}
@@ -36,12 +40,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="ltd4">权值名称</td>
+                                    <td class="ltd4">名称</td>
                                     <td class="rtd4">
                                         <input  autocomplete="off" id="nameTxt" autocomplete="off" type="text"  name="name" value="${abilityInfo.name }" class="required width-p40" maxlength="20" />
 										<span class="color-red">*</span>
                                     </td>
-                                    <td class="ltd4">权值类型 </td>
+                                    <td class="ltd4">类型 </td>
                                     <td>
                                      <input  autocomplete="off" id="assessmentTypeTxt" type="text"  name="assessmentType"value="${abilityInfo.assessmentType }" class=" width-p40" maxlength="50"/>
                                     </td>
@@ -52,13 +56,19 @@
                                         <input  autocomplete="off" id="maxScoreTxt" autocomplete="off" type="text"  name="maxScore" value="${abilityInfo.maxScore }"class="required width-p40" maxlength="2" />
 										<span class="color-red">*</span>
                                     </td>
-                                    <td class="ltd4">上级权值 </td>
+                                    <td class="ltd4">所属上级 </td>
                                     <td>
-                                     <input  autocomplete="off" id="preIdTxt" type="text"  name="preId" value="${abilityInfo.preId }"class=" width-p40" maxlength="50" />
+                                     <select id="preIdSelect"  name="preId.id" class="required width-p40">
+                                     		<option value="">---请选择---</option>
+                                     		<option value="-1">---无上级---</option>
+                                     		<c:forEach var="item" items="${preAbilityList}">
+											<option value="${item.id }">${item.name }</option>
+											</c:forEach>
+										</select>
                                     </td>
                                 </tr>
                                  <tr>
-                                   <td class="ltd4">权值说明</td>
+                                   <td class="ltd4">素质说明</td>
                                     <td class="rtd4">
                                         <input  autocomplete="off" id="descriptionTxt" autocomplete="off" type="text"  name="description" value="${abilityInfo.description }"class="required width-p80" maxlength="20" />
 										<span class="color-red">*</span>

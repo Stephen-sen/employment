@@ -20,6 +20,7 @@ import com.zhangmin.center.entity.UserInfo;
 import com.zhangmin.constant.Util;
 import com.zhaosen.base.Page;
 import com.zhaosen.util.DateUtil;
+import com.zhaosen.util.MD5;
 
 /**
  * ClassName: UserInfoService 
@@ -33,6 +34,7 @@ public class UserInfoService {
 	@Autowired
 	private UserInfoDao userInfoDao;
 	
+	private MD5 md5 = new MD5();
 	/**
 	 * 
 	 * @Description: 获取登录用户的信息
@@ -160,8 +162,8 @@ public class UserInfoService {
 		if(!StringUtils.isEmpty(userInfo.getTel())){
 			hql.append("and tel like '" + userInfo.getTel()+"%'");
 		}
-		if(userInfo.getMajor() != null){
-			hql.append("and major like '" + userInfo.getMajor().getName()+"%'");
+		if((userInfo.getMajor() != null) && userInfo.getMajor().getId()!=""){
+			hql.append("and major like '" + userInfo.getMajor().getId()+"%'");
 		}
 		hql.append("and status = '1' or status = '2'");
 		hql.append("order by updateDate desc,");
@@ -212,5 +214,10 @@ public class UserInfoService {
 		hql.append("updateDate desc,");
 		hql.append("createDate desc");
 		return hql.toString();
+	}
+	
+	public void updatePasw(UserInfo userInfo){
+		String hql = "update UserInfo set passWord=? where id=?";
+		userInfoDao.bulkUpdate(hql, new Object[] {md5.getMD5ofStr("0000"), userInfo.getId() });
 	}
 }

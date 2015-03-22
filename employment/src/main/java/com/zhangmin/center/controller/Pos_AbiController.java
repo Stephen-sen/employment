@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseController;
-import com.zhangmin.center.entity.Company;
-import com.zhangmin.center.service.CompanyService;
+import com.zhangmin.center.entity.Pos_Abi;
+import com.zhangmin.center.service.Pos_AbiService;
 import com.zhaosen.base.Page;
 
 /**
@@ -27,10 +27,10 @@ import com.zhaosen.base.Page;
  * @date 2015-3-19
  */
 @Controller
-public class CompanyController extends BaseController {
+public class Pos_AbiController extends BaseController {
 
 	@Autowired
-	private CompanyService companyService;
+	private Pos_AbiService pos_AbiService;
 	/**
 	 * 
 	 * @Description: 跳转到公司新增界面
@@ -39,16 +39,16 @@ public class CompanyController extends BaseController {
 	 * @author 张敏
 	 * @date 2015-3-19
 	 */
-	@RequestMapping(value="/companyController/view")
+	@RequestMapping(value="/pos_AbiController/view")
 	public ModelAndView view(){
 		ModelAndView view = new ModelAndView();
-		view.setViewName("/company/addCompany");
+		view.setViewName("/pos_Abi/addPos_Abi");
 		return view;
 	}
 	/**
 	 * 
 	 * @Description: 保存公司信息
-	 * @param @param company
+	 * @param @param pos_Abi
 	 * @param @param pageNo
 	 * @param @param request
 	 * @param @return   
@@ -56,11 +56,11 @@ public class CompanyController extends BaseController {
 	 * @author 张敏
 	 * @date 2015-3-19
 	 */
-	@RequestMapping(value="/companyController/save")
-	public ModelAndView save(Company company, Integer pageNo,HttpServletRequest request){
+	@RequestMapping(value="/pos_AbiController/save")
+	public ModelAndView save(Pos_Abi pos_Abi, Integer pageNo,HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
 		try {
-			companyService.saveCompany(company);
+			pos_AbiService.savePos_Abi(pos_Abi);
 			view = list(pageNo,request);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,15 +78,15 @@ public class CompanyController extends BaseController {
 	 * @author 张敏
 	 * @date 2015-3-19
 	 */
-	@RequestMapping(value="/companyController/list")
+	@RequestMapping(value="/pos_AbiController/list")
 	public ModelAndView list(Integer pageNo,HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
 		try{
 			pageNo = pageNo == null?1:pageNo;
 			int pageSize = this.getCookiesPageSize(request);
-			Page pagedData = companyService.getPagedCompanyInfo(pageNo, pageSize);
+			Page pagedData = pos_AbiService.getPagedPos_AbiInfo(pageNo, pageSize);
 			view.addObject("pagedData", pagedData );
-			view.setViewName("/company/companyList");
+			view.setViewName("/pos_Abi/pos_AbiList");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -94,24 +94,24 @@ public class CompanyController extends BaseController {
 		return view;
 	}
 	
-	@RequestMapping(value="/companyController/find")
-	public ModelAndView find(Company company,Integer pageNo,HttpServletRequest request){
+	@RequestMapping(value="/pos_AbiController/find")
+	public ModelAndView find(Pos_Abi pos_Abi,Integer pageNo,HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
 		try {
-			Company companyInfo = companyService.findCompanyById(company.getId());
-			view.addObject("companyInfo", companyInfo);
-			view.setViewName("/company/updateCompany");
+			Pos_Abi pos_AbiInfo = pos_AbiService.findPos_AbiById(pos_Abi.getId());
+			view.addObject("pos_AbiInfo", pos_AbiInfo);
+			view.setViewName("/pos_Abi/updatePos_Abi");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return view;
 	}
 	
-	@RequestMapping(value = "/companyController/update")
-	public ModelAndView update(Company company,Integer pageNo,HttpServletRequest request) throws Exception{
+	@RequestMapping(value = "/pos_AbiController/update")
+	public ModelAndView update(Pos_Abi pos_Abi,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
-			companyService.updateCompany(company);
+			pos_AbiService.updatePos_Abi(pos_Abi);
 			view= list(pageNo,request);
 		}
 		catch (Exception e) {
@@ -120,11 +120,11 @@ public class CompanyController extends BaseController {
 		return view;
 		}
 	
-	@RequestMapping(value = "/companyController/delete")
-	public ModelAndView delete(Company company,Integer pageNo,HttpServletRequest request) throws Exception{
+	@RequestMapping(value = "/pos_AbiController/delete")
+	public ModelAndView delete(Pos_Abi pos_Abi,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
-			companyService.deleteCompany(company.getId());
+			pos_AbiService.deletePos_Abi(pos_Abi.getId());
 			view= list(pageNo,request);
 		}
 		catch (Exception e) {

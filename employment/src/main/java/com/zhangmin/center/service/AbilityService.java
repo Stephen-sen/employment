@@ -8,8 +8,10 @@
 package com.zhangmin.center.service;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,6 @@ import com.zhangmin.center.dao.AbilityDao;
 import com.zhangmin.center.entity.Ability;
 import com.zhaosen.base.Page;
 import com.zhaosen.util.DateUtil;
-
 /**
  * ClassName: AbilityService 
  * @Description: TODO
@@ -70,18 +71,36 @@ public class AbilityService {
 	}
 	
 	public void updateAbility(Ability ability){
-		Ability majorInfo = findAbilityById(ability.getId());
-		ability.setCreateDate(majorInfo.getCreateDate());
+		Ability abilityInfo = findAbilityById(ability.getId());
+		ability.setCreateDate(abilityInfo.getCreateDate());
 		String updateDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
 		ability.setUpdateDate(updateDate);
-		ability.setFlag(majorInfo.getFlag());
+		ability.setFlag(abilityInfo.getFlag());
 		abilityDao.update(ability);
 	}
 	
-	public void deleteMajor(String majorId){
-		Ability ability = findAbilityById(majorId);
+	public void deleteAbility(String abilityId){
+		Ability ability = findAbilityById(abilityId);
 		if(ability != null){
 			abilityDao.realDel(ability);
 		}
+	}
+	
+	public List<Ability> findPreAbility(){
+		String hql = "from Ability where assessmentType= '01' and flag = 'y'";
+		return abilityDao.find(hql);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map findFistAbilityList(){
+		List<Ability> firstAbilityList = findPreAbility();
+		Map abilityMap = new HashMap();
+		for (Ability ability : firstAbilityList) {
+			String hql = "from Ability where preId= '"+ability.getId()+ "'and flag = 'y'";
+			List<Ability> secondAbilityList =abilityDao.find(hql);
+			abilityMap.put(ability.getName(), secondAbilityList);
+		}
+		return abilityMap;
+		
 	}
 }

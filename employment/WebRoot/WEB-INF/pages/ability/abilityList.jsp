@@ -17,7 +17,7 @@
                         <tr>
                             <td class="td-left">
                             </td>
-                            <td class="td-title">权值信息</td>
+                            <td class="td-title">素质信息</td>
                             <td class="td-btn">
 							</td>
                             <td class="td-right">
@@ -35,11 +35,11 @@
                             <thead>
                                 <tr>
                                     <th>序号</th>
-									<th>权值名称</th>
-									<th>权值类型</th>
-									<th>权值说明</th>
-									<th>最大分值</th>
+									<th>名称</th>
+									<th>类型</th>
 									<th>所属上级</th>
+									<th>说明</th>
+									<th>最大分值</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
@@ -51,14 +51,19 @@
                                         </td>
                                         <td> ${item.name} </td>
                                         <c:if test="${item.assessmentType == '01'}">
-										<td> 一级权值 </td>
+										<td> 一级 </td>
 										</c:if>
 										<c:if test="${item.assessmentType == '02'}">
-										<td> 二级权值 </td>
+										<td> 二级 </td>
+										</c:if>
+										<c:if test="${item.preId.id == '-1'}">
+										<td> 无上级 </td>
+										</c:if>
+										<c:if test="${item.preId.id != '-1'}">
+										<td> ${item.preId.name} </td>
 										</c:if>  
-										<td> ${item.description} </td>
-										<td> ${item.maxScore}（分） </td>
-										<td> ${item.preId} </td>
+										 <td> ${item.description} </td>
+										 <td> ${item.maxScore}（分） </td>
 										<td>
               							<a href="${path}/abilityController/find.do?id=${item.id}" class="btn1 btn-small">修改</a>
               							<a href="${path}/abilityController/delete.do?id=${item.id}" class="btn1 btn-small">删除</a>

@@ -124,7 +124,7 @@ public class PositionController extends BaseController {
 	public ModelAndView delete(Position position,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
-			positionService.deleteMajor(position.getId());
+			positionService.deletePosition(position.getId());
 			view= list(pageNo,request);
 		}
 		catch (Exception e) {

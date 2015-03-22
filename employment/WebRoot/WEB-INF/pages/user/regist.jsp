@@ -21,21 +21,6 @@
   <body>
     <div id="main-div" class="width-p100">
             <div class="content main-page-190">
-                <div class="title">
-                    <table class="title-tb" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td class="td-left">
-                            </td>
-                            <td class="td-title">
-                                <fmt:message key="stuBaseInfo.table_title" /><fmt:message key="btn.add"/>
-                            </td>
-                            <td class="td-btn">
-                            </td>
-                            <td class="td-right">
-                            </td>
-                        </tr>
-                    </table>
-                </div>
                 <div class="margin-lr-1">
                     <div class="main-page-230 over-flow-x-hidden">
                         <form id="form1" action="${path}/userController/save.do" method="post">
@@ -46,7 +31,7 @@
                                     <td class="td-title" colspan="4">
                                         <font size=2 color="black">
                                             <i class=" icon-chevron-down"></i>
-                                            <strong>注册信息</strong>&nbsp;&nbsp;&nbsp; 
+                                            <strong>个人信息注册</strong>&nbsp;&nbsp;&nbsp; 
                                         </font>
                                     </td>
                                 </tr>
@@ -63,6 +48,22 @@
 											<option value="W">女</option>
 										</select>
 										<span style="color:red">*</span>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td class="ltd4">专业</td>
+                                    <td class="rtd4">
+                                        <select id="majorSelect" name="major.id" class="required width-p40">
+	                                           <option value="">---请选择---</option>
+	                                           <c:forEach var="item" items="${majorList}">
+	                                           <option value="${item.id }">${item.name }</option>
+	                                           </c:forEach>
+												</select>
+									</td>
+                                    <td class="ltd4">出生日期</td>
+                                    <td class="rtd4">
+                                        <input  name="birthDate" class="width-p40" type="text" autocomplete="off"
+												onfocus="WdatePicker({skin:'whyGreen',readOnly:'true'})" />
                                     </td>
                                 </tr>
 								 <tr>
@@ -85,6 +86,13 @@
                                     <td class="ltd4">确认密码</td>
                                     <td class="rtd4">
                                         <input  autocomplete="off" id="passwordText1" type="password"  name="passWord1" class=" width-p40" maxlength="100" />
+                                        <span class="color-red">*</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ltd4">地址 </td>
+                                    <td class="rtd4" colspan="3">
+                                        <input  autocomplete="off" id="addressTxt" type="text"  name="address" class=" width-p80" maxlength="50" />
                                         <span class="color-red">*</span>
                                     </td>
                                 </tr>

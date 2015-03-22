@@ -84,4 +84,9 @@ public class MajorService {
 			majorDao.realDel(major);
 		}
 	}
+	
+	public List<Major> majorList(){
+		String hql = "from Major where flag ='y'";
+		return majorDao.find(hql);
+	}
 }

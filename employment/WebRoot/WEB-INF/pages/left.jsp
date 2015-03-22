@@ -176,6 +176,7 @@ H1 a {
            <li><a href="${path}/positionController/view.do" target="main">职位信息录入</a></li>
            <li><a href="${path }/companyController/list.do" target="main">企业信息查询</a></li>
            <li><a href="${path }/companyController/view.do" target="main">企业信息录入</a></li>
+           <li><a href="${path }/jobController/view.do" target="main">发布招聘信息</a></li>
         </ul>
       </div>
     <h1 class="type"><a href="javascript:void(0)">就业能力管理</a></h1>
@@ -186,10 +187,10 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-         <li><a href="${path }/abilityController/list.do" target="main">就业权值查询</a></li>
-         <li><a href="${path }/abilityController/view.do" target="main">就业权值录入</a></li>
-         <li><a href="${path }/majorController/list.do" target="main">专业信息查询</a></li>
-         <li><a href="${path }/majorController/view.do" target="main">专业信息录入</a></li>
+         <li><a href="${path }/abilityController/list.do" target="main">已录考核信息</a></li>
+         <li><a href="${path }/abilityController/view.do" target="main">添加考核内容</a></li>
+         <li><a href="${path }/majorController/list.do" target="main">已录专业信息</a></li>
+         <li><a href="${path }/majorController/view.do" target="main">添加专业信息</a></li>
          <li><a href="${path }/right.do" target="main">个人就业能力分析</a></li>
         </ul>
       </div>
@@ -201,7 +202,7 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="${path }/right.do" target="main">个人信息查询</a></li>
+          <li><a href="${path }/userController/detail.do" target="main">个人信息查询</a></li>
           <li><a href="${path }/right.do" target="main">密码修改</a></li>
         </ul>
       </div>

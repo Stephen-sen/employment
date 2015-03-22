@@ -20,10 +20,6 @@
 			length="2">
 		</property>
 
-		<property name="preId" column="pre_Id" update="true" insert="true"
-			type="java.lang.String" not-null="false" unique="false" length="36">
-		</property>
-		
 		<property name="maxScore" column="maxScore" update="true" insert="true"
 			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>
@@ -37,6 +33,11 @@
 		<property name="flag" column="flag" update="true" insert="true"
 			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>
+		
+		<many-to-one name="preId" not-null="false" update="true"
+			lazy="false" insert="true" cascade="none">
+			<column name="pre_id"/>
+		</many-to-one>
 	</class>
 </hibernate-mapping>
 

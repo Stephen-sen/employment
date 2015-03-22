@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="/common/tagslib.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!--  
  * @version 1.0.01
@@ -15,6 +14,11 @@ function doQuery(){
 }
 function clearQuery(){
 	$(':input','#form1').not(':button, :submit, :reset, :hidden') .val('') .removeAttr('checked')   .removeAttr('selected');  
+}
+
+function deleteAction(id){
+	if (confirm("确认删除吗？"))
+	window.location = "/emp/userController/delete.do?id="+id;
 }
 </script>
   <body>
@@ -45,7 +49,7 @@ function clearQuery(){
 	                                    <tr>
 	                                        <td class="ltd8">用户名</td>
 	                                        <td class="rtd8">
-	                                            <input  class="width-p45" value="${userInfo.userName }" autocomplete="off" type="text" name="userName" maxlength="40" />
+	                                           <input  class="width-p45" value="${userInfo.userName }" autocomplete="off" type="text" name="userName" maxlength="40" />
 	                                        </td>
 	                                        <td class="ltd8">电话</td>
 	                                        <td class="rtd8">
@@ -60,7 +64,12 @@ function clearQuery(){
 	                                        </td>
 	                                         <td class="ltd8">专业</td>
 	                                        <td class="rtd8">
-	                                            <input  class="width-p45" value="${userInfo.major }" autocomplete="off" type="text" name="userName" maxlength="40" />
+	                                           <select id="majorSelect" name="major.id" class="required width-p45">
+	                                           <option value="">---请选择---</option>
+	                                           <c:forEach var="item" items="${majorList}">
+	                                           <option value="${item.id }">${item.name }</option>
+	                                           </c:forEach>
+												</select>
 	                                        </td>
 	                                    </tr>
 	                                </table>
@@ -126,7 +135,7 @@ function clearQuery(){
               							<c:if test="${item.status == 2}">
               							<a href="${path }/userController/statusMan.do?id=${item.id }">恢复</a>
               							</c:if>
-              							<a href="${path }/userController/delete.do?id=${item.id }">删除</a>
+              							<a href="javaScript:deleteAction('${item.id }')">删除</a>
               							</td>
             							</tr>
                                     </tr>

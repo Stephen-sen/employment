@@ -26,26 +26,27 @@
                         <form id="form1" action="${path}/abilityController/save.do" method="post">
                             <input type="hidden" name="id" id="idHid" />
 							<input type="hidden" value="${token}" name="token" />
-                            <table class="add-tb">
+                            <table class="add-tb" >
                                 <tr>
                                     <td class="td-title" colspan="4">
                                         <font size=2 color="black">
                                             <i class=" icon-chevron-down"></i>
-                                            <strong>就业权值录入</strong>&nbsp;&nbsp;&nbsp; 
+                                            <strong>考核项目录入</strong>&nbsp;&nbsp;&nbsp; 
                                         </font>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="ltd4">权值名称</td>
+                                    <td class="ltd4">名称</td>
                                     <td class="rtd4">
                                         <input  autocomplete="off" id="nameTxt" autocomplete="off" type="text"  name="name" class="required width-p40" maxlength="20" />
 										<span class="color-red">*</span>
                                     </td>
-                                    <td class="ltd4">权值类型 </td>
+                                    <td class="ltd4">类型 </td>
                                     <td>
                                      <select id="assessmentTypeTxt"  name="assessmentType" class="required width-p40">
-											<option value="01">一级权值</option>
-											<option value="02">二级权值</option>
+											<option value="">---请选择---</option>
+											<option value="01">一级</option>
+											<option value="02">二级</option>
 										</select>
 										<span class="color-red">*</span>
                                     </td>
@@ -56,18 +57,19 @@
                                         <input  autocomplete="off" id="maxScoreTxt" autocomplete="off" type="text"  name="maxScore" class="required width-p40" maxlength="2" />
 										<span class="color-red">*</span>
                                     </td>
-                                    <td class="ltd4">权值说明</td>
-                                    <td class="rtd4">
-                                        <input  autocomplete="off" id="descriptionTxt" autocomplete="off" type="text"  name="description" class="required width-p80" maxlength="20" />
-										<span class="color-red">*</span>
-                                    </td>
-                                    <td class="ltd4">上级权值 </td>
+                                    <td class="ltd4">所属上级 </td>
                                     <td>
-                                     <input  autocomplete="off" id="preIdTxt" type="text"  name="preId" class=" width-p40" maxlength="50" />
+                                     <select id="preIdTxt"  name="Ability.preId" class="required width-p40">
+                                     		<option value="">---请选择---</option>
+                                     		<c:forEach var="item" items="${preAbilityList}">
+											<option value="${item.id }">${item.name }</option>
+											</c:forEach>
+										</select>
+										<span class="color-red">*</span>
                                     </td>
                                 </tr>
                                  <tr>
-                                    <td class="ltd4">权值说明</td>
+                                    <td class="ltd4">考核内容说明</td>
                                     <td class="rtd4">
                                         <input  autocomplete="off" id="descriptionTxt" autocomplete="off" type="text"  name="description" class="required width-p80" maxlength="20" />
 										<span class="color-red">*</span>

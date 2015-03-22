@@ -3,7 +3,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.zhangmin.center.entity">
-	<class name="Com_Pos" table="com_pos">
+	<class name="Job" table="job">
 		<id name="id" column="id" type="java.lang.String" length="36">
 			<generator class="uuid.hex"></generator>
 		</id>
@@ -12,6 +12,12 @@
 		</property>
 		<property name="salary" column="salary" update="true" insert="true"
 			type="java.lang.Double" not-null="false" unique="false" length="6">
+		</property>
+		<property name="contactTel" column="contactTel" update="true" insert="true"
+			type="java.lang.String" not-null="false" unique="false" length="11">
+		</property>
+		<property name="contactPerson" column="contactPerson" update="true" insert="true"
+			type="java.lang.String" not-null="false" unique="false" length="20">
 		</property>
 		<property name="demand" column="demand" update="true" insert="true"
 			type="java.lang.String" not-null="false" unique="false">
