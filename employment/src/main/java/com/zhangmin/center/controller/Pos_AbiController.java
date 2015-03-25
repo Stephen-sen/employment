@@ -31,6 +31,8 @@ public class Pos_AbiController extends BaseController {
 
 	@Autowired
 	private Pos_AbiService pos_AbiService;
+	@Autowired
+	private JobController jobController;
 	/**
 	 * 
 	 * @Description: 跳转到公司新增界面
@@ -47,7 +49,7 @@ public class Pos_AbiController extends BaseController {
 	}
 	/**
 	 * 
-	 * @Description: 保存公司信息
+	 * @Description: 保存为素质分配的分值
 	 * @param @param pos_Abi
 	 * @param @param pageNo
 	 * @param @param request
@@ -60,8 +62,8 @@ public class Pos_AbiController extends BaseController {
 	public ModelAndView save(Pos_Abi pos_Abi, Integer pageNo,HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
 		try {
-			pos_AbiService.savePos_Abi(pos_Abi);
-			view = list(pageNo,request);
+			pos_AbiService.updatePos_Abi(pos_Abi);
+			view = jobController.list(pageNo,request);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -119,17 +121,17 @@ public class Pos_AbiController extends BaseController {
 		}
 		return view;
 		}
-	
+	/*
 	@RequestMapping(value = "/pos_AbiController/delete")
 	public ModelAndView delete(Pos_Abi pos_Abi,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
-			pos_AbiService.deletePos_Abi(pos_Abi.getId());
+			pos_AbiService.deletePos_Abi(pos_Abi);
 			view= list(pageNo,request);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return view;
-		}
+		}*/
 }

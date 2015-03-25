@@ -8,10 +8,6 @@
 	<property name="hibernate.show_sql">true</property>
 	<property name="format_sql">true</property>
 	
-	<property name="hibernate.cache.provider_class">net.sf.ehcache.hibernate.SingletonEhCacheProvider</property>
-	<property name="hibernate.cache.use_second_level_cache">true</property>
-	<property name="hibernate.cache.use_query_cache">true</property>
-	
 	<!-- 基础维护-->
 	<mapping resource="modules/baseinfo/hibernate-conf/Menu.hbm.xml" />
 	<mapping resource="modules/baseinfo/hibernate-conf/Param.hbm.xml" />

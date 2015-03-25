@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="/common/tagslib.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!--  
  * @version 1.0.01
@@ -14,6 +13,7 @@
 		history.go(-1);
 	}
 	function onSubmit() {
+		 $("#form1").validate();
 		$('#form1').submit();
 	}
 
@@ -76,6 +76,36 @@
 			$('#jobValue'+id2).val(jobValue);
         }
     }
+
+    function valueChange(){
+		var companyId=$('#companyTxt').val();
+        $.ajax({
+            cache: false,
+            type: 'post',
+            async: false,
+            url: '${path}/companyController/getCompanyInfo.do?',
+            data : {"companyId" : companyId},
+            dataType: 'json',
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(XMLHttpRequest.status);
+			},
+			success : function(data) {
+				$(data).each(function(i, item) {
+					$('#addressTxt').val(item.address);
+				});
+			}
+        });
+	}
+
+    function numCheck(checkId){
+		if($('#'+checkId).val()!=""){
+			if(!$.isNumeric($('#'+checkId).val())){
+				$('#'+checkId).val("");
+				alert("联系电话只能输入数字");
+				return ; 
+			}
+		}
+    }
 </script>
   <body>
     <div id="main-div" class="width-p100">
@@ -97,32 +127,35 @@
                                 <tr>
                                     <td class="ltd4">公司名称</td>
                                     <td class="rtd4">
-                                     <select id="preIdTxt"  name="company.id" class="required width-p40">
+                                     <select id="companyTxt"  name="company.id" class="required width-p40" onchange="valueChange()">
                                      		<option value="">---请选择---</option>
                                      		<c:forEach var="item" items="${companyList}"varStatus="s">
                                       		<option value="${item.id }">${item.name }</option>
                                     		</c:forEach>
 										</select>
+										<span class="color-red">*</span>
                                     </td>
                                     <td class="ltd4">招聘职位 </td>
                                     <td class="rtd4">
-                                     <select id="preIdTxt"  name="position.id" class="required width-p40">
+                                     <select id="positonTxt"  name="position.id" class="required width-p40">
                                      		<option value="">---请选择---</option>
                                      		<c:forEach var="item" items="${positionList}"varStatus="s">
                                       		<option value="${item.id }">${item.name }</option>
                                     		</c:forEach>
 										</select>
+										<span class="color-red">*</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="ltd4">薪资待遇</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="salaryTxt" autocomplete="off" type="text"  name="salary" class="required width-p40" maxlength="20" />
+                                        <input  autocomplete="off" id="salaryTxt" autocomplete="off" type="text"  name="salary" class="required width-p40" onkeyup="javascritp:numCheck('salaryTxt');" maxlength="9" />
 										<span class="color-red">*</span>
                                     </td>
                                     <td class="ltd4">联系人 </td>
                                     <td class="rtd4">
-                                     <input  autocomplete="off" id="contactPersonTxt" type="text"  name="contactPerson" class=" width-p40" maxlength="50" />
+                                     <input  autocomplete="off" id="contactPersonTxt" type="text"  name="contactPerson" class="required  width-p40" maxlength="50" />
+                                      <span class="color-red">*</span>
                                     </td>
                                 </tr>
                                  <tr>
@@ -133,25 +166,26 @@
                                     </td>
                                     <td class="ltd4">要求</td>
                                     <td class="rtd4">
-                                     <input  autocomplete="off" id="demandTxt" type="text"  name="demand" class=" width-p80" maxlength="50" />
+                                     <input  autocomplete="off" id="demandTxt" type="text"  name="demand" class="required width-p80" maxlength="50" />
+                                     <span class="color-red">*</span>
                                     </td>
                                 </tr>
                                  <tr>
                                     <td class="ltd4">联系电话</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="contactTelTxt" autocomplete="off" type="text"  name="contactTel" class="required width-p40" maxlength="20" />
+                                        <input  autocomplete="off" id="contactTelTxt" autocomplete="off" type="text"  name="contactTel" class="required width-p40" onkeyup="javascritp:numCheck('contactTelTxt');" maxlength="11" />
 										<span class="color-red">*</span>
                                     </td>
                                     <td class="ltd4">公司地址 </td>
                                     <td class="rtd4">
-                                     <input  autocomplete="off" id="addressTxt" type="text"  name="address" class=" width-p80" maxlength="50" />
+                                     <input  autocomplete="off" id="addressTxt" type="text"  name="address" class="required width-p80" style="background-color: #E6E9F0" readonly="readonly"/>
                                     </td>
                                 </tr>
                                  <tr>
                                     <td class="td-title" colspan="4">
                                         <font size=2 color="black">
                                             <i class=" icon-chevron-down"></i>
-                                            <strong>请选择招聘考核内容</strong>&nbsp;&nbsp;&nbsp; 
+                                            <strong>请选择招聘考核内容</strong><font color="red"><strong>（注意：考核项选择之后，针对该条招聘信息不可再做更改，故在保存前请仔细核对考核项）</strong></font>
                                         </font>
                                     </td>
                                 </tr>
@@ -159,7 +193,7 @@
                                 <tr>
                                     <td class="ltd4">${item.key }</td>
                                     <td class="rtd4" colspan="3">
-                                     <input id="jobid${item.key }" name="jobStr" type="text" class=" width-p60" readonly="readonly"/><a href="javascript:showMenu('jobid${item.key }','${item.key }');" class="btn1 btn-small">选择</a>
+                                     <input id="jobid${item.key }" name="jobStr" type="text" class="required width-p60" readonly="readonly"/><a href="javascript:showMenu('jobid${item.key }','${item.key }');" class="btn1 btn-small">选择</a>
 									 <input id="jobValue${item.key }" name="abilityArry" type="text" style="display:none"/>
 										<div id="menuContent${item.key }" class="menuContent" style="display:none; position: absolute; background-color:white; border:solid 1px #adba84;">
 									        <div style="width:100%; height:30px;line-height:30px; background-color:#263F52;">

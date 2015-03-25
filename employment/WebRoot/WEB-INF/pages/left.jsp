@@ -177,6 +177,7 @@ H1 a {
            <li><a href="${path }/companyController/list.do" target="main">企业信息查询</a></li>
            <li><a href="${path }/companyController/view.do" target="main">企业信息录入</a></li>
            <li><a href="${path }/jobController/view.do" target="main">发布招聘信息</a></li>
+           <li><a href="${path }/jobController/list.do" target="main">已发布职位</a></li>
         </ul>
       </div>
     <h1 class="type"><a href="javascript:void(0)">就业能力管理</a></h1>

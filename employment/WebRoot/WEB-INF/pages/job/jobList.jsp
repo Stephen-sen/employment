@@ -17,7 +17,7 @@
                         <tr>
                             <td class="td-left">
                             </td>
-                            <td class="td-title">公司信息</td>
+                            <td class="td-title">职位信息</td>
                             <td class="td-btn">
 							</td>
                             <td class="td-right">
@@ -36,9 +36,12 @@
                                 <tr>
                                     <th>序号</th>
 									<th>公司名称</th>
-									<th>创建时间</th>
-									<th>员工人数</th>
-									<th>地址</th>
+									<th>招聘职位</th>
+									<th>薪资待遇</th>
+									<th>联系人</th>
+									<th>联系电话</th>
+									<th>公司地址</th>
+									<th>更新时间</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
@@ -48,11 +51,15 @@
                                         <td class="tb-left-bg" style="text-align: center">
                                          ${pagedata.start+s.index+1}
                                         </td>
-                                        <td> ${item.name} </td> 
-										<td> ${item.buildDate} </td>
-										<td> ${item.staffNum} </td>
-										<td> ${item.address} </td>
+                                        <td> ${item.company.name} </td> 
+                                        <td> ${item.position.name} </td> 
+                                        <td> ${item.salary} </td> 
+										<td> ${item.contactPerson} </td>
+										<td> ${item.contactTel} </td>
+										<td> ${item.company.address} </td>
+										<td> ${item.updateDate} </td>
 										<td>
+              							<a href="${path}/jobController/detail.do?id=${item.id}" class="btn1 btn-small">详细</a>
               							<a href="${path}/jobController/find.do?id=${item.id}" class="btn1 btn-small">修改</a>
               							<a href="${path}/jobController/delete.do?id=${item.id}" class="btn1 btn-small">删除</a>
               							</td>

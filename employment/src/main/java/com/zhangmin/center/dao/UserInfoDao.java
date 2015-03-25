@@ -58,6 +58,7 @@ public class UserInfoDao extends BaseDao<UserInfo>{
 		String hql = "update UserInfo set flag='N',status = '0' where id = '"+userId +"'";
 		this.getHibernateTemplate().getSessionFactory().openSession().createQuery(hql).executeUpdate();
 	}
+	@SuppressWarnings("unchecked")
 	public UserInfo findUserById(String userId){
 		String hql = "from UserInfo u where u.id = ? ";
 		Object[] objs=new Object[]{userId};
@@ -79,6 +80,7 @@ public class UserInfoDao extends BaseDao<UserInfo>{
 		this.getHibernateTemplate().getSessionFactory().openSession().createQuery(hql).executeUpdate();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<UserInfo> findRegist(){
 		String hql = "from UserInfo u where u.flag = 'y' order by u.status ";
 		List<UserInfo> userList = (List<UserInfo>) this.getHibernateTemplate().find(hql);
@@ -88,6 +90,7 @@ public class UserInfoDao extends BaseDao<UserInfo>{
 		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<UserInfo> queryUser(String hql){
 		
 		List<UserInfo> userList = (List<UserInfo>) this.getHibernateTemplate().find(hql);

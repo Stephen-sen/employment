@@ -7,6 +7,8 @@
  */
 package com.zhangmin.center.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import com.action.support.BaseController;
 import com.zhangmin.center.entity.Major;
 import com.zhangmin.center.service.MajorService;
 import com.zhaosen.base.Page;
+import com.zhaosen.util.DateUtil;
 
 /**
  * ClassName: MajorController 
@@ -126,6 +129,12 @@ public class MajorController extends BaseController{
 	public ModelAndView update(Major major,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
+			
+			Major majorInfo = majorService.findMajorById(major.getId());
+			major.setCreateDate(majorInfo.getCreateDate());
+			String updateDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
+			major.setUpdateDate(updateDate);
+			major.setFlag(majorInfo.getFlag());
 			majorService.updateMajor(major);
 			view= list(pageNo,request);
 		}

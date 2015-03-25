@@ -8,6 +8,8 @@
 package com.zhangmin.center.controller;
 
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import com.action.support.BaseController;
 import com.zhangmin.center.entity.Position;
 import com.zhangmin.center.service.PositionService;
 import com.zhaosen.base.Page;
+import com.zhaosen.util.DateUtil;
 
 /**
  * ClassName: PostionController 
@@ -111,6 +114,11 @@ public class PositionController extends BaseController {
 	public ModelAndView update(Position position,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
+			Position positionInfo = positionService.findPositionById(position.getId());
+			position.setCreateDate(positionInfo.getCreateDate());
+			String updateDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
+			position.setUpdateDate(updateDate);
+			position.setFlag(positionInfo.getFlag());
 			positionService.updatePosition(position);
 			view= list(pageNo,request);
 		}

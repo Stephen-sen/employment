@@ -40,7 +40,6 @@ public class JobService {
 		job.setCreateDate(currentTime);
 		job.setUpdateDate(currentTime);
 		job.setFlag("Y");
-		
 		jobDao.save(job);
 	}
 	
@@ -74,19 +73,42 @@ public class JobService {
 		return null;
 	}
 	
+	public Job findJobDetail(Job job){
+		String hql = "from Job where id = '" +job.getId() + "'and flag = 'y'";
+		List<Job> jobInfo = jobDao.find(hql);
+		if(jobInfo.size() > 0){
+			return jobInfo.get(0);
+		}
+		return null;
+	}
+	
 	public void updateJob(Job job){
-		Job majorInfo = findJobById(job.getId());
-		job.setCreateDate(majorInfo.getCreateDate());
-		String updateDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
-		job.setUpdateDate(updateDate);
-		job.setFlag(majorInfo.getFlag());
 		jobDao.update(job);
 	}
 	
-	public void deleteMajor(String majorId){
-		Job job = findJobById(majorId);
+	public void deleteJob(String jobId){
+		Job job = findJobById(jobId);
 		if(job != null){
 			jobDao.realDel(job);
 		}
 	}
+	
+	public void deleteUpDate(String companyId,String positoinId){
+		String hql="from Job where flag = 'Y' and company = '"+companyId+"'" +
+		" and position = '" +positoinId+"'";
+		List<Job> jobList = jobDao.find(hql);
+		for (Job job : jobList) {
+			if(job != null){
+				jobDao.realDel(job);
+			}
+		}
+		String hql1="from Pos_Abi where flag = 'Y' and company = '"+companyId+"'" +
+		" and position = '" +positoinId+"'";
+		List<Pos_Abi> pos_AbiList = pos_AbiDao.find(hql1);
+		for (Pos_Abi posAbi : pos_AbiList) {
+			if(posAbi != null){
+				pos_AbiDao.realDel(posAbi);
+			}
+		}
+		}
 }

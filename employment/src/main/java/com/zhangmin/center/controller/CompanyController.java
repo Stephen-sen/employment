@@ -8,17 +8,24 @@
 package com.zhangmin.center.controller;
 
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseController;
+import com.alibaba.fastjson.JSONArray;
 import com.zhangmin.center.entity.Company;
 import com.zhangmin.center.service.CompanyService;
 import com.zhaosen.base.Page;
+import com.zhaosen.util.DateUtil;
 
 /**
  * ClassName: PostionController 
@@ -106,11 +113,38 @@ public class CompanyController extends BaseController {
 		}
 		return view;
 	}
+	/**
+	 * 
+	 * @Description: TODO
+	 * @param @param company
+	 * @param @param pageNo
+	 * @param @param request
+	 * @param @return   
+	 * @return ModelAndView  
+	 * @author 张敏
+	 * @date 2015-3-23
+	 */
+	@RequestMapping(value="/companyController/getCompanyInfo")
+	public@ResponseBody Object ajaxGetCompanyInfo(String companyId,Integer pageNo,HttpServletRequest request){
+		List<Company> companyList = new ArrayList<Company>();
+		try {
+			Company companyInfo = companyService.findCompanyById(companyId);
+			companyList.add(companyInfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return String.valueOf(JSONArray.toJSON(companyList));
+	}
 	
 	@RequestMapping(value = "/companyController/update")
 	public ModelAndView update(Company company,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
+			Company companyInfo = companyService.findCompanyById(company.getId());
+			company.setCreateDate(companyInfo.getCreateDate());
+			String updateDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
+			company.setUpdateDate(updateDate);
+			company.setFlag(companyInfo.getFlag());
 			companyService.updateCompany(company);
 			view= list(pageNo,request);
 		}

@@ -24,6 +24,7 @@ public class Job extends BaseEntity {
 	private String description; //职位描述
 	private Double salary; //薪水
 	private String demand;//要求
+	private Pos_Abi pos_Abi;//要求
 	private String[] abilityArry;//suzhi
 	/**
 	 * @return the company
@@ -120,6 +121,18 @@ public class Job extends BaseEntity {
 	 */
 	public void setAbilityArry(String[] abilityArry) {
 		this.abilityArry = abilityArry;
+	}
+	/**
+	 * @return the pos_Abi
+	 */
+	public Pos_Abi getPos_Abi() {
+		return pos_Abi;
+	}
+	/**
+	 * @param posAbi the pos_Abi to set
+	 */
+	public void setPos_Abi(Pos_Abi posAbi) {
+		pos_Abi = posAbi;
 	}
 	
 	

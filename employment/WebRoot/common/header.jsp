@@ -36,6 +36,16 @@
 <script type="text/javascript" src="${path}/themes/vtip/vtip-min.js"></script>
 <script type="text/javascript">
 
+function showLoading(){
+    $('#loadding').show();
+    $('#fullbg').show();
+}
+
+function hideLoading(){
+    $('#loadding').hide();
+    $('#fullbg').hide();
+}
+
 function back(){
 	winload("${path}/main/back.do");
 }
@@ -64,3 +74,5 @@ function back(){
  	正在努力加载数据中，请等待……
 </div>
 <div id="msgDialog"></div>
+<div id="fullbg" style=" background-color: Gray; display: none; z-index: 9998; position: absolute; left: 0px; top: 0px; width:100%; height:100%; filter: Alpha(Opacity  = 30);-moz-opacity: 0.4; opacity: 0.4;" >
+</div>

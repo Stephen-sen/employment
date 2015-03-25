@@ -70,11 +70,6 @@ public class MajorService {
 	}
 	
 	public void updateMajor(Major major){
-		Major majorInfo = findMajorById(major.getId());
-		major.setCreateDate(majorInfo.getCreateDate());
-		String updateDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
-		major.setUpdateDate(updateDate);
-		major.setFlag(majorInfo.getFlag());
 		majorDao.update(major);
 	}
 	

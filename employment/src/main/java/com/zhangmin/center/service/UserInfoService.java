@@ -15,9 +15,10 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.zhangmin.center.dao.MajorDao;
 import com.zhangmin.center.dao.UserInfoDao;
+import com.zhangmin.center.entity.Major;
 import com.zhangmin.center.entity.UserInfo;
-import com.zhangmin.constant.Util;
 import com.zhaosen.base.Page;
 import com.zhaosen.util.DateUtil;
 import com.zhaosen.util.MD5;
@@ -33,6 +34,8 @@ public class UserInfoService {
 
 	@Autowired
 	private UserInfoDao userInfoDao;
+	@Autowired
+	private MajorDao majorDao;
 	
 	private MD5 md5 = new MD5();
 	/**
@@ -92,20 +95,6 @@ public class UserInfoService {
 	}
 	
 	public void updateUser(UserInfo user){
-		String createDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
-		UserInfo userInfo = userInfoDao.findUserById(user.getId());
-		user.setPassWord(userInfo.getPassWord());
-		user.setFlag(userInfo.getFlag());
-		user.setStatus(userInfo.getStatus());
-		user.setLastLoginDate(userInfo.getLastLoginDate());
-		user.setCreateDate(userInfo.getCreateDate());
-		user.setUpdateDate(createDate);
-		Date birthdate =  DateUtil.convertStringToDate(user.getBirthDate(), DateUtil.DATE_FORMAT_yyyyMMdd);
-		try {
-		user.setAge(Util.getAge(birthdate));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		userInfoDao.update(user);
 	}
 	

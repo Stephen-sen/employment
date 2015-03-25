@@ -71,11 +71,6 @@ public class AbilityService {
 	}
 	
 	public void updateAbility(Ability ability){
-		Ability abilityInfo = findAbilityById(ability.getId());
-		ability.setCreateDate(abilityInfo.getCreateDate());
-		String updateDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
-		ability.setUpdateDate(updateDate);
-		ability.setFlag(abilityInfo.getFlag());
 		abilityDao.update(ability);
 	}
 	

@@ -7,6 +7,7 @@
  */
 package com.zhangmin.center.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,9 @@ import com.zhangmin.center.entity.UserInfo;
 import com.zhangmin.center.service.MajorService;
 import com.zhangmin.center.service.UserInfoService;
 import com.zhangmin.constant.Const;
+import com.zhangmin.constant.Util;
 import com.zhaosen.base.Page;
+import com.zhaosen.util.DateUtil;
 import com.zhaosen.util.MD5;
 
 /**
@@ -184,8 +187,19 @@ public class UserController  extends BaseController{
 	public ModelAndView update(UserInfo userInfo,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
-			userInfoService.updateUser(userInfo);
-			String type = request.getParameter("type");
+			String createDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
+			
+				UserInfo pram = userInfoService.findUserById(userInfo.getId());
+				userInfo.setPassWord(pram.getPassWord());
+				userInfo.setFlag(pram.getFlag());
+				userInfo.setStatus(pram.getStatus());
+				userInfo.setLastLoginDate(pram.getLastLoginDate());
+				userInfo.setCreateDate(pram.getCreateDate());
+				userInfo.setUpdateDate(createDate);
+				Date birthdate =  DateUtil.convertStringToDate(userInfo.getBirthDate(), DateUtil.DATE_FORMAT_yyyyMMdd);
+				userInfo.setAge(Util.getAge(birthdate));
+				userInfoService.updateUser(userInfo);
+				String type = request.getParameter("type");
 			if(type.equals("updatePersional")){
 				view.setViewName("right");
 			}else{

@@ -70,11 +70,6 @@ public class PositionService {
 	}
 	
 	public void updatePosition(Position position){
-		Position positionInfo = findPositionById(position.getId());
-		position.setCreateDate(positionInfo.getCreateDate());
-		String updateDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
-		position.setUpdateDate(updateDate);
-		position.setFlag(positionInfo.getFlag());
 		positionDao.update(position);
 	}
 	

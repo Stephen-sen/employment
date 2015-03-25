@@ -70,11 +70,6 @@ public class CompanyService {
 	}
 	
 	public void updateCompany(Company company){
-		Company companyInfo = findCompanyById(company.getId());
-		company.setCreateDate(companyInfo.getCreateDate());
-		String updateDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
-		company.setUpdateDate(updateDate);
-		company.setFlag(companyInfo.getFlag());
 		companyDao.update(company);
 	}
 	

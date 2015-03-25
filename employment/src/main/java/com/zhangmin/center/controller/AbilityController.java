@@ -8,6 +8,7 @@
 package com.zhangmin.center.controller;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import com.action.support.BaseController;
 import com.zhangmin.center.entity.Ability;
 import com.zhangmin.center.service.AbilityService;
 import com.zhaosen.base.Page;
+import com.zhaosen.util.DateUtil;
 
 /**
  * ClassName: PostionController 
@@ -117,6 +119,11 @@ public class AbilityController extends BaseController {
 	public ModelAndView update(Ability ability,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
+			Ability abilityInfo = abilityService.findAbilityById(ability.getId());
+			ability.setCreateDate(abilityInfo.getCreateDate());
+			String updateDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
+			ability.setUpdateDate(updateDate);
+			ability.setFlag(abilityInfo.getFlag());
 			abilityService.updateAbility(ability);
 			view= list(pageNo,request);
 		}
