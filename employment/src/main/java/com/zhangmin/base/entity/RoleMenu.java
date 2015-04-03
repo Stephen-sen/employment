@@ -15,31 +15,44 @@ package com.zhangmin.base.entity;
  */
 public class RoleMenu extends BaseEntity{
 
-	private String roleId;
-	private String menuId;
+	private Role role;
+	private Menu menu;
+	private String roleMenuStr;
 	/**
-	 * @return the roleId
+	 * @return the role
 	 */
-	public String getRoleId() {
-		return roleId;
+	public Role getRole() {
+		return role;
 	}
 	/**
-	 * @param roleId the roleId to set
+	 * @param role the role to set
 	 */
-	public void setRoleId(String roleId) {
-		this.roleId = roleId;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	/**
-	 * @return the menuId
+	 * @return the menu
 	 */
-	public String getMenuId() {
-		return menuId;
+	public Menu getMenu() {
+		return menu;
 	}
 	/**
-	 * @param menuId the menuId to set
+	 * @param menu the menu to set
 	 */
-	public void setMenuId(String menuId) {
-		this.menuId = menuId;
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+	/**
+	 * @return the roleMenuStr
+	 */
+	public String getRoleMenuStr() {
+		return roleMenuStr;
+	}
+	/**
+	 * @param roleMenuStr the roleMenuStr to set
+	 */
+	public void setRoleMenuStr(String roleMenuStr) {
+		this.roleMenuStr = roleMenuStr;
 	}
 	
 }

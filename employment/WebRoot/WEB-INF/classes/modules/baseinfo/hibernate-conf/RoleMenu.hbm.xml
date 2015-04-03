@@ -8,14 +8,6 @@
 			<generator class="uuid.hex">
 			</generator>
 		</id>
-		<property name="roleId" column="roleId" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false"
-			length="36">
-		</property>
-		<property name="menuId" column="menuId" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false"
-			length="36">
-		</property>
 		<property name="createDate" type="java.lang.String" column="createDate_date"
 			unique="false" not-null="false" insert="true" update="true" />
 
@@ -26,7 +18,14 @@
 			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>
 
-
+		<many-to-one name="role" not-null="false" update="true"
+			lazy="false" insert="true" cascade="none">
+			<column name="role_id"/>
+		</many-to-one>
+		<many-to-one name="menu" not-null="false" update="true"
+			lazy="false" insert="true" cascade="none">
+			<column name="menu_id"/>
+		</many-to-one>
 	</class>
 </hibernate-mapping>
 

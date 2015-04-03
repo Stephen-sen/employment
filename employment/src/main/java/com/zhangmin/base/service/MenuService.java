@@ -93,4 +93,9 @@ public class MenuService {
 		String hql = "from Menu where flag ='y' and menuType='"+ menu.getMenuType()+"'";
 		return menuDao.find(hql);
 	}
+	
+	public List<Menu> menuListInfo(){
+		String hql = "from Menu where flag='y'";
+		return menuDao.find(hql);
+	}
 }

@@ -80,4 +80,16 @@ public class RoleMenuService {
 		}
 	}
 	
+	public List<RoleMenu> findRoleMenu(String roleId){
+		String hql = "from RoleMenu where role='"+ roleId+"' and flag ='y'";
+		List<RoleMenu> roleMenuList = roleMenuDao.find(hql);
+		if(roleMenuList.size() > 0){
+			return roleMenuList;
+		}
+		return null;
+	}
+	
+	public void deleteAll(List<RoleMenu> roleMenuList){
+		roleMenuDao.deleteAll(roleMenuList);
+	}
 }

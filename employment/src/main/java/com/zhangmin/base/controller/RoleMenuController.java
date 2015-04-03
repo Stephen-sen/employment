@@ -8,6 +8,7 @@
 package com.zhangmin.base.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,8 +19,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseController;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.zhangmin.base.entity.Menu;
+import com.zhangmin.base.entity.Role;
 import com.zhangmin.base.entity.RoleMenu;
+import com.zhangmin.base.service.MenuService;
 import com.zhangmin.base.service.RoleMenuService;
+import com.zhangmin.base.service.RoleService;
 import com.zhaosen.base.Page;
 import com.zhaosen.util.DateUtil;
 
@@ -34,6 +41,12 @@ public class RoleMenuController extends BaseController{
 
 	@Autowired
 	private RoleMenuService roleMenuService;
+	@Autowired
+	private RoleController roleController;
+	@Autowired
+	private RoleService roleService;
+	@Autowired
+	private MenuService menuService;
 	/**
 	 * 
 	 * @Description: 跳转到添加角色权限界面
@@ -69,8 +82,28 @@ public class RoleMenuController extends BaseController{
 	public ModelAndView save(RoleMenu roleMenu,Integer pageNo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
-			roleMenuService.saveRoleMenu(roleMenu);
-			view= list(pageNo,request);
+			/*
+			 * 先删除再添加
+			 */
+			List<RoleMenu> roleMenuList = roleMenuService.findRoleMenu(roleMenu.getRole().getId());
+			roleMenuService.deleteAll(roleMenuList);
+			
+			String roleMenuStr = roleMenu.getRoleMenuStr();
+			if(roleMenuStr != null && !roleMenuStr.equals("")){
+				String[] roleMenus = roleMenuStr.split(",");
+				for (String str : roleMenus)
+				{
+					if(str != null){
+						RoleMenu roleMenuInfo = new RoleMenu();
+						roleMenuInfo.setRole(roleMenu.getRole());
+						Menu menu = new Menu();
+						menu.setId(str);
+						roleMenuInfo.setMenu(menu);
+						roleMenuService.saveRoleMenu(roleMenuInfo);
+					}
+				}
+			}
+			view= roleController.list(pageNo,request);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -106,12 +139,25 @@ public class RoleMenuController extends BaseController{
 	 * @date 2015-3-18
 	 */
 	@RequestMapping(value = "/roleMenuController/find")
-	public ModelAndView find(RoleMenu roleMenu) throws Exception{
+	public ModelAndView find(Role role) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
-			RoleMenu roleMenuInfo = roleMenuService.findRoleMenuById(roleMenu.getId());
-			view.addObject("roleMenuInfo", roleMenuInfo);
-			view.setViewName("roleMenu/updateRoleMenu");
+			JSONArray arrayJson = new JSONArray();
+			Role roleInfo = roleService.findRoleById(role.getId());
+			List<Menu> menuList = menuService.menuListInfo();
+			List<RoleMenu> roleMenuList = roleMenuService.findRoleMenu(role.getId());
+			if(roleMenuList !=null){
+				for (RoleMenu roleMenu : roleMenuList) {
+					JSONObject json = new JSONObject();
+		    		json.put("menuId", roleMenu.getMenu().getId());
+		    		arrayJson.add(json);
+				}
+				view.addObject("idjson", arrayJson);
+			}
+			view.addObject("menuList", menuList);
+			view.addObject("roleInfo", roleInfo);
+			view.addObject("roleMenuList", roleMenuList);
+			view.setViewName("roleMenu/addRoleMenu");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
