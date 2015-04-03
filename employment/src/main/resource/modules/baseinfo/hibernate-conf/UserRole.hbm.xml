@@ -21,14 +21,14 @@
 			insert="true" type="java.lang.String" not-null="false" unique="false"
 			length="36">
 		</property>
-		<property name="flag" column="flag" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false"
-			length="2">
-		</property>
-		
-		<property name="createDate" column="create_date" update="true"
-			insert="true" type="java.util.Date" not-null="false" unique="false"
-			length="0">
+		<property name="createDate" type="java.lang.String" column="createDate_date"
+			unique="false" not-null="false" insert="true" update="true" />
+
+		<property name="updateDate" type="java.lang.String" column="update_date"
+			unique="false" not-null="false" insert="true" update="true" />
+
+		<property name="flag" column="flag" update="true" insert="true"
+			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>
 		
 	</class>

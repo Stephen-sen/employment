@@ -22,10 +22,10 @@ public class Job extends BaseEntity {
 	private String contactPerson;
 	private String contactTel;
 	private String description; //职位描述
-	private Double salary; //薪水
+	private String salary; //薪水
 	private String demand;//要求
 	private Pos_Abi pos_Abi;//要求
-	private String[] abilityArry;//suzhi
+	private String[] abilityArry;
 	/**
 	 * @return the company
 	 */
@@ -89,13 +89,13 @@ public class Job extends BaseEntity {
 	/**
 	 * @return the salary
 	 */
-	public Double getSalary() {
+	public String getSalary() {
 		return salary;
 	}
 	/**
 	 * @param salary the salary to set
 	 */
-	public void setSalary(Double salary) {
+	public void setSalary(String salary) {
 		this.salary = salary;
 	}
 	/**

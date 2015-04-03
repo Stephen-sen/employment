@@ -457,8 +457,8 @@ $.extend($.validator, {
 				!this.name && validator.settings.debug && window.console && console.error( "%o has no name assigned", this);
 
 				// select only the first element for each name, and only those with rules specified
-				if ( this.name in rulesCache || !validator.objectLength($(this).rules()) )
-					return false;
+				/*if ( this.name in rulesCache || !validator.objectLength($(this).rules()) )
+					return false;*/
 
 				rulesCache[this.name] = true;
 				return true;

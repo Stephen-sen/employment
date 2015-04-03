@@ -29,12 +29,16 @@ import com.zhangmin.center.entity.Company;
 import com.zhangmin.center.entity.Job;
 import com.zhangmin.center.entity.Pos_Abi;
 import com.zhangmin.center.entity.Position;
+import com.zhangmin.center.entity.Stu_Abi;
+import com.zhangmin.center.entity.UserInfo;
 import com.zhangmin.center.service.AbilityService;
 import com.zhangmin.center.service.CompanyService;
 import com.zhangmin.center.service.JobService;
 import com.zhangmin.center.service.Pos_AbiService;
 import com.zhangmin.center.service.PositionService;
+import com.zhangmin.center.service.Stu_AbiService;
 import com.zhangmin.constant.Const;
+import com.zhangmin.constant.Global;
 import com.zhaosen.base.Page;
 import com.zhaosen.util.DateUtil;
 
@@ -61,6 +65,8 @@ public class JobController extends BaseController {
 	private PositionController positionController;
 	@Autowired
 	private CompanyController companyController;
+	@Autowired
+	private Stu_AbiService stu_AbiService;
 	/**
 	 * 
 	 * @Description: 跳转到招聘新增界面
@@ -177,6 +183,7 @@ public class JobController extends BaseController {
 	 * @author 张敏
 	 * @date 2015-3-19
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/jobController/list")
 	public ModelAndView list(Integer pageNo,HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
@@ -184,7 +191,25 @@ public class JobController extends BaseController {
 			pageNo = pageNo == null?1:pageNo;
 			int pageSize = this.getCookiesPageSize(request);
 			Page pagedData = jobService.getPagedJobInfo(pageNo, pageSize);
-			view.addObject("pagedData", pagedData );
+			List<Job> jobListTemp=pagedData.getResult();
+			List<Job> jobList=new ArrayList<Job>();
+			UserInfo userInfo = (UserInfo)request.getSession().getAttribute(Global.USER_INFO);
+			for (Job job : jobListTemp) {
+			List<Stu_Abi> stuAbiList = stu_AbiService.getStatus(userInfo.getId(), job.getId());
+			if(stuAbiList.size()!=0){
+				job.setStatus("1");
+				}else{
+					job.setStatus("0");
+				}
+			jobList.add(job);
+			}
+			/**
+			 * 重新组装pagedData
+			 */
+			Page pagedDatas = new Page(pagedData.getStart(), pagedData.getTotalCount(), pagedData.getPageSize(), jobList);
+			String type=request.getParameter("type");
+			view.addObject("pagedData", pagedDatas );
+			view.addObject("type", type);
 			view.setViewName("/job/jobList");
 		}
 		catch (Exception e) {

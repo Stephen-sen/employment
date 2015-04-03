@@ -13,7 +13,7 @@
 
 $(document).ready(function() {
 	$("#form1").validate();
-	$("#sexSelect").val("${user.sex}");
+	$("#sexSelect").val("${userInfo.sex}");
 });	
 function back() {
 	history.go(-1);
@@ -27,8 +27,8 @@ function onSubmit(){
             <div class="content main-page-190">
                 <div class="margin-lr-1">
                     <div class="main-page-230 over-flow-x-hidden">
-                        <form id="form1" action="${path}/userController/find.do?type=updatePersional" method="post">
-                            <input type="hidden" name="id" id="idHid" value="${user.id}"/>
+                        <form id="form1" action="${path}/userController/find.do" method="post">
+                            <input type="hidden" name="id" id="idHid" value="${userInfo.id}"/>
 							<input type="hidden" value="${token}" name="token" />
                             <table class="add-tb">
                                 <tr>
@@ -42,50 +42,50 @@ function onSubmit(){
                                 <tr>
                                     <td class="ltd4">姓名</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="cnNameTxt" autocomplete="off" type="text"  name="userName" value="${user.userName }" class="width-p40" readonly="readonly"/>
+                                        <input  autocomplete="off" id="cnNameTxt" autocomplete="off" type="text"  name="userName" value="${userInfo.userName }" class="width-p40" readonly="readonly"/>
                                     </td>
                                     <td class="ltd4"> 性别 </td>
                                     <td class="rtd4">
                                     <input  autocomplete="off" id="sexTxt" autocomplete="off" type="text"  name="sex" 
-                                     <c:if test="${user.sex eq 'M'}">value="男"</c:if>
-								   	 <c:if test="${user.sex eq 'W'}">value="女"</c:if>
+                                     <c:if test="${userInfo.sex eq 'M'}">value="男"</c:if>
+								   	 <c:if test="${userInfo.sex eq 'W'}">value="女"</c:if>
                                      class="width-p40" readonly="readonly"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="ltd4">专业</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="majorTxt" type="text"  name="userInfo.major" value="${user.major.name }" class="width-p40" readonly="readonly" />
+                                        <input  autocomplete="off" id="majorTxt" type="text"  name="userInfo.major" value="${userInfo.major.name }" class="width-p40" readonly="readonly" />
 									</td>
                                     <td class="ltd4">出生日期</td>
                                     <td class="rtd4">
-                                        <input  name="birthDate" value="${user.birthDate }" class="width-p40" type="text" autocomplete="off"readonly="readonly"/>
+                                        <input  name="birthDate" value="${userInfo.birthDate }" class="width-p40" type="text" autocomplete="off"readonly="readonly"/>
                                     </td>
                                 </tr>
                                 <tr>
                                      <td class="ltd4">邮箱</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="email" id="emailTxt" type="text"  name="email"value="${user.email}" class=" width-p40" readonly="readonly" />
+                                        <input  autocomplete="email" id="emailTxt" type="text"  name="email"value="${userInfo.email}" class=" width-p40" readonly="readonly" />
                                     </td>
                                     <td class="ltd4">电话 </td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="telTxt" type="text"  name="tel" value="${user.tel }"class=" width-p40" readonly="readonly" />
+                                        <input  autocomplete="off" id="telTxt" type="text"  name="tel" value="${userInfo.tel }"class=" width-p40" readonly="readonly" />
                                     </td>
                                 </tr>
                                 <tr>
                                      <td class="ltd4">注册日期</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="email" id="emailTxt" type="text"  name="email"value="${user.createDate}" class=" width-p40" readonly="readonly" />
+                                        <input  autocomplete="email" id="emailTxt" type="text"  name="email"value="${userInfo.createDate}" class=" width-p40" readonly="readonly" />
                                     </td>
                                     <td class="ltd4">最后登录日期 </td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="telTxt" type="text"  name="tel" value="${user.lastLoginDate }"class=" width-p40" readonly="readonly" />
+                                        <input  autocomplete="off" id="telTxt" type="text"  name="tel" value="${userInfo.lastLoginDate }"class=" width-p40" readonly="readonly" />
                                     </td>
                                 </tr>
 								 <tr>
                                      <td class="ltd4">地址 </td>
                                     <td class="rtd4" colspan="3">
-                                        <input  autocomplete="off" id="addressTxt" type="text"  name="address" value="${user.address }"class=" width-p80" readonly="readonly"/>
+                                        <input  autocomplete="off" id="addressTxt" type="text"  name="address" value="${userInfo.address }"class=" width-p80" readonly="readonly"/>
                                     </td>
                                     </td>
                                 </tr>

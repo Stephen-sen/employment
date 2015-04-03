@@ -24,6 +24,7 @@ import com.zhangmin.center.dao.Pos_AbiDao;
 import com.zhangmin.center.entity.Ability;
 import com.zhangmin.center.entity.Job;
 import com.zhangmin.center.entity.Pos_Abi;
+import com.zhangmin.center.entity.Stu_Abi;
 import com.zhaosen.base.Page;
 import com.zhaosen.util.DateUtil;
 
@@ -144,5 +145,26 @@ public class Pos_AbiService {
 			abilityMap.put(abilityVal.getName(), posAbiList);
 		}
 		return abilityMap;
+	}
+	
+	public List<Pos_Abi> getPosAbiInfo(Job job){
+		String hql="from Pos_Abi where flag = 'Y' and company = '"+job.getCompany().getId()+"'" +
+		" and position = '" +job.getPosition().getId()+"'";
+		List<Pos_Abi> pos_AbiList = pos_AbiDao.find(hql);
+		if(pos_AbiList.size()>0){
+			return pos_AbiList;
+		}
+		return null;
+	}
+	
+	public Pos_Abi getOnePosAbiInfo(Stu_Abi stuAbi){
+		String hql="from Pos_Abi where flag = 'Y' and company = '"+stuAbi.getJob().getCompany().getId()+"'" +
+		" and position = '" +stuAbi.getJob().getPosition().getId()+"'"+
+		" and ability = '" +stuAbi.getAbility().getId()+"'";
+		List<Pos_Abi> pos_AbiList = pos_AbiDao.find(hql);
+		if(pos_AbiList.size()>0){
+			return pos_AbiList.get(0);
+		}
+		return null;
 	}
 }

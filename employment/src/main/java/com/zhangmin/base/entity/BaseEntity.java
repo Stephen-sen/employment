@@ -32,6 +32,7 @@ public abstract class BaseEntity {
 	private String flag;
 	private String sort;
 	private String sortSequence;
+	private String status;//评价状态（0，未评价，1已评价）
 	public String getSortSequence() {
 		return sortSequence;
 	}
@@ -167,6 +168,20 @@ public abstract class BaseEntity {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

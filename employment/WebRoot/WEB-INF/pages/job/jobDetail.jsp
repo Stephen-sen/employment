@@ -88,11 +88,21 @@
                                    <tr>
                                      <c:forEach begin="0" end="${fn:length(item.value)}" step="1" varStatus="stat" items="${item.value}"  var="posAbiList">
 						               <td class="ltd4">${posAbiList.ability.name}</td>
-                                     <td class="rtd4">
-                                  	分值：<input  autocomplete="off" id="scoreValTxt" type="text"  name="scoreVal" value="${posAbiList.score}" class=" width-p40" style="background-color: #E6E9F0" readonly="readonly"/>（分）
+                                    <td class="rtd4">
+                                  	<input  autocomplete="off" id="scoreValTxt" type="text"  name="scoreVal" 
+                                  	<c:if test="${posAbiList.score == '5'}">value="非常好"</c:if>
+                                  	<c:if test="${posAbiList.score == '4'}">value="好"</c:if>
+                                  	<c:if test="${posAbiList.score == '3'}">value="一般"</c:if>
+                                  	<c:if test="${posAbiList.score == '2'}">value="差"</c:if>
+                                  	<c:if test="${posAbiList.score == '1'}">value="非常差"</c:if>
+                                  	class=" width-p40" style="background-color:transparent;" readonly="readonly"/>
+                                  	
+                                    <div style="background-color:#e2e2e2;height:20px;margin:0px 0px 0px 0px; width:40%;">
+									<div style="height:20px;margin-top:-21px;padding:0px; width:${((posAbiList.score)/5)*100}%;background-color:#8ae738;"></div>
+									</div>
                                     </td>
 						               <c:if test="${(stat.index+1)%2==0}">
-						                </tr><tr>
+						                <tr></tr>
 						                </c:if>
 						            </c:forEach>
                                 </tr>

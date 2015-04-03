@@ -11,7 +11,7 @@
   <head>
     <base href="<%=basePath%>">
     
-    <title>管理员登陆</title>
+    <title>系统登陆</title>
 <style type="text/css">
 <!--
 body {
@@ -122,7 +122,7 @@ function redirect(){
                     <form name="form1" action="${path }/dologin.do" method="post">
                         <table cellSpacing="0" cellPadding="0" width="100%" border="0" height="143" id="table212">
                           <tr>
-                            <td width="13%" height="38" class="top_hui_text"><span class="login_txt">管理员：&nbsp;&nbsp; </span></td>
+                            <td width="13%" height="38" class="top_hui_text"><span class="login_txt">用户名：&nbsp;&nbsp; </span></td>
                             <td height="38" colspan="2" class="top_hui_text"><input name="userName" class="editbox4" size="20">                            </td>
                           </tr>
                           <tr>

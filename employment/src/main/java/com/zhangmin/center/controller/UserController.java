@@ -7,6 +7,7 @@
  */
 package com.zhangmin.center.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,14 +17,18 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseController;
+import com.alibaba.fastjson.JSONArray;
+import com.zhangmin.center.entity.Company;
 import com.zhangmin.center.entity.Major;
 import com.zhangmin.center.entity.UserInfo;
 import com.zhangmin.center.service.MajorService;
 import com.zhangmin.center.service.UserInfoService;
 import com.zhangmin.constant.Const;
+import com.zhangmin.constant.Global;
 import com.zhangmin.constant.Util;
 import com.zhaosen.base.Page;
 import com.zhaosen.util.DateUtil;
@@ -158,10 +163,8 @@ public class UserController  extends BaseController{
 	public ModelAndView find(HttpServletRequest request,UserInfo userInfo) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
-			String type = request.getParameter("type");
 			userInfo = userInfoService.findUserById(userInfo.getId());
 			view.addObject("userInfo",userInfo);
-			view.addObject("type",type);
 			List<Major> majorList=majorService.majorList();
 			view.addObject("majorList", majorList);
 			view.setViewName("user/updateUser");
@@ -185,6 +188,7 @@ public class UserController  extends BaseController{
 	 */
 	@RequestMapping(value = "/userController/update")
 	public ModelAndView update(UserInfo userInfo,Integer pageNo,HttpServletRequest request) throws Exception{
+		HttpSession session = request.getSession();
 		ModelAndView view =new ModelAndView();
 		try{
 			String createDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
@@ -199,10 +203,13 @@ public class UserController  extends BaseController{
 				Date birthdate =  DateUtil.convertStringToDate(userInfo.getBirthDate(), DateUtil.DATE_FORMAT_yyyyMMdd);
 				userInfo.setAge(Util.getAge(birthdate));
 				userInfoService.updateUser(userInfo);
-				String type = request.getParameter("type");
-			if(type.equals("updatePersional")){
-				view.setViewName("right");
-			}else{
+				UserInfo user=(UserInfo)session.getAttribute(Global.USER_INFO);
+				if(user.getId().equals(userInfo.getId())){
+					session.removeAttribute(Global.USER_INFO);
+					session.setAttribute(Global.USER_INFO,userInfo);
+					view.setViewName("right");
+				}
+				else{
 				view=list(new UserInfo(),pageNo,request);
 			}
 			
@@ -290,9 +297,20 @@ public class UserController  extends BaseController{
 		}
 	
 	@RequestMapping(value = "/userController/detail")
-	public ModelAndView persionalInfo(HttpServletRequest request) throws Exception{
+	public ModelAndView persionalInfo(UserInfo userInfo,HttpServletRequest request) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
+			String id = null;
+			String type=request.getParameter("type");
+			UserInfo user = (UserInfo)request.getSession().getAttribute(Global.USER_INFO);
+			if(null!=type && type.equals("persional")){
+				id=user.getId();
+			}
+			else{
+				id=userInfo.getId();
+			}
+			userInfo = userInfoService.findUserById(id);
+			view.addObject("userInfo",userInfo);
 			view.setViewName("user/persionalInfo");
 		}
 		catch (Exception e) {
@@ -305,6 +323,7 @@ public class UserController  extends BaseController{
 	public ModelAndView updatePasw(HttpServletRequest request,Integer pageNo,UserInfo userInfo) throws Exception{
 		ModelAndView view =new ModelAndView();
 		try{
+			userInfo.setPassWord(md5.getMD5ofStr("0000"));
 			userInfoService.updatePasw(userInfo);
 			view=list(userInfo,pageNo,request);
 			view.addObject("messageCode", Const.MSG_SUCCESS);
@@ -314,4 +333,48 @@ public class UserController  extends BaseController{
 		}
 		return view;
 		}
+	
+	@RequestMapping(value = "/userController/updatePwdView")
+	public ModelAndView updatePwdView(HttpServletRequest request) throws Exception{
+		ModelAndView view =new ModelAndView();
+		try{
+			view.setViewName("user/updatePwd");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return view;
+		}
+	@RequestMapping(value = "/userController/updatePwd")
+	public ModelAndView updatePwd(HttpServletRequest request,UserInfo userInfo) throws Exception{
+		ModelAndView view =new ModelAndView();
+		try{
+			userInfo.setPassWord(md5.getMD5ofStr(userInfo.getNewPwd()));
+			userInfoService.updatePasw(userInfo);
+			view.setViewName("right");
+			view.addObject("messageCode", Const.MSG_SUCCESS);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return view;
+		}
+	@RequestMapping(value="/userController/checkOldPwd")
+	public@ResponseBody Object ajaxGetcheckOldPwd(UserInfo userInfo,HttpServletRequest request){
+		List<String> result = new ArrayList<String>();
+		try {
+			String oldPwd =userInfo.getPassWord();
+			userInfo = userInfoService.findUserById(userInfo.getId());
+			if(oldPwd!=null && oldPwd!=""){
+				oldPwd =md5.getMD5ofStr(oldPwd);
+				if(!oldPwd.endsWith(userInfo.getPassWord())){
+					result.add("false");
+				}
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return String.valueOf(JSONArray.toJSON(result));
+	}
 	}

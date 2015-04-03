@@ -24,7 +24,7 @@ public class Menu extends BaseEntity{
 	private String logo;
 	private String url;
 	private String menuType;
-	private String preId;
+	private Menu preId;
 	private String buttonCode;
 	/**
 	 * @return the name
@@ -134,16 +134,17 @@ public class Menu extends BaseEntity{
 	public void setMenuType(String menuType) {
 		this.menuType = menuType;
 	}
+	
 	/**
 	 * @return the preId
 	 */
-	public String getPreId() {
+	public Menu getPreId() {
 		return preId;
 	}
 	/**
 	 * @param preId the preId to set
 	 */
-	public void setPreId(String preId) {
+	public void setPreId(Menu preId) {
 		this.preId = preId;
 	}
 	/**

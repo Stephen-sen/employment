@@ -16,7 +16,7 @@ package com.zhangmin.base.entity;
 public class Role extends BaseEntity{
 
 	private String name;
-	private String discription;
+	private String description;
 	/**
 	 * @return the name
 	 */
@@ -30,15 +30,15 @@ public class Role extends BaseEntity{
 		this.name = name;
 	}
 	/**
-	 * @return the discription
+	 * @return the description
 	 */
-	public String getDiscription() {
-		return discription;
+	public String getDescription() {
+		return description;
 	}
 	/**
-	 * @param discription the discription to set
+	 * @param description the description to set
 	 */
-	public void setDiscription(String discription) {
-		this.discription = discription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

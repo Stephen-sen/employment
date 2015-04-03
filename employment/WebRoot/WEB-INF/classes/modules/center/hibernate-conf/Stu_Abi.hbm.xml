@@ -11,11 +11,19 @@
 		<property name="score" column="score" update="true" insert="true"
 			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>
+		
+		<property name="conformity" column="conformity" update="true" insert="true"
+			type="java.lang.Double" not-null="false" unique="false" length="3">
+		</property>
 		<property name="createDate" type="java.lang.String" column="createDate_date"
 			unique="false" not-null="false" insert="true" update="true" />
 
 		<property name="updateDate" type="java.lang.String" column="update_date"
 			unique="false" not-null="false" insert="true" update="true" />
+			
+		<property name="status" column="status" update="true" insert="true"
+			type="java.lang.String" not-null="false" unique="false" length="2">
+		</property>
 		<property name="flag" column="flag" update="true" insert="true"
 			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>
@@ -28,6 +36,14 @@
 		<many-to-one name="ability" not-null="false" update="true"
 			lazy="false" insert="true" cascade="none">
 			<column name="ability_id"/>
+		</many-to-one>
+		<many-to-one name="job" not-null="false" update="true"
+			lazy="false" insert="true" cascade="none">
+			<column name="job_id"/>
+		</many-to-one>
+		<many-to-one name="pos_Abi" not-null="false" update="true"
+			lazy="false" insert="true" cascade="none">
+			<column name="pos_Abi_id"/>
 		</many-to-one>
 	</class>
 </hibernate-mapping>

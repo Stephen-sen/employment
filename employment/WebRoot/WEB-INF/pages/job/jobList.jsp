@@ -42,6 +42,7 @@
 									<th>联系电话</th>
 									<th>公司地址</th>
 									<th>更新时间</th>
+									<th>状态</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
@@ -59,9 +60,25 @@
 										<td> ${item.company.address} </td>
 										<td> ${item.updateDate} </td>
 										<td>
+										  <c:if test="${item.status != '1'}">未评价</c:if>
+										  <c:if test="${item.status eq '1'}">已评价</c:if>
+										 </td>
+										<td>
+										<c:if test="${type eq 'company'}">
               							<a href="${path}/jobController/detail.do?id=${item.id}" class="btn1 btn-small">详细</a>
               							<a href="${path}/jobController/find.do?id=${item.id}" class="btn1 btn-small">修改</a>
               							<a href="${path}/jobController/delete.do?id=${item.id}" class="btn1 btn-small">删除</a>
+              							</c:if>
+              							<c:if test="${type eq 'persional'}">
+              							 <c:if test="${item.status != '1'}">
+              							 <a href="${path}/stuAbiController/view.do?job.id=${item.id}" class="btn1 btn-small">就业能力评价</a>
+              							 </c:if>
+										  <c:if test="${item.status eq '1'}">
+										   <a href="${path}/stuAbiController/reAnalysisView.do?job.id=${item.id}" class="btn1 btn-small">重新评价</a>
+										   <a href="${path}/stuAbiController/seeResult.do?job.id=${item.id}" class="btn1 btn-small">查看结果</a>
+										  </c:if>
+              							
+              							</c:if>
               							</td>
             						</tr>
                                 </c:forEach>

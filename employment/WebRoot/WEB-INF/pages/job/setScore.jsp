@@ -10,6 +10,7 @@
 </head>
 <script type="text/javascript">
 	function onSubmit() {
+		 $("#form1").validate();
 		$('#form1').submit();
 	}
 /**
@@ -37,6 +38,11 @@
 			}
         });
 	}
+
+	function setVal(id1,id2){
+		vals=$('#'+id2).val();
+		$('#'+id1).val(vals);
+	}
 </script>
   <body>
     <div id="main-div" class="width-p96">
@@ -53,7 +59,15 @@
                                     <td class="td-title" colspan="4" style="background-color: #6587a1">
                                         <font size=3 color="black">
                                             <i class=" icon-chevron-down"></i>
-                                            <strong>考核项分值设置</strong>
+                                            <strong>考核项具体分配</strong>
+                                        </font>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td class="td-title" colspan="4" >
+                                        <font size=2 color="black">
+                                            <i class=" icon-chevron-down"></i>
+                                            <strong>注：非常好---（5）分，好---（4）分，一般---（3）分，差---（2）分，很差---（1）分</strong>
                                         </font>
                                     </td>
                                 </tr>
@@ -71,16 +85,15 @@
 						               <td class="ltd4">${posAbiList.ability.name}</td>
                                     <td class="rtd4">
                                     <input id="scoreKeyTxt" type="hidden" name="scoreKeyArray" value="${posAbiList.ability.id}"/>
-                                  	分值：
-                                  	<select id="scoreValTxt"  name="scoreValArray" class="required width-p40">
+                                    <input id="${posAbiList.ability.id}" type="hidden" name="scoreValArray"/>
+                                  	<select id="${posAbiList.ability.name}"  name="${posAbiList.ability.name}" class="required width-p40" onchange="setVal('${posAbiList.ability.id}','${posAbiList.ability.name}')">
 											<option value="">---请选择---</option>
-											<option value="5">5</option>
-											<option value="4">4</option>
-											<option value="3">3</option>
-											<option value="2">2</option>
-											<option value="1">1</option>
+											<option value="5">非常好</option>
+											<option value="4">好</option>
+											<option value="3">一般</option>
+											<option value="2">差</option>
+											<option value="1">很差</option>
 										</select>
-                                  	（分）
                                     </td>
 						               <c:if test="${(stat.index+1)%2==0}">
 						                </tr><tr>

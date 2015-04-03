@@ -105,16 +105,14 @@
 						               <td class="ltd4">${posAbiList.ability.name}</td>
                                      <td class="rtd4">
                                   	 <input id="scoreKeyTxt" type="hidden" name="pos_Abi.scoreKeyArray" value="${posAbiList.ability.id}"/>
-                                  	分值：
                                   	<select id="scoreValTxt" name="pos_Abi.scoreValArray" class="required width-p40">
 											<option value="">---请选择---</option>
-											<option value="5"<c:if test="${posAbiList.score == '5'}">selected="true"</c:if>>5</option>
-											<option value="4"<c:if test="${posAbiList.score == '4'}">selected="true"</c:if>>4</option>
-											<option value="3"<c:if test="${posAbiList.score == '3'}">selected="true"</c:if>>3</option>
-											<option value="2"<c:if test="${posAbiList.score == '2'}">selected="true"</c:if>>2</option>
-											<option value="1"<c:if test="${posAbiList.score == '1'}">selected="true"</c:if>>1</option>
+											<option value="5"<c:if test="${posAbiList.score == '5'}">selected="true"</c:if>>非常好</option>
+											<option value="4"<c:if test="${posAbiList.score == '4'}">selected="true"</c:if>>好</option>
+											<option value="3"<c:if test="${posAbiList.score == '3'}">selected="true"</c:if>>一般</option>
+											<option value="2"<c:if test="${posAbiList.score == '2'}">selected="true"</c:if>>差</option>
+											<option value="1"<c:if test="${posAbiList.score == '1'}">selected="true"</c:if>>非常差</option>
 										</select>
-                                  	（分）
                                     </td>
 						               <c:if test="${(stat.index+1)%2==0}">
 						                </tr><tr>

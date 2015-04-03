@@ -10,27 +10,53 @@
 <%@ include file="/common/header.jsp"%>
 </head>
 <script type="text/javascript">
-
-$(document).ready(function() {
-	$("#form1").validate();
-	$("#sexSelect").val("${userInfo.sex}");
-	$("#majorSelect").val("${userInfo.major.id}");
-});	
 function back() {
 	history.go(-1);
 }
 function onSubmit(){
+	$("#form1").validate();
+	var newPwd=$('#newPwd').val();
+	var qrPwd=$('#qrPwd').val();
+	if(newPwd != qrPwd){
+		alert("两次密码输入不一致，请重新输入！");
+		$('#newPwd').val("");
+		$('#qrPwd').val("");
+	}
     $('#form1').submit();
 }
+
+function checkOldPwd(){
+    	var oldPwd=$('#oldPwd').val();
+        $.ajax({
+            cache: false,
+            type: 'post',
+            async: false,
+            url: '${path}/userController/checkOldPwd.do?',
+            data : {"id": $('#idHid').val(),
+            	"passWord":oldPwd},
+            dataType: 'json',
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(XMLHttpRequest.status);
+			},
+			success : function(data) {
+				$(data).each(function(i, item) {
+					if(true != item){
+						$('#oldPwd').val("");
+						alert("原始密码输入错误！");
+					}
+				});
+			}
+        });
+	}
+    
 </script>
   <body>
     <div id="main-div" class="width-p100">
             <div class="content main-page-190">
                 <div class="margin-lr-1">
                     <div class="main-page-230 over-flow-x-hidden">
-                        <form id="form1" action="${path}/userController/update.do" method="post">
-                            <input type="hidden" name="id" id="idHid" value="${userInfo.id}"/>
-                            <input type="hidden" name="type" value="${type}"/>
+                        <form id="form1" action="${path}/userController/updatePwd.do" method="post">
+                            <input type="hidden" name="id" id="idHid" value="${user.id}"/>
 							<input type="hidden" value="${token}" name="token" />
                             <table class="add-tb">
                                 <tr>
@@ -42,25 +68,23 @@ function onSubmit(){
                                     </td>
                                 </tr>
                                 <tr>
+                                 	<td class="ltd4">姓名</td>
+                                    <td class="rtd4"> <input  autocomplete="off" id="userNameText" type="text"  name="userName" value="${user.userName}" class=" width-p40"style="background-color: #E6E9F0" readonly="readonly"/></td>
                                     <td class="ltd4">原始密码</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="oldPwd" type="password"  name="passWord" class=" width-p40" maxlength="50" />
+                                        <input  autocomplete="off" id="oldPwd" type="password"  name="passWord" class="required width-p40" maxlength="50" onblur="checkOldPwd()" />
                                         <span class="color-red">*</span>
-                                    </td>
-                                    <td class="ltd4"></td>
-                                    <td class="rtd4">
-                                    	
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="ltd4">新密码</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="newPwd" type="password"  name="newPwd" class=" width-p40" maxlength="50" />
+                                        <input  autocomplete="off" id="newPwd" type="password"  name="newPwd" class="required width-p40" maxlength="50" />
                                         <span class="color-red">*</span>
                                     </td>
                                     <td class="ltd4">确认密码</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="qrPwd" type="password"  name="newPwd1" class=" width-p40" maxlength="100" />
+                                        <input  autocomplete="off" id="qrPwd" type="password"  name="newPwd1" class="required width-p40" maxlength="100" />
                                         <span class="color-red">*</span>
                                     </td>
                                 </tr>

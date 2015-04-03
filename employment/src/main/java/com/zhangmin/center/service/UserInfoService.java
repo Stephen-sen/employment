@@ -15,13 +15,10 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.zhangmin.center.dao.MajorDao;
 import com.zhangmin.center.dao.UserInfoDao;
-import com.zhangmin.center.entity.Major;
 import com.zhangmin.center.entity.UserInfo;
 import com.zhaosen.base.Page;
 import com.zhaosen.util.DateUtil;
-import com.zhaosen.util.MD5;
 
 /**
  * ClassName: UserInfoService 
@@ -34,10 +31,6 @@ public class UserInfoService {
 
 	@Autowired
 	private UserInfoDao userInfoDao;
-	@Autowired
-	private MajorDao majorDao;
-	
-	private MD5 md5 = new MD5();
 	/**
 	 * 
 	 * @Description: 获取登录用户的信息
@@ -207,6 +200,6 @@ public class UserInfoService {
 	
 	public void updatePasw(UserInfo userInfo){
 		String hql = "update UserInfo set passWord=? where id=?";
-		userInfoDao.bulkUpdate(hql, new Object[] {md5.getMD5ofStr("0000"), userInfo.getId() });
+		userInfoDao.bulkUpdate(hql, new Object[] {userInfo.getPassWord(), userInfo.getId() });
 	}
 }

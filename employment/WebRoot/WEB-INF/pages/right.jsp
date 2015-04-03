@@ -1,18 +1,20 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
+<!--  
+ * @version 1.0.01
+ * @author zhangmin
+-->
+<html>
+<head>
+<%@ include file="/common/header.jsp"%>
+</head>
     <base href="http://localhost:8080/emp/">
     
-    <title>My JSP 'right.jsp' starting page</title>
+    <title>系统主页</title>
     
 	<link href="themes/images/skin.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312"><style type="text/css">
-<!--
 body {
 	margin-left: 0px;
 	margin-top: 0px;
@@ -20,9 +22,8 @@ body {
 	margin-bottom: 0px;
 	background-color: #EEF2FB;
 }
--->
 </style>
-</head><body marginwidth="0" marginheight="0">
+<body marginwidth="0" marginheight="0">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tbody><tr>
     <td width="17" valign="top" background="themes/images/mail_leftbg.gif"><img src="themes/images/left-top-right.gif" width="17" height="29"></td>

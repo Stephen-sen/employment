@@ -149,7 +149,7 @@
                                 <tr>
                                     <td class="ltd4">薪资待遇</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="salaryTxt" autocomplete="off" type="text"  name="salary" class="required width-p40" onkeyup="javascritp:numCheck('salaryTxt');" maxlength="9" />
+                                        <input  autocomplete="off" id="salaryTxt" autocomplete="off" type="text"  name="salary" class="required width-p40" maxlength="9" />
 										<span class="color-red">*</span>
                                     </td>
                                     <td class="ltd4">联系人 </td>
@@ -193,7 +193,7 @@
                                 <tr>
                                     <td class="ltd4">${item.key }</td>
                                     <td class="rtd4" colspan="3">
-                                     <input id="jobid${item.key }" name="jobStr" type="text" class="required width-p60" readonly="readonly"/><a href="javascript:showMenu('jobid${item.key }','${item.key }');" class="btn1 btn-small">选择</a>
+                                     <input id="jobid${item.key }" name="jobStr${item.key }" type="text" class="required width-p60" readonly="readonly"/><a href="javascript:showMenu('jobid${item.key }','${item.key }');" class="btn1 btn-small">选择</a>
 									 <input id="jobValue${item.key }" name="abilityArry" type="text" style="display:none"/>
 										<div id="menuContent${item.key }" class="menuContent" style="display:none; position: absolute; background-color:white; border:solid 1px #adba84;">
 									        <div style="width:100%; height:30px;line-height:30px; background-color:#263F52;">
