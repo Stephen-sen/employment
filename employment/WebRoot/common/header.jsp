@@ -52,6 +52,13 @@ function back(){
 	$(document).ready(function() {
 		if("${messageCode}"=="PARAM_ERROR"){jqueryUIAlert("操作失败，缺少参数或者参数错误!");}
 		if("${messageCode}"=="01"){jqueryUIAlert("操作成功!");}
+
+		if(${messagecode == '04'}){
+			jqueryUIAlert("密码错误!");}
+		if(${messagecode == '05'}){
+			jqueryUIAlert("未找匹配的用户名!");}
+		if(${messagecode == '06'}){
+			jqueryUIAlert("验证码错误!");}
 	})
 	
 	function jqueryUIAlert(msg){

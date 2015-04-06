@@ -8,6 +8,9 @@
 package com.zhangmin.base.controller;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,6 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseController;
+import com.zhangmin.base.entity.Menu;
+import com.zhangmin.base.entity.RoleMenu;
+import com.zhangmin.base.entity.UserRole;
+import com.zhangmin.base.service.RoleMenuService;
+import com.zhangmin.base.service.UserRoleService;
 import com.zhangmin.center.entity.UserInfo;
 import com.zhangmin.center.service.UserInfoService;
 import com.zhangmin.constant.Const;
@@ -36,6 +44,10 @@ public class LoginController extends BaseController{
 	
 	@Autowired
 	private UserInfoService userInfoService;
+	@Autowired
+	private UserRoleService userRoleService;
+	@Autowired
+	private RoleMenuService roleMenuService;
 	
 	private MD5 md5 = new MD5();
 	
@@ -79,6 +91,16 @@ public class LoginController extends BaseController{
 					else{
 						viewName = "index";
 						session.setAttribute(Global.USER_INFO,userInfo);
+						
+						UserRole userRole = userRoleService.findUserRole(userInfo.getId());
+						session.setAttribute("userRole", userRole);
+						List<RoleMenu> roleMenuMess = roleMenuService.findRoleMenu(userRole.getRole().getId());
+						List<Menu> userMenuList = new ArrayList<Menu>();
+						for (RoleMenu roleMenu : roleMenuMess)
+						{
+							userMenuList.add(roleMenu.getMenu());
+						}
+						session.setAttribute("userMenuList", userMenuList);
 						userInfoService.updateLastLoginDate(userInfo);
 					}
 				}

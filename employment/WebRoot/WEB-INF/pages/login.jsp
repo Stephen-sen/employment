@@ -1,16 +1,13 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
-<%@ page import="com.zhangmin.constant.Global" %>
-<% 
-	request.setAttribute("path",request.getContextPath());
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ path + "/"; 
-%>
-
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="/common/tagslib.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--  
+ * @version 1.0.01
+ * @author zhangmin
+-->
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
+<head>
+<%@ include file="/common/header.jsp"%>
     <title>系统登陆</title>
 <style type="text/css">
 <!--
@@ -53,13 +50,17 @@ function correctPNG()
        }
     }    
 }
-window.attachEvent("onload", correctPNG);
+//window.attachEvent("onload", correctPNG);
 
 function redirect(){
 	window.location = "/emp/userController/regist.do";
 	return false;
 }
-
+$(document).ready(function() {
+	correctPNG();
+	//alert(${messagecode});
+	
+})
 </script>
 
 

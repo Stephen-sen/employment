@@ -60,7 +60,6 @@ public class RoleMenuController extends BaseController{
 	public ModelAndView view(HttpServletRequest request){
 		ModelAndView view =new ModelAndView();
 		try {
-			
 			view.setViewName("roleMenu/addRoleMenu");
 		} catch (Exception e) {
 		}

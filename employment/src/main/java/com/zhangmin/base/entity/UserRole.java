@@ -7,6 +7,8 @@
  */
 package com.zhangmin.base.entity;
 
+import com.zhangmin.center.entity.UserInfo;
+
 /**
  * ClassName: UserRole 
  * @Description: TODO
@@ -16,8 +18,9 @@ package com.zhangmin.base.entity;
 public class UserRole extends BaseEntity{
 
 	private String isDefault;
-	private String userId;
-	private String roleId;
+	private UserInfo user;
+	private Role role;
+	private String userRoleStr;
 	/**
 	 * @return the isDefault
 	 */
@@ -31,28 +34,41 @@ public class UserRole extends BaseEntity{
 		this.isDefault = isDefault;
 	}
 	/**
-	 * @return the userId
+	 * @return the user
 	 */
-	public String getUserId() {
-		return userId;
+	public UserInfo getUser() {
+		return user;
 	}
 	/**
-	 * @param userId the userId to set
+	 * @param user the user to set
 	 */
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUser(UserInfo user) {
+		this.user = user;
 	}
 	/**
-	 * @return the roleId
+	 * @return the role
 	 */
-	public String getRoleId() {
-		return roleId;
+	public Role getRole() {
+		return role;
 	}
 	/**
-	 * @param roleId the roleId to set
+	 * @param role the role to set
 	 */
-	public void setRoleId(String roleId) {
-		this.roleId = roleId;
+	public void setRole(Role role) {
+		this.role = role;
 	}
+	/**
+	 * @return the userRoleStr
+	 */
+	public String getUserRoleStr() {
+		return userRoleStr;
+	}
+	/**
+	 * @param userRoleStr the userRoleStr to set
+	 */
+	public void setUserRoleStr(String userRoleStr) {
+		this.userRoleStr = userRoleStr;
+	}
+	
 	
 }

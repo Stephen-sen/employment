@@ -13,15 +13,7 @@
 			insert="true" type="java.lang.String" not-null="false" unique="false"
 			length="2">
 		</property>
-		<property name="userId" column="userId" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false"
-			length="36">
-		</property>
-		<property name="roleId" column="roleId" update="true"
-			insert="true" type="java.lang.String" not-null="false" unique="false"
-			length="36">
-		</property>
-		<property name="createDate" type="java.lang.String" column="createDate_date"
+		<property name="createDate" type="java.lang.String" column="create_date"
 			unique="false" not-null="false" insert="true" update="true" />
 
 		<property name="updateDate" type="java.lang.String" column="update_date"
@@ -31,6 +23,14 @@
 			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>
 		
+		<many-to-one name="role" not-null="false" update="true"
+			lazy="false" insert="true" cascade="none">
+			<column name="role_id"/>
+		</many-to-one>
+		<many-to-one name="user" not-null="false" update="true"
+			lazy="false" insert="true" cascade="none">
+			<column name="user_id"/>
+		</many-to-one>
 	</class>
 </hibernate-mapping>
 

@@ -22,7 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseController;
 import com.alibaba.fastjson.JSONArray;
-import com.zhangmin.center.entity.Company;
+import com.zhangmin.base.entity.UserRole;
+import com.zhangmin.base.service.UserRoleService;
 import com.zhangmin.center.entity.Major;
 import com.zhangmin.center.entity.UserInfo;
 import com.zhangmin.center.service.MajorService;
@@ -48,6 +49,8 @@ public class UserController  extends BaseController{
 	private UserInfoService userInfoService;
 	@Autowired
 	private MajorService majorService;
+	@Autowired
+	private UserRoleService userRoleService;
 	
 	private MD5 md5 = new MD5();
 	/**
@@ -269,7 +272,7 @@ public class UserController  extends BaseController{
 		}
 	/**
 	 * 
-	 * @Description: 审核注册用户 0：待审核，1:正常，2：注销，3：审核不同
+	 * @Description: 审核注册用户 0：待审核，1:正常，2：注销，3：审核不通过
 	 * @param @param request
 	 * @param @param user
 	 * @param @return
@@ -287,7 +290,10 @@ public class UserController  extends BaseController{
 				userInfo = userInfoService.findUserById(user.getId());
 				userInfo.setStatus(user.getStatus());
 				userInfoService.registPass(userInfo);
-				
+				 
+				UserRole userRole = new UserRole();
+				userRole.setUser(userInfo);
+				userRoleService.saveUserRole(userRole);
 				view=registList(new UserInfo(),pageNo,request);
 		}
 		catch (Exception e) {

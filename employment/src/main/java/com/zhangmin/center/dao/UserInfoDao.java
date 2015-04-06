@@ -25,6 +25,7 @@ import com.zhaosen.base.BaseDao;
 @Repository
 public class UserInfoDao extends BaseDao<UserInfo>{
 
+	@SuppressWarnings("unchecked")
 	public UserInfo getUserInfo(UserInfo userInfo){
 		if(null==userInfo){
 			return null;
@@ -35,8 +36,8 @@ public class UserInfoDao extends BaseDao<UserInfo>{
 		if(StringUtils.isEmpty(userInfo.getPassWord())){
 			return null;
 		}
-		String hql = "from UserInfo u where u.flag='Y' and u.userName=?  and u.passWord=? ";
-		Object[] objs=new Object[]{userInfo.getUserName(),userInfo.getPassWord()};
+		String hql = "from UserInfo u where u.flag='Y' and u.userName=? and status = '1' or status = '2'";
+		Object[] objs=new Object[]{userInfo.getUserName()};
 		List<UserInfo> userList = (List<UserInfo>) this.getHibernateTemplate().find(hql, objs);
 		if (userList.size() > 0) {
 			return userList.get(0);

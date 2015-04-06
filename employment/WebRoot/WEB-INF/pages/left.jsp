@@ -4,7 +4,7 @@
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ path + "/"; 
 %>
-
+<%@ include file="/common/tagslib.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -143,97 +143,59 @@ H1 a {
 	text-decoration: none;
 }
 </style>
+<script type="text/javascript">
+
+function abc(pid,url,name){
+	var myul=document.getElementById("content"+pid);
+	var li = document.createElement('li');   
+	li.innerHTML = '<a href="'+url+'" target="main">'+name+' </a>';  
+	myul.appendChild(li);
+}
+</script>
 </head>
 
 <body>
 <table width="100%" height="280" border="0" cellpadding="0" cellspacing="0" bgcolor="#EEF2FB">
   <tr>
-    <td width="182" valign="top"><div id="container">
-    <h1 class="type"><a href="javascript:void(0)">注册用户管理</a></h1>
-      <div class="content">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td><img src="themes/images/menu_topline.gif" width="182" height="5" /></td>
-          </tr>
-        </table>
-        <ul class="MM">
-          <li><a href="${path}/userController/list.do" target="main">注册查询</a></li>
-          <li><a href="${path}/userController/registList.do" target="main">注册审核</a></li>
-          <li><a href="${path }/right.do" target="main">留言管理</a></li>
-          <li><a href="${path }/right.do" target="main">回复管理</a></li>
-          <li><a href="${path }/right.do" target="main">评论管理</a></li>
-        </ul>
-      </div>
-      <h1 class="type"><a href="javascript:void(0)">企业信息管理</a></h1>
-      <div class="content">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td><img src="themes/images/menu_topline.gif" width="182" height="5" /></td>
-          </tr>
-        </table>
-        <ul class="MM">
-           <li><a href="${path}/positionController/list.do" target="main">职位信息查询</a></li>
-           <li><a href="${path}/positionController/view.do" target="main">职位信息录入</a></li>
-           <li><a href="${path }/companyController/list.do" target="main">企业信息查询</a></li>
-           <li><a href="${path }/companyController/view.do" target="main">企业信息录入</a></li>
-           <li><a href="${path }/jobController/view.do" target="main">发布招聘信息</a></li>
-           <li><a href="${path }/jobController/list.do?type=company" target="main">已发布职位</a></li>
-           <li><a href="${path }/right.do" target="main">查询投递人员</a></li>
-        </ul>
-      </div>
-    <h1 class="type"><a href="javascript:void(0)">就业能力管理</a></h1>
-      <div class="content">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td><img src="themes/images/menu_topline.gif" width="182" height="5" /></td>
-          </tr>
-        </table>
-        <ul class="MM">
-         <li><a href="${path }/abilityController/list.do" target="main">已录考核信息</a></li>
-         <li><a href="${path }/abilityController/view.do" target="main">添加考核内容</a></li>
-         <li><a href="${path }/majorController/list.do" target="main">已录专业信息</a></li>
-         <li><a href="${path }/majorController/view.do" target="main">添加专业信息</a></li>
-         <li><a href="${path }/jobController/list.do?type=persional" target="main">个人就业能力分析</a></li>
-        </ul>
-      </div>
-     <h1 class="type"><a href="javascript:void(0)">个人信息管理</a></h1>
-      <div class="content">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td><img src="themes/images/menu_topline.gif" width="182" height="5" /></td>
-          </tr>
-        </table>
-        <ul class="MM">
-          <li><a href="${path }/userController/detail.do?type=persional" target="main">个人信息查询</a></li>
-          <li><a href="${path }/userController/updatePwdView.do" target="main">密码修改</a></li>
-        </ul>
-      </div>
-        <h1 class="type"><a href="javascript:void(0)">系统管理</a></h1>
-      <div class="content">
-          <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td><img src="themes/images/menu_topline.gif" width="182" height="5" /></td>
-            </tr>
-          </table>
-        <ul class="MM">
-        <li><a href="${path }/menuController/view.do" target="main">菜单录入</a></li>
-        <li><a href="${path }/menuController/list.do" target="main">菜单查询</a></li>
-        <li><a href="${path }/roleController/view.do" target="main">角色新增</a></li>
-        <li><a href="${path }/roleController/list.do" target="main">角色查询</a></li>
-          <li><a href="${path }/right.do" target="main">登陆记录</a></li>
-        </ul>
-      </div>
-        <script type="text/javascript">
-		var contents = document.getElementsByClassName('content');
-		var toggles = document.getElementsByClassName('type');
-	
-		var myAccordion = new fx.Accordion(
-			toggles, contents, {opacity: true, duration: 400}
-		);
-		myAccordion.showThisHideOpen(contents[0]);
-	</script>
-        </td>
+    <td width="182" valign="top">
+    <div id="container">
+		<c:if test="${userMenuList != null}">
+			<!-- 所有菜单 -->
+	 		 <c:forEach var="menu" items="${userMenuList}" varStatus="s">
+	 			<!-- 一级菜单 -->
+	 			 <c:choose>
+	 			<c:when test="${menu.preId.id eq '1'}">
+					<h1 class="type"><a href="javascript:void(0)">${menu.name } </a></h1>
+					<div class="content" >
+				        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+				          <tr>
+				            <td><img src="../images/menu_topline.gif" width="182" height="5" /></td>
+				          </tr>
+				        </table>
+						<ul class="MM" id='content${menu.id }'>
+						</ul>
+				    </div>
+				</c:when>
+				  <c:otherwise>
+				 	<script type="text/javascript">
+						abc('${menu.preId.id}','<%=path%>${menu.url }','${menu.name }');
+					</script>
+				 </c:otherwise>
+				</c:choose>
+	 		</c:forEach>
+		</c:if>
+	</div> 	
+     </td>
   </tr>
 </table>
 </body>
 </html>
+        <script type="text/javascript">
+			var contents = document.getElementsByClassName('content');
+			var toggles = document.getElementsByClassName('type');
+		
+			var myAccordion = new fx.Accordion(
+				toggles, contents, {opacity: true, duration: 400}
+			);
+			myAccordion.showThisHideOpen(contents[0]);
+		</script>
