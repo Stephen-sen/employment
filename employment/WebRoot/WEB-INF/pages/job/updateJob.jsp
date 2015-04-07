@@ -25,6 +25,7 @@
                     <div class="main-page-90 over-flow-x-hidden">
                         <form id="form1" action="${path}/jobController/update.do" method="post">
                             <input type="hidden" name="id" value="${jobInfo.id }" id="idHid" />
+                            <input type="hidden" name="type" value="company" />
                             <input type="hidden" name="company.id" value="${jobInfo.company.id }" id="idHid" />
 							<input type="hidden" value="${token}" name="token" />
                         <table class="add-tb">

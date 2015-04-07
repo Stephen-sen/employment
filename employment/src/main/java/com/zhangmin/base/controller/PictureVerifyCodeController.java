@@ -1,4 +1,4 @@
-package com.zhangmin.base.dao;
+package com.zhangmin.base.controller;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -14,14 +14,21 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.action.support.BaseController;
 
-public class PictureCheckCode extends BaseController {
+@Controller
+public class PictureVerifyCodeController extends BaseController {
 
 	// 生成色彩验证码的代码
-	public void getVerify() throws ServletException, IOException {
+	@RequestMapping(value="/verifyController/getVerify")
+	public void getVerify(HttpServletRequest request,HttpServletResponse response)  throws ServletException, IOException {
 		Random random = new Random();
 		// 1、绘制背景图片
 		// 设置不缓冲图片
@@ -160,7 +167,7 @@ public class PictureCheckCode extends BaseController {
 		}
 		// 将生成的验证码保存到session中
 		HttpSession session = request.getSession(true);
-		session.setAttribute("randCheckCode", sRand);
+		session.setAttribute("verifycode", sRand);
 		// 输出生成的验证码图片
 		g.dispose();
 		ImageIO.write(image, "JPEG", response.getOutputStream());

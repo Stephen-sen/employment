@@ -66,16 +66,18 @@ public class LoginController extends BaseController{
 	@RequestMapping(value = "/dologin", method = { RequestMethod.GET,RequestMethod.POST })
 	public ModelAndView doLogin(HttpSession session,UserInfo user,HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
+		
 		String viewName = "login";
+		if(session.getAttribute(Global.USER_INFO) !=null){
+			viewName = "index";
+		}else{
 		boolean flag = true;
-		//String validationCode = (String) session.getAttribute("verifycode");
-		String validationCode = "1234";
+		String validationCode = (String) session.getAttribute("verifycode");
 		String viewValidationCode = request.getParameter("verifycode");
 		if(!Util.isEmpty(viewValidationCode)){
 			if(!viewValidationCode.equalsIgnoreCase(validationCode)){
 				super.setMessageCode(Const.USER_VALIDATION_CODE);
 				flag = false;
-				flag = true;
 			}
 			if(flag){
 				UserInfo param = new UserInfo();
@@ -106,6 +108,7 @@ public class LoginController extends BaseController{
 				}
 			}
 			view.addObject("messagecode", super.getMessageCode());
+		}
 		}
 		view.setViewName(viewName);
 		return view;

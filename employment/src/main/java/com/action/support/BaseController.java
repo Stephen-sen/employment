@@ -30,7 +30,7 @@ import net.sf.json.JSONArray;
  * @author 张敏
  * @date 2015-2-3 下午03:29:30
  */
-public class BaseController {
+public class BaseController{
 	protected HttpServletRequest request;
 	protected HttpServletResponse response;
 	protected HttpSession session;

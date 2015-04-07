@@ -185,12 +185,12 @@ public class JobController extends BaseController {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/jobController/list")
-	public ModelAndView list(Integer pageNo,HttpServletRequest request){
+	public ModelAndView list(Job jobInfo,Integer pageNo,HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
 		try{
 			pageNo = pageNo == null?1:pageNo;
 			int pageSize = this.getCookiesPageSize(request);
-			Page pagedData = jobService.getPagedJobInfo(pageNo, pageSize);
+			Page pagedData = jobService.getPagedJobInfo(jobInfo,pageNo, pageSize);
 			List<Job> jobListTemp=pagedData.getResult();
 			List<Job> jobList=new ArrayList<Job>();
 			UserInfo userInfo = (UserInfo)request.getSession().getAttribute(Global.USER_INFO);
@@ -287,7 +287,7 @@ public class JobController extends BaseController {
 			job.setUpdateDate(updateDate);
 			job.setFlag(jobInfo.getFlag());
 			jobService.updateJob(job);
-			view= list(pageNo,request);
+			view= list(job,pageNo,request);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -313,7 +313,7 @@ public class JobController extends BaseController {
 			Job jobInfo = jobService.findJobDetail(job);
 			jobService.deleteJob(job.getId());
 			pos_AbiService.deletePos_Abi(jobInfo);
-			view= list(pageNo,request);
+			view= list(job,pageNo,request);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

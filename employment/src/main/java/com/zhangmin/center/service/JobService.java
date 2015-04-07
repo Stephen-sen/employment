@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,12 +44,12 @@ public class JobService {
 		jobDao.save(job);
 	}
 	
-	public Page getPagedJobInfo(int pageNo,int pageSize) throws Exception{		
+	public Page getPagedJobInfo(Job job,int pageNo,int pageSize) throws Exception{		
 		List<Object> params = new LinkedList<Object>();
 		final int startIndex = Page.getStartOfPage(pageNo, pageSize);
 		final int endIndex = pageSize;
 		
-		String hql = hqlCondition();
+		String hql = hqlCondition(job);
 		String counthql="select count(*)" + hql;
 		int totalSize=jobDao.getHQLCount(counthql, params);
 		List<?> dbList= jobDao.getHQLPageList(hql, params, startIndex, endIndex);
@@ -56,9 +57,38 @@ public class JobService {
 		return new Page(startIndex, totalSize, pageSize, dbList);
 	}
 	
-	public String  hqlCondition(){
+	public String  hqlCondition(Job job){
 		StringBuffer hql=new StringBuffer();
 		hql.append("from Job where flag ='y'");
+		if(job.getCompany()!=null){
+			hql.append("and company like '" + job.getCompany().getName()+"%'");
+		}
+		if(job.getPosition()!=null){
+			hql.append("and position like '" + job.getPosition().getName()+"%'");
+		}
+		if(!StringUtils.isEmpty(job.getSalary())){
+			if(job.getSalary().equals("12")){
+				hql.append("and salary >='1000' and salary <'2000'");
+			}
+			if(job.getSalary().equals("24")){
+				hql.append("and salary >='2000' and salary <'4000'");
+			}
+			if(job.getSalary().equals("46")){
+				hql.append("and salary >='4000' and salary <'6000'");
+			}
+			if(job.getSalary().equals("68")){
+				hql.append("and salary >='6000' and salary <'8000'");
+			}
+			if(job.getSalary().equals("81")){
+				hql.append("and salary >='8000' and salary <'10000'");
+			}
+			if(job.getSalary().equals("100")){
+				hql.append("and salary >='10000'");
+			}
+		}
+		if(!StringUtils.isEmpty(job.getStatus())){
+			hql.append("and status like '" + job.getStatus()+"%'");
+		}
 		hql.append("order by updateDate desc,");
 		hql.append("createDate desc");
 		return hql.toString();

@@ -58,9 +58,19 @@ function redirect(){
 }
 $(document).ready(function() {
 	correctPNG();
-	//alert(${messagecode});
-	
-})
+	$("#VerifyCode").css("cursor", "pointer").click(function() {
+	      $(this).attr("src", "code.php?" + Math.random());
+	    });
+});
+
+ function myReload() {
+    document.getElementById("createVerifyCode").src = document.getElementById("createVerifyCode").src + "?nocache=" + new Date().getTime();
+  }
+
+ $(function(){
+	     if (window != top)
+	     top.location.href = location.href; 
+	 })
 </script>
 
 
@@ -134,8 +144,12 @@ $(document).ready(function() {
                           <tr>
                             <td width="13%" height="35" ><span class="login_txt">验证码：</span></td>
                             <td height="35" colspan="2" class="top_hui_text"><input class=wenbenkuang name="verifycode" type=text  maxLength=4 size=10>
-                              </td>
+                            <img src="${path }/verifyController/getVerify.do" id="createVerifyCode">
+                            </td>
                           </tr>
+			                <tr>
+			                  <td colspan="3" class="top_hui_text"><a onclick="myReload()" href='#' class=hand>看不清楚？换一个</a></td>
+			                </tr>
                           <tr>
                             <td height="35" >&nbsp;</td>
                             <td width="20%" height="35" ><input name="Submit" type="submit" class="button" id="Submit" value="登 陆"> </td>

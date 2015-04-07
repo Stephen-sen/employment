@@ -17,7 +17,7 @@
                         <tr>
                             <td class="td-left">
                             </td>
-                            <td class="td-title">职位信息</td>
+                            <td class="td-title">已发布职位</td>
                             <td class="td-btn">
 							</td>
                             <td class="td-right">
@@ -26,6 +26,57 @@
                     </table>  
                 </div>
                 <div class="margin-lr-1">
+                 <form id="form1" action="${path}/userController/registList.do" method="get">
+                		<table class="search-tb width-p100">
+	                        <tr>
+	                            <td class="left">
+	                                <i class="icon icon-play"></i>查询选项
+	                            </td>
+	                            <td class="center">
+	                                <table class="search-form-tb">
+	                                    <tr>
+	                                        <td class="ltd8">公司名称</td>
+	                                        <td class="rtd8">
+	                                            <input  class="width-p45" autocomplete="off" type="text" name="company.name" maxlength="40" />
+	                                        </td>
+	                                        <td class="ltd8">招聘职位</td>
+	                                        <td class="rtd8">
+	                                        	<input type="text" autocomplete="off" class="width-p45" name="position.name" maxlength="11"/>
+	                                        </td>
+	                                    </tr>
+	                                    <tr>
+	                                    	<td class="ltd8">薪资待遇</td>
+	                                        <td class="rtd8">
+	                                            <select id="statusSelect" name="salary" class="required width-p45">
+	                                        <option value="">---请选择---</option>
+											<option value="12">1000-2000</option>
+											<option value="24">2000-4000</option>
+											<option value="46">4000-6000</option>
+											<option value="68">6000-8000</option>
+											<option value="81">8000-1万</option>
+											<option value="100">1万以上</option>
+										</select>
+	                                        </td>
+	                                        <td class="ltd8">评价状态</td>
+	                                        <td class="rtd8">
+	                                    <select id="statusSelect" name="status" class="required width-p45">
+											<option value="">---请选择---</option>
+											<option value="1">已评价</option>
+											<option value="null">未评价</option>
+										</select>
+	                                        </td>
+	                                    </tr>
+	                                </table>
+	                            </td>
+	                            <td class="td-btn">
+	                                 <a class="btn1 btn-small" href="javaScript:doQuery()">查询</a>
+	                                <a class="btn1 btn-small" href="javaScript:clearQuery()">重置</a>
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                        </tr>
+		                </table>
+					</form>
                  <div  id="autoHeightDIV" class="over-flow-x-hidden" style="margin-top: 20px">
                  <c:if test='${pagedData.totalPageCount<1}'>
                         <div class="no-data-div"> 没有查询到数据！ </div>

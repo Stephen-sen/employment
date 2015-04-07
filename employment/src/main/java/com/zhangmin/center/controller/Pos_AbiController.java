@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseController;
+import com.zhangmin.center.entity.Job;
 import com.zhangmin.center.entity.Pos_Abi;
 import com.zhangmin.center.service.Pos_AbiService;
 import com.zhaosen.base.Page;
@@ -59,11 +60,11 @@ public class Pos_AbiController extends BaseController {
 	 * @date 2015-3-19
 	 */
 	@RequestMapping(value="/pos_AbiController/save")
-	public ModelAndView save(Pos_Abi pos_Abi, Integer pageNo,HttpServletRequest request){
+	public ModelAndView save(Job jobInfo,Pos_Abi pos_Abi, Integer pageNo,HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
 		try {
 			pos_AbiService.updatePos_Abi(pos_Abi);
-			view = jobController.list(pageNo,request);
+			view = jobController.list(jobInfo,pageNo,request);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
