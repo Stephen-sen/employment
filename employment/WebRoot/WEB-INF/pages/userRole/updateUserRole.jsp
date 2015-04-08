@@ -26,8 +26,9 @@
             <div class="content main-page-190">
                 <div class="margin-lr-1">
                     <div class="main-page-230 over-flow-x-hidden">
-                        <form id="form1" action="${path}/userRoleController/save.do" method="post">
+                        <form id="form1" action="${path}/userRoleController/update.do" method="post">
                             <input type="hidden" name="user.id" id="idHid" value="${userInfo.id }" />
+                            <input type="hidden" name="id" id="idHid" value="${userRole.id }" />
 							<input type="hidden" value="${token}" name="token" />
                             <table class="add-tb">
                                 <tr>

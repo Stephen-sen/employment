@@ -16,7 +16,7 @@
                         <tr>
                             <td class="td-left">
                             </td>
-                            <td class="td-title">菜单信息</td>
+                            <td class="td-title">用户角色信息</td>
                             <td class="td-btn">
 							</td>
                             <td class="td-right">

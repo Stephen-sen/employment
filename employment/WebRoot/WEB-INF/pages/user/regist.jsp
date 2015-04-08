@@ -17,6 +17,28 @@
 	function onSubmit() {
 		$('#form1').submit();
 	}
+	function checkName(){
+		var userName=$('#cnNameTxt').val();
+        $.ajax({
+            cache: false,
+            type: 'post',
+            async: false,
+            url: '${path}/userController/checkUserName.do?',
+            data : {"userName" : userName},
+            dataType: 'json',
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(XMLHttpRequest.status);
+			},
+			success : function(data) {
+				$(data).each(function(i, item) {
+					if('true' == item){
+						jqueryUIAlert("该用户已存在！");
+						$('#cnNameTxt').val("");
+						}
+				});
+			}
+        });
+	}
 </script>
   <body>
     <div id="main-div" class="width-p100">
@@ -38,7 +60,7 @@
                                 <tr>
                                     <td class="ltd4">姓名</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="cnNameTxt" autocomplete="off" type="text"  name="userName" class="required width-p40" maxlength="20" />
+                                        <input  autocomplete="off" id="cnNameTxt" autocomplete="off" type="text"  name="userName" class="required width-p40" maxlength="20" onblur="checkName()" />
 										<span class="color-red">*</span>
                                     </td>
                                     <td class="ltd4"> 性别 </td>

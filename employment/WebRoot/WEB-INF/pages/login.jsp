@@ -123,7 +123,7 @@ $(document).ready(function() {
         <td width="50%" valign="bottom"><table width="100%" height="59" border="0" align="center" cellpadding="0" cellspacing="0">
             <tr>
               <td width="4%">&nbsp;</td>
-              <td width="96%" height="38"><span class="login_txt_bt">登陆就业能力分析后台管理</span></td>
+              <td width="96%" height="38"><span class="login_txt_bt">登陆就业能力评价系统</span></td>
             </tr>
             <tr>
               <td>&nbsp;</td>
@@ -134,16 +134,16 @@ $(document).ready(function() {
                         <table cellSpacing="0" cellPadding="0" width="100%" border="0" height="143" id="table212">
                           <tr>
                             <td width="13%" height="38" class="top_hui_text"><span class="login_txt">用户名：&nbsp;&nbsp; </span></td>
-                            <td height="38" colspan="2" class="top_hui_text"><input name="userName" class="editbox4" size="20">                            </td>
+                            <td height="38" colspan="2" class="top_hui_text"><input name="userName" value="${userName }" class="editbox4" size="20">                            </td>
                           </tr>
                           <tr>
                             <td width="13%" height="35" class="top_hui_text"><span class="login_txt"> 密 码： &nbsp;&nbsp; </span></td>
-                            <td height="35" colspan="2" class="top_hui_text"><input class="editbox4" type="passWord" size="20" name="passWord">
+                            <td height="35" colspan="2" class="top_hui_text"><input class="editbox4" type="passWord" size="20"value="${passWord }" name="passWord">
                               <img src="themes/images/luck.gif" width="19" height="18"> </td>
                           </tr>
                           <tr>
                             <td width="13%" height="35" ><span class="login_txt">验证码：</span></td>
-                            <td height="35" colspan="2" class="top_hui_text"><input class=wenbenkuang name="verifycode" type=text  maxLength=4 size=10>
+                            <td height="35" colspan="2" class="top_hui_text"><input  name="verifycode" type=text  maxLength=4 size=8 style="font-size: 6">
                             <img src="${path }/verifyController/getVerify.do" id="createVerifyCode">
                             </td>
                           </tr>

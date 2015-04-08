@@ -9,6 +9,11 @@
 <head>
 <%@ include file="/common/header.jsp"%>
 </head>
+<script type="text/javascript">
+function doQuery(){
+    $('#form1').submit();
+}
+</script>
   <body>
    <div id="main-div" class="width-p100">
             <div class="content main-page-190">
@@ -26,7 +31,8 @@
                     </table>  
                 </div>
                 <div class="margin-lr-1">
-                 <form id="form1" action="${path}/userController/registList.do" method="get">
+                 <form id="form1" action="${path}/jobController/list.do" method="get">
+                 <input type="hidden" name="type" value="${type }" />
                 		<table class="search-tb width-p100">
 	                        <tr>
 	                            <td class="left">
@@ -55,14 +61,6 @@
 											<option value="68">6000-8000</option>
 											<option value="81">8000-1万</option>
 											<option value="100">1万以上</option>
-										</select>
-	                                        </td>
-	                                        <td class="ltd8">评价状态</td>
-	                                        <td class="rtd8">
-	                                    <select id="statusSelect" name="status" class="required width-p45">
-											<option value="">---请选择---</option>
-											<option value="1">已评价</option>
-											<option value="null">未评价</option>
 										</select>
 	                                        </td>
 	                                    </tr>

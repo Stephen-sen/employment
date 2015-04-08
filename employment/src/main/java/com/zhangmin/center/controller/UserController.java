@@ -383,4 +383,19 @@ public class UserController  extends BaseController{
 		}
 		return String.valueOf(JSONArray.toJSON(result));
 	}
+	
+	@RequestMapping(value="/userController/checkUserName")
+	public@ResponseBody Object ajaxGetcheckUserName(UserInfo userInfo,HttpServletRequest request){
+		List<String> result = new ArrayList<String>();
+		try {
+			String userName =userInfo.getUserName();
+			List<UserInfo> userInfoList = userInfoService.findUserByName(userName);
+			if(userInfoList.size()>0){
+				result.add("true");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return String.valueOf(JSONArray.toJSON(result));
+	}
 	}

@@ -76,6 +76,7 @@ public class LoginController extends BaseController{
 		String viewValidationCode = request.getParameter("verifycode");
 		if(!Util.isEmpty(viewValidationCode)){
 			if(!viewValidationCode.equalsIgnoreCase(validationCode)){
+				view.addObject("userName", user.getUserName());
 				super.setMessageCode(Const.USER_VALIDATION_CODE);
 				flag = false;
 			}

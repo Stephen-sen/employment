@@ -7,6 +7,7 @@
  */
 package com.zhangmin.base.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.zhaosen.util.DateUtil;
@@ -17,7 +18,7 @@ import com.zhaosen.util.DateUtil;
  * @author 张敏
  * @date 2015-2-5
  */
-public abstract class BaseEntity {
+public abstract class BaseEntity implements Serializable{
 	
 	/**
 	 * 

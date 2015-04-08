@@ -61,26 +61,26 @@ public class JobService {
 		StringBuffer hql=new StringBuffer();
 		hql.append("from Job where flag ='y'");
 		if(job.getCompany()!=null){
-			hql.append("and company like '" + job.getCompany().getName()+"%'");
+			hql.append("and company.name like '" + job.getCompany().getName()+"%'");
 		}
-		if(job.getPosition()!=null){
-			hql.append("and position like '" + job.getPosition().getName()+"%'");
+		if(null!=job.getPosition()){
+			hql.append("and position.name like '" + job.getPosition().getName()+"%'");
 		}
 		if(!StringUtils.isEmpty(job.getSalary())){
 			if(job.getSalary().equals("12")){
-				hql.append("and salary >='1000' and salary <'2000'");
+				hql.append("and salary >=1000 and salary <2000");
 			}
 			if(job.getSalary().equals("24")){
-				hql.append("and salary >='2000' and salary <'4000'");
+				hql.append("and salary >=2000 and salary <4000");
 			}
 			if(job.getSalary().equals("46")){
-				hql.append("and salary >='4000' and salary <'6000'");
+				hql.append("and salary >=4000 and salary <6000");
 			}
 			if(job.getSalary().equals("68")){
-				hql.append("and salary >='6000' and salary <'8000'");
+				hql.append("and salary >=6000 and salary <8000");
 			}
 			if(job.getSalary().equals("81")){
-				hql.append("and salary >='8000' and salary <'10000'");
+				hql.append("and salary >=8000 and salary <10000");
 			}
 			if(job.getSalary().equals("100")){
 				hql.append("and salary >='10000'");

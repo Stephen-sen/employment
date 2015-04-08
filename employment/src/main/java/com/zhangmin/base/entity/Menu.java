@@ -15,6 +15,10 @@ package com.zhangmin.base.entity;
  */
 public class Menu extends BaseEntity{
 
+	/**
+	 * @Fields serialVersionUID : TODO
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String sequence;
 	private String shortName;

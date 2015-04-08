@@ -202,4 +202,9 @@ public class UserInfoService {
 		String hql = "update UserInfo set passWord=? where id=?";
 		userInfoDao.bulkUpdate(hql, new Object[] {userInfo.getPassWord(), userInfo.getId() });
 	}
+	
+	public List<UserInfo> findUserByName(String userName){
+		String hql = "from UserInfo where userName = '"+userName+"' and flag='y'";
+		return userInfoDao.find(hql);
+	}
 }
