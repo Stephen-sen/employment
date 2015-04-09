@@ -84,4 +84,9 @@ public class MajorService {
 		String hql = "from Major where flag ='y'";
 		return majorDao.find(hql);
 	}
+	
+	public List<Major> findMajor(String name){
+		String hql = "from Major where flag ='y' and name='"+ name+"'";
+		return majorDao.find(hql);
+	}
 }

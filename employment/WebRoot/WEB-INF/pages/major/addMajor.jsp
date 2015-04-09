@@ -15,7 +15,31 @@
 		history.go(-1);
 	}
 	function onSubmit() {
-		$('#form1').submit();
+		MajorCheck();
+	}
+
+	function MajorCheck(){
+		var majorName=$('#nameTxt').val();
+        $.ajax({
+            cache: false,
+            type: 'post',
+            async: false,
+            url: '${path}/majorController/ajaxCheckMajor.do?',
+            data : {"name" : majorName},
+            dataType: 'json',
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(XMLHttpRequest.status);
+			},
+			success : function(data) {
+				$(data).each(function(i, item) {
+					if(item == 'true'){
+						jqueryUIAlert("该专业已存在！");
+					}else{
+						$('#form1').submit();
+					}
+				});
+			}
+        });
 	}
 </script>
   <body>

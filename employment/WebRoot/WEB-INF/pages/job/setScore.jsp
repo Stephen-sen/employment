@@ -53,6 +53,7 @@
                             <input type="hidden" name="id" id="idHid" />
                             <input type="hidden" name="company.id" value="${job.company.id}" id="companyHid" />
                             <input type="hidden" name="position.id" value="${job.position.id}"  id="positionHid" />
+                            <input type="hidden" name="type" value="company" />
 							<input type="hidden" value="${token}" name="token" />
                             <table class="add-tb">
                                 <tr>

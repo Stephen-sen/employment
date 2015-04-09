@@ -311,7 +311,7 @@ public class JobController extends BaseController {
 		ModelAndView view =new ModelAndView();
 		try{
 			Job jobInfo = jobService.findJobDetail(job);
-			jobService.deleteJob(job.getId());
+			jobService.deleteJob(jobInfo.getId());
 			pos_AbiService.deletePos_Abi(jobInfo);
 			view= list(job,pageNo,request);
 		}
@@ -320,4 +320,31 @@ public class JobController extends BaseController {
 		}
 		return view;
 		}
+	
+	@RequestMapping(value="/jobController/getJobList")
+	public@ResponseBody Object ajaxGetJobList(){
+		List<Job> jobList = new ArrayList<Job>();
+		try {
+			jobList = jobService.jobList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return String.valueOf(JSONArray.toJSON(jobList));
+	}
+	
+	@RequestMapping(value="/jobController/ajaxCheckJob")
+	public@ResponseBody Object ajaxCheckJob(Job job){
+		List<String> item = new ArrayList<String>();
+		try {
+			List<Job> jobList = jobService.findJob(job);
+			if(jobList.size()>0){
+				item.add("true");
+			}else{
+				item.add("false");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return String.valueOf(JSONArray.toJSON(item));
+	}
 }

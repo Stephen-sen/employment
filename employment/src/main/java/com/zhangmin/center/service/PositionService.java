@@ -84,4 +84,9 @@ public class PositionService {
 		String hql="from Position where flag = 'y'";
 		return positionDao.find(hql);
 	}
+	
+	public List<Position> findPosition(String name){
+		String hql = "from Position where flag ='y' and name='"+ name+"'";
+		return positionDao.find(hql);
+	}
 }

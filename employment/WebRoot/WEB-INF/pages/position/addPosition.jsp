@@ -15,7 +15,31 @@
 		history.go(-1);
 	}
 	function onSubmit() {
-		$('#form1').submit();
+		positionCheck();
+	}
+
+	function positionCheck(){
+		var positionName=$('#nameTxt').val();
+        $.ajax({
+            cache: false,
+            type: 'post',
+            async: false,
+            url: '${path}/positionController/ajaxCheckPosition.do?',
+            data : {"name" : positionName},
+            dataType: 'json',
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(XMLHttpRequest.status);
+			},
+			success : function(data) {
+				$(data).each(function(i, item) {
+					if(item == 'true'){
+						jqueryUIAlert("该职位已存在！");
+					}else{
+						$('#form1').submit();
+					}
+				});
+			}
+        });
 	}
 </script>
   <body>

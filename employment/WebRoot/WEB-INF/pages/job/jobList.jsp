@@ -115,8 +115,10 @@ function doQuery(){
 										<td>
 										<c:if test="${type eq 'company'}">
               							<a href="${path}/jobController/detail.do?id=${item.id}" class="btn1 btn-small">详细</a>
+              							<c:if test="${item.status != '1'}">
               							<a href="${path}/jobController/find.do?id=${item.id}" class="btn1 btn-small">修改</a>
-              							<a href="${path}/jobController/delete.do?id=${item.id}" class="btn1 btn-small">删除</a>
+              							<a href="${path}/jobController/delete.do?id=${item.id}&&type=company" class="btn1 btn-small">删除</a>
+              							</c:if>
               							</c:if>
               							<c:if test="${type eq 'persional'}">
               							 <c:if test="${item.status != '1'}">

@@ -7,7 +7,9 @@
  */
 package com.zhangmin.center.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,9 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseController;
+import com.alibaba.fastjson.JSONArray;
 import com.zhangmin.center.entity.Major;
 import com.zhangmin.center.service.MajorService;
 import com.zhaosen.base.Page;
@@ -167,4 +171,20 @@ public class MajorController extends BaseController{
 		}
 		return view;
 		}
+	
+	@RequestMapping(value="/majorController/ajaxCheckMajor")
+	public@ResponseBody Object ajaxCheckMajor(String name){
+		List<String> item = new ArrayList<String>();
+		try {
+			List<Major> majorList = majorService.findMajor(name);
+			if(majorList.size()>0){
+				item.add("true");
+			}else{
+				item.add("false");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return String.valueOf(JSONArray.toJSON(item));
+	}
 }

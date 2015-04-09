@@ -96,7 +96,6 @@ public class Stu_AbiService {
 			stuAbiDao.realDel(stuAbi);
 		}
 	}
-	
 	public List<Stu_Abi> stuAbiList(Stu_Abi stuAbi){
 		String hql = "from Stu_Abi where student='"+stuAbi.getStudent().getId()+ "' and job='"+stuAbi.getJob().getId()+"'";
 		return stuAbiDao.find(hql);

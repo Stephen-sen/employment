@@ -39,12 +39,13 @@ function showsubmenu(sid) {
     <td width="61%" height="64"><img src="themes/images/logo.gif" width="262" height="64"></td>
     <td width="39%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="74%" height="38" class="admin_txt">管理员：<b>${user.userName}</b> 您好,感谢登陆使用！</td>
-        <td width="22%"><a href="#" target="_self" onClick="logout();"><img src="themes/images/out.gif" alt="安全退出" width="46" height="20" border="0"></a></td>
-        <td width="4%">&nbsp;</td>
+        <td width="50%" height="38" class="admin_txt"><b>${user.userName}</b> 您好,感谢登陆使用！</td>
+        <td width="20%"><a href="#" target="_self" onClick="logout();"><img src="themes/images/out.gif" alt="安全退出" width="46" height="20" border="2"></a></td>
+        <td width="16%" style="padding-left: 10px"><a href="${path }/right.do" target="main"><img src="themes/images/back_main.gif" alt="返回主页" width="60" height="20" border="2"></a></td>
+        <td width="4%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       </tr>
       <tr>
-        <td height="19" colspan="3">&nbsp;</td>
+        <td height="19" colspan="4">&nbsp;</td>
         </tr>
     </table></td>
   </tr>

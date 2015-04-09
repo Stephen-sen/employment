@@ -60,10 +60,10 @@ public class JobService {
 	public String  hqlCondition(Job job){
 		StringBuffer hql=new StringBuffer();
 		hql.append("from Job where flag ='y'");
-		if(job.getCompany()!=null){
+		if(null !=job.getCompany() && !StringUtils.isEmpty(job.getCompany().getName())){
 			hql.append("and company.name like '" + job.getCompany().getName()+"%'");
 		}
-		if(null!=job.getPosition()){
+		if(null!=job.getPosition() && !StringUtils.isEmpty(job.getPosition().getName())){
 			hql.append("and position.name like '" + job.getPosition().getName()+"%'");
 		}
 		if(!StringUtils.isEmpty(job.getSalary())){
@@ -141,4 +141,19 @@ public class JobService {
 			}
 		}
 		}
+	public List<Job> jobList(){
+		StringBuffer hql=new StringBuffer();
+		hql.append("from Job where flag ='y'");
+		hql.append("order by updateDate desc,");
+		hql.append("createDate desc");
+		return jobDao.find(hql.toString());
+	}
+	
+	public List<Job> findJob(Job job){
+		if(!StringUtils.isEmpty(job.getCompany().getId()) && !StringUtils.isEmpty(job.getPosition().getId())){
+		String hql = "from Job where company='"+job.getCompany().getId()+"'and position = '"+job.getPosition().getId()+"'";
+		return jobDao.find(hql);
+		}
+		return null;
+	}
 }

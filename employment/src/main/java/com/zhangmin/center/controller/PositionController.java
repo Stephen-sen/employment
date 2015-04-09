@@ -8,16 +8,20 @@
 package com.zhangmin.center.controller;
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseController;
+import com.alibaba.fastjson.JSONArray;
 import com.zhangmin.center.entity.Position;
 import com.zhangmin.center.service.PositionService;
 import com.zhaosen.base.Page;
@@ -140,4 +144,20 @@ public class PositionController extends BaseController {
 		}
 		return view;
 		}
+	
+	@RequestMapping(value="/positionController/ajaxCheckPosition")
+	public@ResponseBody Object ajaxCheckPosition(String name){
+		List<String> item = new ArrayList<String>();
+		try {
+			List<Position> positionList = positionService.findPosition(name);
+			if(positionList.size()>0){
+				item.add("true");
+			}else{
+				item.add("false");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return String.valueOf(JSONArray.toJSON(item));
+	}
 }

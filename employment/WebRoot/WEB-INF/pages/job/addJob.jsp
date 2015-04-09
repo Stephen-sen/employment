@@ -13,8 +13,8 @@
 		history.go(-1);
 	}
 	function onSubmit() {
-		 $("#form1").validate();
-		$('#form1').submit();
+		$("#form1").validate();
+		jobCheck();
 	}
 
 	function showMenu(id,str) {
@@ -106,6 +106,33 @@
 			}
 		}
     }
+
+    function jobCheck(){
+		var companyId=$('#companyTxt').val();
+		var positionId=$('#positionTxt').val();
+        $.ajax({
+            cache: false,
+            type: 'post',
+            async: false,
+            url: '${path}/jobController/ajaxCheckJob.do?',
+            data : {"company.id" : companyId,
+            		"position.id" : positionId},
+            dataType: 'json',
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(XMLHttpRequest.status);
+			},
+			success : function(data) {
+				$(data).each(function(i, item) {
+					if(item == 'true'){
+						jqueryUIAlert("改职位已存在！");
+					}else{
+						$('#form1').submit();
+					}
+					
+				});
+			}
+        });
+	}
 </script>
   <body>
     <div id="main-div" class="width-p100">
@@ -137,7 +164,7 @@
                                     </td>
                                     <td class="ltd4">招聘职位 </td>
                                     <td class="rtd4">
-                                     <select id="positonTxt"  name="position.id" class="required width-p40">
+                                     <select id="positionTxt"  name="position.id" class="required width-p40">
                                      		<option value="">---请选择---</option>
                                      		<c:forEach var="item" items="${positionList}"varStatus="s">
                                       		<option value="${item.id }">${item.name }</option>
