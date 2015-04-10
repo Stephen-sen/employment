@@ -35,6 +35,7 @@ $news.css({ margin: 0 }).find('li:first').appendTo($news);
 </script> 
 </head> 
 <body> 
+<a href="www.baidu.com">百度搜索</a>
 <form id="form1" runat="server"> 
 <div class="scrollNews" > 
 <ul> 

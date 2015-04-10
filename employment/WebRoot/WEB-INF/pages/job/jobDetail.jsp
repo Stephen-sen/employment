@@ -61,7 +61,6 @@
                                     <td class="ltd4">联系电话</td>
                                     <td class="rtd4">
                                         <input  autocomplete="off" id="contactTelTxt" autocomplete="off" type="text"  name="contactTel" class="width-p40" value="${jobInfo.contactTel}" style="background-color: #E6E9F0" readonly="readonly"/>
-										<span class="color-red">*</span>
                                     </td>
                                     <td class="ltd4">公司地址 </td>
                                     <td class="rtd4">

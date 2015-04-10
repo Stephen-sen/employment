@@ -40,8 +40,8 @@
 			<mvc:mapping path="/*Controller/**" />
 			<mvc:exclude-mapping path="/verifyController/**"/>
 			<mvc:exclude-mapping path="/dologin*"/>
-			<mvc:exclude-mapping path="/userController/regist"/>
-			<mvc:exclude-mapping path="/userController/save"/>
+			<mvc:exclude-mapping path="/userController/regist*"/>
+			<mvc:exclude-mapping path="/userController/save*"/>
 			<bean class="com.base.interceptor.CheckLoginInterceptor">
 			</bean>
 		</mvc:interceptor>
