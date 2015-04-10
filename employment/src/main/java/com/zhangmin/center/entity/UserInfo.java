@@ -17,6 +17,10 @@ import com.zhangmin.base.entity.BaseEntity;
  */
 public class UserInfo extends BaseEntity{
 
+	/**
+	 * @Fields serialVersionUID : TODO
+	 */
+	private static final long serialVersionUID = 1L;
 	private String userName;
 	private String sex;
 	private String passWord;
@@ -29,6 +33,8 @@ public class UserInfo extends BaseEntity{
 	private String tel;
 	private String status;
 	private String lastLoginDate;
+	private Integer loginTimes;
+	private String lastLoginIp;
 	/**
 	 * @return the userName
 	 */
@@ -176,5 +182,30 @@ public class UserInfo extends BaseEntity{
 	public void setAge(String age) {
 		this.age = age;
 	}
+	/**
+	 * @return the loginTimes
+	 */
+	public Integer getLoginTimes() {
+		return loginTimes;
+	}
+	/**
+	 * @param loginTimes the loginTimes to set
+	 */
+	public void setLoginTimes(Integer loginTimes) {
+		this.loginTimes = loginTimes;
+	}
+	/**
+	 * @return the lastLoginIp
+	 */
+	public String getLastLoginIp() {
+		return lastLoginIp;
+	}
+	/**
+	 * @param lastLoginIp the lastLoginIp to set
+	 */
+	public void setLastLoginIp(String lastLoginIp) {
+		this.lastLoginIp = lastLoginIp;
+	}
+	
 	
 }

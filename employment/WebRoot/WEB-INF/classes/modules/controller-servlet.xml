@@ -37,10 +37,11 @@
 
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/*Controller/*list.*" />
-			<mvc:mapping path="/*Controller/*List.*" />
-			<mvc:mapping path="/*Controller/*view.*" />
-			<mvc:mapping path="/*Controller/*View.*" />
+			<mvc:mapping path="/*Controller/**" />
+			<mvc:exclude-mapping path="/verifyController/**"/>
+			<mvc:exclude-mapping path="/dologin*"/>
+			<mvc:exclude-mapping path="/userController/regist"/>
+			<mvc:exclude-mapping path="/userController/save"/>
 			<bean class="com.base.interceptor.CheckLoginInterceptor">
 			</bean>
 		</mvc:interceptor>

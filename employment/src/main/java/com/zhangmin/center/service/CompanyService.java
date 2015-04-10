@@ -84,4 +84,9 @@ public class CompanyService {
 		String hql="from Company where flag = 'y'";
 		return companyDao.find(hql);
 	}
+	
+	public List<Company> findCompany(String name){
+		String hql = "from Company where flag ='y' and name='"+ name+"'";
+		return companyDao.find(hql);
+	}
 }

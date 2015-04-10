@@ -15,7 +15,31 @@
 		history.go(-1);
 	}
 	function onSubmit() {
-		$('#form1').submit();
+		companyCheck();
+	}
+
+	function companyCheck(){
+		var companyName=$('#nameTxt').val();
+        $.ajax({
+            cache: false,
+            type: 'post',
+            async: false,
+            url: '${path}/companyController/ajaxCheckCompany.do?',
+            data : {"name" : companyName},
+            dataType: 'json',
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(XMLHttpRequest.status);
+			},
+			success : function(data) {
+				$(data).each(function(i, item) {
+					if(item == 'true'){
+						jqueryUIAlert("该公司已存在！");
+					}else{
+						$('#form1').submit();
+					}
+				});
+			}
+        });
 	}
 </script>
   <body>

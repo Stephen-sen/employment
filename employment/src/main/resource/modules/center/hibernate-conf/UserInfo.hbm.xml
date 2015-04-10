@@ -46,6 +46,12 @@
 			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>
 		
+		<property name="loginTimes" type="java.lang.Integer" column="loginTimes"
+			length="20" unique="false" not-null="false" insert="true" update="true" />
+			
+			<property name="lastLoginIp" type="java.lang.String" column="lastLoginIp"
+			length="100" unique="false" not-null="false" insert="true" update="true" />
+		
 		<many-to-one name="major" not-null="false" update="true"
 			lazy="false" insert="true" cascade="none">
 			<column name="major_id"/>

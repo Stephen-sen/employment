@@ -9,10 +9,7 @@
 <head>
 <%@ include file="/common/header.jsp"%>
 </head>
-    <base href="http://localhost:8080/emp/">
-    
     <title>系统主页</title>
-    
 	<link href="themes/images/skin.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <style type="text/css">
@@ -33,7 +30,13 @@ body {
         </style>
         
         <script type="text/javascript">
-        $(function () {
+
+        $(document).ready(function() {
+        	getJobList();
+        	showUrl();
+        });
+        
+        function showUrl() {
             var settime;
             $(".scrollNews").hover(function () {
                 clearInterval(settime);
@@ -46,8 +49,8 @@ body {
                     });
                 }, 1500);
             }).trigger("mouseleave");       //trigger()方法的作用是触发被选元素的制定事件类型
-        });
-
+        };
+       
         function getJobList(){
             $.ajax({
                 cache: false,
@@ -67,7 +70,7 @@ body {
             });
     	}
     </script>
-<body marginwidth="0" marginheight="0" onload="getJobList()">
+<body marginwidth="0" marginheight="0">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tbody><tr>
     <td width="17" valign="top" background="themes/images/mail_leftbg.gif"><img src="themes/images/left-top-right.gif" width="17" height="29"></td>
@@ -87,14 +90,14 @@ body {
         <td valign="top">&nbsp;</td>
       </tr>
       <tr>
-        <td colspan="2" valign="top"><span class="left_bt">感谢您使用 商家信息网 网站管理系统程序</span><br>
-        
-        <p><a href="login.html" target="_blank" style="font-size:18px">登录界面演示</a></p> 
+        <td colspan="2" valign="top"><span class="left_bt">感谢您使用毕业生就业能力评价系统</span><br>
               <br>
-            <span class="left_txt">&nbsp;<img src="themes/images/ts.gif" width="16" height="16"> 提示：<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您现在使用的是www.nongfuit.com开发的一套用于构建商务信息类门户型网站的专业系统！如果您有任何疑问请点左下解的</span><span class="left_ts">在线客服</span><span class="left_txt">进行咨询！<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;七大栏目完美整合，一站通使用方式，功能强大，操作简单，后台操作易如反掌，只需会打字，会上网，就会管理网站！<br>
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此程序是您建立地区级商家信息门户的首选方案！　 <br>
+            <span class="left_txt">&nbsp;<img src="themes/images/ts.gif" width="16" height="16"><font style="font-weight: bolder ;color: black"> 登录信息：</font><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登陆帐号：</span><span class="left_ts">${user.userName}</span><span class="left_txt"><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注册时间：</span><span class="left_ts">${user.createDate}</span><span class="left_txt"><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登陆次数：</span><span class="left_ts">${user.loginTimes}</span><span class="left_txt"><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上次登录时间：</span><span class="left_ts">${lastLoginDate}</span><span class="left_txt"><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上次登录IP：</span><span class="left_ts">${lastLoginIp}</span><span class="left_txt"><br>
 </span></td>
         <td width="7%">&nbsp;</td>
         <td width="40%" valign="top"><table width="100%" height="144" border="0" cellpadding="0" cellspacing="0" class="line_table">

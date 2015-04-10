@@ -56,11 +56,9 @@ public class UserInfoService {
 	 * @author 张敏
 	 * @date 2015-3-15
 	 */
-	public void updateLastLoginDate(UserInfo user){
-		String createDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
-		user.setLastLoginDate(createDate);
-		user.setUpdateDate(createDate);
-		userInfoDao.updateLoginDate(user);
+	public void updateLogin(UserInfo user){
+		String sql = "update UserInfo set lastLoginDate =?,lastLoginIp=?, loginTimes =? where id = ?";
+		userInfoDao.bulkUpdate(sql, new Object[] {user.getLastLoginDate(),user.getLastLoginIp(), user.getLoginTimes(),user.getId() });
 	}
 	
 	/**

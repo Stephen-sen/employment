@@ -15,7 +15,30 @@
 		history.go(-1);
 	}
 	function onSubmit() {
-		$('#form1').submit();
+		abilityCheck();
+	}
+	function abilityCheck(){
+		var abilityName=$('#nameTxt').val();
+        $.ajax({
+            cache: false,
+            type: 'post',
+            async: false,
+            url: '${path}/abilityController/ajaxCheckAbility.do?',
+            data : {"name" : abilityName},
+            dataType: 'json',
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(XMLHttpRequest.status);
+			},
+			success : function(data) {
+				$(data).each(function(i, item) {
+					if(item == 'true'){
+						jqueryUIAlert("该考核项已存在！");
+					}else{
+						$('#form1').submit();
+					}
+				});
+			}
+        });
 	}
 </script>
   <body>

@@ -191,6 +191,24 @@ function abc(pid,url,name){
 </body>
 </html>
         <script type="text/javascript">
+
+        if (!document.getElementsByClassName) {
+        	document.getElementsByClassName = function(className, element) {
+        		var children = (element || document).getElementsByTagName('*');
+        		var elements = new Array();
+        		for ( var i = 0; i < children.length; i++) {
+        			var child = children[i];
+        			var classNames = child.className.split(' ');
+        			for ( var j = 0; j < classNames.length; j++) {
+        				if (classNames[j] == className) {
+        					elements.push(child);
+        					break;
+        				}
+        			}
+        		}
+        		return elements;
+        	};
+        }
 			var contents = document.getElementsByClassName('content');
 			var toggles = document.getElementsByClassName('type');
 		
@@ -198,4 +216,4 @@ function abc(pid,url,name){
 				toggles, contents, {opacity: true, duration: 400}
 			);
 			myAccordion.showThisHideOpen(contents[0]);
-		</script>
+</script>

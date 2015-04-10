@@ -9,6 +9,7 @@ package com.zhangmin.base.controller;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,7 @@ import com.zhangmin.center.service.UserInfoService;
 import com.zhangmin.constant.Const;
 import com.zhangmin.constant.Global;
 import com.zhangmin.constant.Util;
+import com.zhaosen.util.DateUtil;
 import com.zhaosen.util.MD5;
 
 /**
@@ -66,54 +68,67 @@ public class LoginController extends BaseController{
 	@RequestMapping(value = "/dologin", method = { RequestMethod.GET,RequestMethod.POST })
 	public ModelAndView doLogin(HttpSession session,UserInfo user,HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
-		
-		String viewName = "login";
-		if(session.getAttribute(Global.USER_INFO) !=null){
-			viewName = "index";
-		}else{
-		boolean flag = true;
-		String validationCode = (String) session.getAttribute("verifycode");
-		String viewValidationCode = request.getParameter("verifycode");
-		if(!Util.isEmpty(viewValidationCode)){
-			if(!viewValidationCode.equalsIgnoreCase(validationCode)){
-				view.addObject("userName", user.getUserName());
-				super.setMessageCode(Const.USER_VALIDATION_CODE);
-				flag = false;
-			}
-			if(flag){
-				UserInfo param = new UserInfo();
-				param.setUserName(user.getUserName());
-				param.setPassWord(md5.getMD5ofStr(user.getPassWord()));
-				UserInfo userInfo = userInfoService.getUserInfo(param);
-				if(userInfo == null){
-					super.setMessageCode(Const.USER_USERNAME_NOT_FOUND);
-				}else{
-					if(!userInfo.getPassWord().endsWith(param.getPassWord())){
-						super.setMessageCode(Const.USER_PASSWORD_FAIL);
-					}
-					else{
-						viewName = "index";
-						session.setAttribute(Global.USER_INFO,userInfo);
-						
-						UserRole userRole = userRoleService.findUserRole(userInfo.getId());
-						session.setAttribute("userRole", userRole);
-						List<RoleMenu> roleMenuMess = roleMenuService.findRoleMenu(userRole.getRole().getId());
-						List<Menu> userMenuList = new ArrayList<Menu>();
-						for (RoleMenu roleMenu : roleMenuMess)
-						{
-							userMenuList.add(roleMenu.getMenu());
+		try {
+			String viewName = "login";
+			if(session.getAttribute(Global.USER_INFO) !=null){
+				viewName = "index";
+			}else{
+			boolean flag = true;
+			String validationCode = (String) session.getAttribute("verifycode");
+			String viewValidationCode = request.getParameter("verifycode");
+			if(!Util.isEmpty(viewValidationCode)){
+				if(!viewValidationCode.equalsIgnoreCase(validationCode)){
+					view.addObject("userName", user.getUserName());
+					super.setMessageCode(Const.USER_VALIDATION_CODE);
+					flag = false;
+				}
+				if(flag){
+					UserInfo param = new UserInfo();
+					param.setUserName(user.getUserName());
+					param.setPassWord(md5.getMD5ofStr(user.getPassWord()));
+					UserInfo userInfo = userInfoService.getUserInfo(param);
+					if(userInfo == null){
+						super.setMessageCode(Const.USER_USERNAME_NOT_FOUND);
+					}else{
+						if(!userInfo.getPassWord().endsWith(param.getPassWord())){
+							super.setMessageCode(Const.USER_PASSWORD_FAIL);
 						}
-						session.setAttribute("userMenuList", userMenuList);
-						userInfoService.updateLastLoginDate(userInfo);
+						else{
+							viewName = "index";
+							UserRole userRole = userRoleService.findUserRole(userInfo.getId());
+							session.setAttribute("userRole", userRole);
+							List<RoleMenu> roleMenuMess = roleMenuService.findRoleMenu(userRole.getRole().getId());
+							List<Menu> userMenuList = new ArrayList<Menu>();
+							for (RoleMenu roleMenu : roleMenuMess)
+							{
+								userMenuList.add(roleMenu.getMenu());
+							}
+							session.setAttribute("userMenuList", userMenuList);
+							if((userInfo.getLoginTimes()+"").equals("null")){
+								userInfo.setLoginTimes(1);
+							}
+							else{
+								userInfo.setLoginTimes(userInfo.getLoginTimes() + 1);
+							}
+							session.setAttribute(Global.USER_INFO,userInfo);
+							session.setAttribute("lastLoginDate", userInfo.getLastLoginDate());
+							session.setAttribute("lastLoginIp", userInfo.getLastLoginIp());
+							String createDate = DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss);
+							userInfo.setLastLoginDate(createDate);
+							userInfo.setUpdateDate(createDate);
+							userInfo.setLastLoginIp(Util.getIpAddr(request));
+							userInfoService.updateLogin(userInfo);
+						}
 					}
 				}
+				view.addObject("messagecode", super.getMessageCode());
 			}
-			view.addObject("messagecode", super.getMessageCode());
+			}
+			view.setViewName(viewName);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		}
-		view.setViewName(viewName);
 		return view;
-		
 	}
 	
 	/**

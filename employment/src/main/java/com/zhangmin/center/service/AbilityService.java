@@ -98,4 +98,9 @@ public class AbilityService {
 		return abilityMap;
 		
 	}
+	
+	public List<Ability> findAbility(String name){
+		String hql = "from Ability where flag ='y' and name='"+ name+"'";
+		return abilityDao.find(hql);
+	}
 }

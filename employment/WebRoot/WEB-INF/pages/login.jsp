@@ -57,6 +57,7 @@ function redirect(){
 	return false;
 }
 $(document).ready(function() {
+	myReload();
 	correctPNG();
 	$("#VerifyCode").css("cursor", "pointer").click(function() {
 	      $(this).attr("src", "code.php?" + Math.random());
@@ -102,16 +103,16 @@ $(document).ready(function() {
                   <td height="198" align="right" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td width="35%">&nbsp;</td>
-                      <td height="25" colspan="2" class="left_txt"><p><font size="5px">温馨提醒：</font></p></td>
+                      <td height="25" colspan="2" class="left_txt"><p><font style="font-weight: bolder ;color: black;font-size: 15px">温馨提醒：</font></p></td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
-                      <td height="25" colspan="2" class="left_txt"><p><p><font size="3px">如果您没有账户，请在这里注册！</font></p></td>
+                      <td height="25" colspan="2" class="left_txt"><p><p><font style="font-weight: bolder ; font-size: 12px">如果您还没有账户，请在这里注册！</font></p></td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td width="30%" height="40"><img src="themes/images/icon-demo.gif" width="16" height="16"><a href="javascript:redirect();" class="left_txt3" onclick="redirect"> 注册</a> </td>
-                      <td width="35%"><img src="themes/images/icon-login-seaver.gif" width="16" height="16"><a href="http://www.nongfuit.com" class="left_txt3"> 使用说明</a></td>
+                      <td width="35%"><img src="themes/images/icon-login-seaver.gif" width="16" height="16"><a href="http://www.baidu.com" class="left_txt3"> 百度搜索</a></td>
                     </tr>
                   </table></td>
                 </tr>
@@ -143,8 +144,8 @@ $(document).ready(function() {
                           </tr>
                           <tr>
                             <td width="13%" height="35" ><span class="login_txt">验证码：</span></td>
-                            <td height="35" colspan="2" class="top_hui_text"><input  name="verifycode" type=text  maxLength=4 size=8 style="font-size: 6">
-                            <img src="${path }/verifyController/getVerify.do" id="createVerifyCode">
+                            <td height="35" colspan="2" class="top_hui_text"><input  name="verifycode" type=text  maxLength=4 size=8 style="font-size: 15px">
+                            <img src="${path }/verifyController/getVerify.do" id="createVerifyCode" onclick="myReload()">
                             </td>
                           </tr>
 			                <tr>
@@ -173,7 +174,7 @@ $(document).ready(function() {
   <tr>
     <td height="20"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="login-buttom-bg">
       <tr>
-        <td align="center"><span class="login-buttom-txt">Copyright &copy; 2014-2015 www.nongfuit.com</span></td>
+        <td align="center"><span class="login-buttom-txt">Copyright &copy; 2014-2015 www.sanmusoft.com</span></td>
       </tr>
     </table></td>
   </tr>

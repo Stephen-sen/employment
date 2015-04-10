@@ -166,4 +166,20 @@ public class CompanyController extends BaseController {
 		}
 		return view;
 		}
+	
+	@RequestMapping(value="/companyController/ajaxCheckCompany")
+	public@ResponseBody Object ajaxCheckCompany(String name){
+		List<String> item = new ArrayList<String>();
+		try {
+			List<Company> companyList = companyService.findCompany(name);
+			if(companyList.size()>0){
+				item.add("true");
+			}else{
+				item.add("false");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return String.valueOf(JSONArray.toJSON(item));
+	}
 }
