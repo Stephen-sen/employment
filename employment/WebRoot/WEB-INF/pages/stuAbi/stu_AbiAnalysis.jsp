@@ -117,7 +117,7 @@
                                 </c:forEach>
                                 <tr>
                                     <td style="text-align: center;" colspan="6">
-                                        <a href="javascript:onSubmit();" class="btn1 btn-small">查看分析报告</a>
+                                        <!-- <a href="javascript:onSubmit();" class="btn1 btn-small">查看分析报告</a> -->
                                          <a href="javascript:back();" class="btn1 btn-small">返回</a>
                                     </td>
                                 </tr>

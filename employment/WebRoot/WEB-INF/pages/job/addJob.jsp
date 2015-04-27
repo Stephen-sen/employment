@@ -200,7 +200,7 @@
                                  <tr>
                                     <td class="ltd4">联系电话</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="contactTelTxt" autocomplete="off" type="text"  name="contactTel" class="required width-p40" onkeyup="javascritp:numCheck('contactTelTxt');" maxlength="11" />
+                                        <input  autocomplete="off" id="contactTelTxt" autocomplete="off" type="text"  name="contactTel" class="required width-p40" onblur="javascritp:numCheck('contactTelTxt');" maxlength="11" />
 										<span class="color-red">*</span>
                                     </td>
                                     <td class="ltd4">公司地址 </td>

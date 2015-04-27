@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang.StringUtils;
 
 import com.zhaosen.util.DateUtil;
+import com.zhaosen.util.MD5;
 
 /**
  * ClassName: Util 
@@ -99,6 +100,7 @@ public class Util {
 	
 	public static void main(String arg[])
 	{
-		System.out.println(DateUtil.convertDateToString(new Date(), DateUtil.DATE_FORMAT_yyyyMMddhhmmss));
+		MD5 md5 = new MD5();
+		System.out.println(md5.getMD5ofStr("123"));
 	}
 }

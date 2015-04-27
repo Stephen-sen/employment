@@ -42,7 +42,7 @@ function checkOldPwd(){
 				$(data).each(function(i, item) {
 					if(true != item){
 						$('#oldPwd').val("");
-						alert("原始密码输入错误！");
+						jqueryUIAlert("原始密码输入错误！");
 					}
 				});
 			}

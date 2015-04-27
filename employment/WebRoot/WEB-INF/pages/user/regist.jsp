@@ -15,7 +15,7 @@
 		history.go(-1);
 	}
 	function onSubmit() {
-		$('#form1').submit();
+		checkPass();
 	}
 	function checkName(){
 		var userName=$('#cnNameTxt').val();
@@ -39,6 +39,18 @@
 			}
         });
 	}
+	function checkPass(){
+		passWord1 = $("#passwordText").val();
+		passWord2 = $("#passwordText1").val();
+		if(passWord1 != passWord2){
+			$("#passwordText").val("");
+			$("#passwordText1").val("");
+			jqueryUIAlert("两次密码输入不一致，请重新输入！");
+			}else{
+				$("#form1").validate();
+				$('#form1').submit();
+			}
+		}
 </script>
   <body>
     <div id="main-div" class="width-p100">
@@ -107,7 +119,7 @@
                                     </td>
                                     <td class="ltd4">确认密码</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="passwordText1" type="password"  name="passWord1" class=" width-p40" maxlength="100" />
+                                        <input  autocomplete="off" id="passwordText1" type="password"  name="passWord1" class=" width-p40" maxlength="100"/>
                                         <span class="color-red">*</span>
                                     </td>
                                 </tr>

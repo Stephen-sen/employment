@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,17 +86,15 @@ public class UserController  extends BaseController{
 	 * @date 2015-3-16
 	 */
 	@RequestMapping(value = "/userController/save")
-	public ModelAndView save(HttpServletRequest request,HttpSession session,UserInfo user) throws Exception{
-		ModelAndView view =new ModelAndView();
+	public String  save(HttpServletRequest request,HttpSession session,UserInfo user) throws Exception{
 		try{
 			user.setPassWord(md5.getMD5ofStr(user.getPassWord()));
 			userInfoService.saveUserInfo(user);
-			view.setViewName("login");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		return view;
+		return "redirect:/dologin.do";  
 		}
 	/**
 	 * 
@@ -324,7 +323,18 @@ public class UserController  extends BaseController{
 		}
 		return view;
 		}
-	
+	/**
+	 * 密码重置
+	 * @Description: TODO
+	 * @param @param request
+	 * @param @param pageNo
+	 * @param @param userInfo
+	 * @param @return
+	 * @param @throws Exception   
+	 * @return ModelAndView  
+	 * @author 张敏
+	 * @date 2015-4-21
+	 */
 	@RequestMapping(value = "/userController/resetPasw")
 	public ModelAndView updatePasw(HttpServletRequest request,Integer pageNo,UserInfo userInfo) throws Exception{
 		ModelAndView view =new ModelAndView();
@@ -365,6 +375,16 @@ public class UserController  extends BaseController{
 		}
 		return view;
 		}
+	/**
+	 * 原始密码校验
+	 * @Description: TODO
+	 * @param @param userInfo
+	 * @param @param request
+	 * @param @return   
+	 * @return Object  
+	 * @author 张敏
+	 * @date 2015-4-22
+	 */
 	@RequestMapping(value="/userController/checkOldPwd")
 	public@ResponseBody Object ajaxGetcheckOldPwd(UserInfo userInfo,HttpServletRequest request){
 		List<String> result = new ArrayList<String>();

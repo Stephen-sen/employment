@@ -112,7 +112,7 @@ $(document).ready(function() {
                     <tr>
                       <td>&nbsp;</td>
                       <td width="30%" height="40"><img src="themes/images/icon-demo.gif" width="16" height="16"><a href="javascript:redirect();" class="left_txt3" onclick="redirect"> 注册</a> </td>
-                      <td width="35%"><img src="themes/images/icon-login-seaver.gif" width="16" height="16"><a href="http://www.baidu.com" class="left_txt3"> 百度搜索</a></td>
+                      <td width="35%"><img src="themes/images/pic7.gif" width="16" height="16"><a href="http://www.baidu.com" class="left_txt3" target="_blank"> 百度搜索</a></td>
                     </tr>
                   </table></td>
                 </tr>

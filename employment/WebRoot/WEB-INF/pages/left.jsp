@@ -164,7 +164,7 @@ function abc(pid,url,name){
 	 		 <c:forEach var="menu" items="${userMenuList}" varStatus="s">
 	 			<!-- 一级菜单 -->
 	 			 <c:choose>
-	 			<c:when test="${menu.preId.id eq '1'}">
+	 			<c:when test="${menu.preId.id eq '402881e444dd62c20144dd6798ec001c'}">
 					<h1 class="type"><a href="javascript:void(0)">${menu.name } </a></h1>
 					<div class="content" >
 				        <table width="100%" border="0" cellspacing="0" cellpadding="0">

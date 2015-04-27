@@ -16,6 +16,8 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 
+
+<link rel="shortcut icon" href="${path}/themes/images/hkdlogo.png" type="image/x-icon" /> 
 <link rel="stylesheet" type="text/css" href="${path}/themes/css/demo.css">
 <link rel="stylesheet" type="text/css" href="${path}/themes/css/main.css">
 <link rel="stylesheet" type="text/css" href="${path}/themes/css/style.css">

@@ -39,7 +39,6 @@
 									<th>类型</th>
 									<th>所属上级</th>
 									<th>说明</th>
-									<th>最大分值</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
@@ -63,7 +62,6 @@
 										<td> ${item.preId.name} </td>
 										</c:if>  
 										 <td> ${item.description} </td>
-										 <td> ${item.maxScore}（分） </td>
 										<td>
               							<a href="${path}/abilityController/find.do?id=${item.id}" class="btn1 btn-small">修改</a>
               							<a href="${path}/abilityController/delete.do?id=${item.id}" class="btn1 btn-small">删除</a>

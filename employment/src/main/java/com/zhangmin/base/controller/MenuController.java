@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseController;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.zhangmin.base.entity.Menu;
 import com.zhangmin.base.service.MenuService;
 import com.zhaosen.base.Page;
@@ -181,11 +182,19 @@ public class MenuController extends BaseController{
 	public @ResponseBody Object  ajaxgetMenuList(Menu menu,HttpServletRequest request) throws Exception{
 		List<Menu> menuList = new ArrayList<Menu>();
 		try{
+			JSONArray arrayJson1 = new JSONArray();
 			menuList= menuService.menuList(menu);
+			for (Menu menu2 : menuList) {
+				JSONObject json1 = new JSONObject();
+				json1.put("id", menu2.getId());
+				json1.put("name", menu2.getName());
+				arrayJson1.add(json1);
+			}
+			return String.valueOf(arrayJson1);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		return String.valueOf(JSONArray.toJSON(menuList));
+		return null;
 		}
 }

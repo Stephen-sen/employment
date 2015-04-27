@@ -65,7 +65,7 @@
 										<span class="color-red">*</span>
                                     </td>
                                     <td class="ltd4">类型 </td>
-                                    <td>
+                                    <td class="rtd4">
                                      <select id="assessmentTypeTxt"  name="assessmentType" class="required width-p40">
 											<option value="">---请选择---</option>
 											<option value="01">一级</option>
@@ -75,30 +75,20 @@
                                     </td>
                                 </tr>
                                  <tr>
-                                 <td class="ltd4">最大分值</td>
-                                    <td class="rtd4">
-                                        <input  autocomplete="off" id="maxScoreTxt" autocomplete="off" type="text"  name="maxScore" class="required width-p40" maxlength="2" />
-										<span class="color-red">*</span>
-                                    </td>
                                     <td class="ltd4">所属上级 </td>
-                                    <td>
-                                     <select id="preIdTxt"  name="Ability.preId" class="required width-p40">
-                                     		<option value="">---请选择---</option>
+                                    <td class="rtd4">
+                                     <select id="preIdSelect"  name="preId.id" class="required width-p40">
+                                     		<option value="-1">---无上级---</option>
                                      		<c:forEach var="item" items="${preAbilityList}">
 											<option value="${item.id }">${item.name }</option>
 											</c:forEach>
 										</select>
 										<span class="color-red">*</span>
                                     </td>
-                                </tr>
-                                 <tr>
                                     <td class="ltd4">考核内容说明</td>
                                     <td class="rtd4">
                                         <input  autocomplete="off" id="descriptionTxt" autocomplete="off" type="text"  name="description" class="required width-p80" maxlength="20" />
 										<span class="color-red">*</span>
-                                    </td>
-                                    <td class="ltd4"></td>
-                                    <td>
                                     </td>
                                 </tr>
                                 <tr>
