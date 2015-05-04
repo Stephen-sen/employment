@@ -99,11 +99,16 @@ public class LoginController extends BaseController{
 							session.setAttribute("userRole", userRole);
 							List<RoleMenu> roleMenuMess = roleMenuService.findRoleMenu(userRole.getRole().getId());
 							List<Menu> userMenuList = new ArrayList<Menu>();
+							StringBuffer btStr = new StringBuffer();
 							for (RoleMenu roleMenu : roleMenuMess)
 							{
 								userMenuList.add(roleMenu.getMenu());
+								if(roleMenu.getMenu().getButtonCode()!=null){
+									btStr.append(roleMenu.getMenu().getButtonCode());
+								}
 							}
 							session.setAttribute("userMenuList", userMenuList);
+							session.setAttribute(Global.USER_BUTTON_STR, btStr);
 							if((userInfo.getLoginTimes()+"").equals("null")){
 								userInfo.setLoginTimes(1);
 							}
@@ -122,6 +127,8 @@ public class LoginController extends BaseController{
 					}
 				}
 				view.addObject("messagecode", super.getMessageCode());
+			}else{
+				view.addObject("messagecode", Const.USER_VALIDATION_CODE_NULL);
 			}
 			}
 			view.setViewName(viewName);

@@ -83,10 +83,10 @@ public class MenuService {
 	public List<Menu> menuList(Menu menu){
 		if(menu.getMenuType()!=null && menu.getMenuType()!=""){
 			int menuType=Integer.parseInt(menu.getMenuType())-1;
-			if(menuType!=0){
-				menu.setMenuType("0"+menuType);
-			}else{
+			if(menuType==0){
 				menu.setMenuType(menuType+"");
+			}else{
+				menu.setMenuType("0"+menuType);
 			}
 			
 		}

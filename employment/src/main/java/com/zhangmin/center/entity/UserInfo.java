@@ -8,6 +8,7 @@
 package com.zhangmin.center.entity;
 
 import com.zhangmin.base.entity.BaseEntity;
+import com.zhangmin.base.entity.Role;
 
 /**
  * ClassName: UserInfo 
@@ -35,6 +36,7 @@ public class UserInfo extends BaseEntity{
 	private String lastLoginDate;
 	private Integer loginTimes;
 	private String lastLoginIp;
+	private Role role;
 	/**
 	 * @return the userName
 	 */
@@ -205,6 +207,12 @@ public class UserInfo extends BaseEntity{
 	 */
 	public void setLastLoginIp(String lastLoginIp) {
 		this.lastLoginIp = lastLoginIp;
+	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	
 	

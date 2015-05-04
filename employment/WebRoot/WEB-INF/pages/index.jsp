@@ -8,7 +8,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>毕业生就业能力评价系统</title>
+<title>${title }毕业生就业能力评价系统${user.userName}</title>
+<link rel="shortcut icon" href="${path}/themes/images/hkdlogo.png" type="image/x-icon" /> 
 <meta http-equiv=Content-Type content=text/html;charset=gb2312>
 </head>
 <frameset rows="64,*"  frameborder="NO" border="0" framespacing="0">

@@ -80,6 +80,13 @@ public class UserRoleService {
 		}
 	}
 	
+	public void deleteUserRoleByUserId(String userId){
+		UserRole userRole = findUserRole(userId);
+		if(userRole != null){
+			userRoleDao.realDel(userRole);
+		}
+	}
+	
 	public UserRole findUserRole(String userId){
 		String hql = "from UserRole where user='"+ userId+"' and flag ='y'";
 		List<UserRole> userRoleList = userRoleDao.find(hql);

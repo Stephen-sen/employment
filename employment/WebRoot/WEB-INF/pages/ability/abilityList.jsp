@@ -63,8 +63,12 @@
 										</c:if>  
 										 <td> ${item.description} </td>
 										<td>
+										<c:if test="${fn:contains(btnStr, '06xg_ability')}" >
               							<a href="${path}/abilityController/find.do?id=${item.id}" class="btn1 btn-small">修改</a>
+              							</c:if>
+              							<c:if test="${fn:contains(btnStr, '06del_ability')}" >
               							<a href="${path}/abilityController/delete.do?id=${item.id}" class="btn1 btn-small">删除</a>
+              							</c:if>
               							</td>
             						</tr>
                                 </c:forEach>
@@ -76,5 +80,8 @@
         </div>
         </div>
     </div>
+    <center>
+        <t:Footer></t:Footer>
+     </center>
   </body>
 </html>

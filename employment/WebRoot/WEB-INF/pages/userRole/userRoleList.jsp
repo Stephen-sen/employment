@@ -50,12 +50,18 @@
 										<td> ${item.role.name} </td>
 										<td> ${item.role.description} </td>
 										<td>
+										<c:if test="${fn:contains(btnStr, '10del_user_role')}" >
               							<a href="${path}/userRoleController/delete.do?id=${item.id}" class="btn1 btn-small">删除</a>
+              							</c:if>
               							<c:if test="${item.role.name != null && item.status != ''}">
+              							<c:if test="${fn:contains(btnStr, '10xg_user_role')}" >
               							<a href="${path}/userRoleController/find.do?id=${item.id}" class="btn1 btn-small">重新分配</a>
+              							</c:if>
               							</c:if> 
               							<c:if test="${item.role.name == null || item.status == ''}">
+              							<c:if test="${fn:contains(btnStr, '10fp_user_role')}" >
               							<a href="${path}/userRoleController/view.do?id=${item.id}" class="btn1 btn-small">分配角色</a>
+              							</c:if>
               							</c:if> 
               							</td>
             						</tr>
@@ -68,5 +74,8 @@
         </div>
         </div>
     </div>
+    <center>
+        <t:Footer></t:Footer>
+     </center>
   </body>
 </html>

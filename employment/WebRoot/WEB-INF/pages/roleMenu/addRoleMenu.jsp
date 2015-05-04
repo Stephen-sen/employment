@@ -71,10 +71,11 @@ function onSubmit() {
 }
 </script>
   <body>
-    <div id="main-div" class="width-p100">
+  <center>
+    <div id="main-div" class="width-p90">
             <div class="content main-page-190">
                 <div class="margin-lr-1">
-                    <div class="main-page-230 over-flow-x-hidden">
+                    <div class=" over-flow-x-hidden" style="height: 460px">
                         <form id="form1" action="${path}/roleMenuController/save.do" method="post">
                             <input type="hidden" name="role.id" id="idHid" value="${roleInfo.id }" />
                             <input type="hidden" id="menuStrHid" name="roleMenuStr" />
@@ -100,7 +101,9 @@ function onSubmit() {
                                     </td>
                                 </tr>
                                 <tr>
-							<td colspan="4"><font size=2 color="black"> <strong>
+							<td colspan="4" class="td-title"><font size=2 color="black">
+							<i class=" icon-chevron-down"></i>
+							 <strong>
 										<input id="allSelect" type="checkbox"
 										onclick="javascript:checkAll(this);" />全选</strong>&nbsp;&nbsp;&nbsp; </font>
 							</td>
@@ -108,22 +111,37 @@ function onSubmit() {
                                 <c:forEach var="menu" items="${menuList}" varStatus="s">
 							<c:if test="${menu.menuType eq '01' && menu.preId != 'null'}">
 								<tr>
-									<td class="ltd4"><font size=2 color="black"><strong> <input
-												type="checkbox" id="_${menu.id}" name="_${menu.id}"
-												onclick="javascript:checkSome(this,'${menu.id}');"
-												value="${menu.id }" />${menu.name} </strong> </font></td>
-
-									<td class="rtd4"  colspan="3">
-											 <c:forEach var="menus" items="${menuList}" varStatus="s">
-											<c:if test="${menus.preId.id eq menu.id}">
-											
-												<input id="_${menus.id}" name="_${menu.id}_${menus.id}"
-													onclick="javascript:checkSome(this,'${menus.id}');"
-													type="checkbox" value="${menus.id}" />${menus.name}
-											</c:if>
-											</c:forEach>
+									<td class="td-title" colspan="4">
+									<font size=2 color="black">
+									<i class=" icon-chevron-down"></i>
+									<strong>
+									 <input type="checkbox" id="_${menu.id}" name="_${menu.id}"
+											onclick="javascript:checkSome(this,'${menu.id}');"
+											value="${menu.id }" />${menu.name}
+									 </strong> 
+									 </font>
 									</td>
 								</tr>
+								<c:forEach var="menus" items="${menuList}" varStatus="s">
+								<c:if test="${menus.preId.id eq menu.id}">
+								<tr>
+									<td class="rtd4" >
+									<input id="_${menus.id}" name="_${menu.id}_${menus.id}"
+									onclick="javascript:checkSome(this,'${menus.id}');"
+									type="checkbox" value="${menus.id}" />${menus.name}
+									</td>
+									<td class="rtd4"  colspan="3">
+									<c:forEach var="menu2" items="${menuList}" varStatus="s">
+								   <c:if test="${menu2.preId.id eq menus.id}">
+									<input id="_${menu2.id}" name="_${menus.id}_${menu2.id}"
+									onclick="javascript:checkSome(this,'${menu2.id}');"
+									type="checkbox" value="${menu2.id}" />${menu2.name}
+									</c:if>
+								</c:forEach>
+								</td>
+								</tr>
+								</c:if>
+								</c:forEach>
 							</c:if>
 						</c:forEach>
                                 <tr>
@@ -138,5 +156,9 @@ function onSubmit() {
                 </div>
             </div>
         </div>
+        </center>
+        <center>
+        <t:Footer></t:Footer>
+     </center>
   </body>
 </html>

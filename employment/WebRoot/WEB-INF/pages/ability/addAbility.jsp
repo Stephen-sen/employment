@@ -61,7 +61,7 @@
                                 <tr>
                                     <td class="ltd4">名称</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="nameTxt" autocomplete="off" type="text"  name="name" class="required width-p40" maxlength="20" />
+                                        <input id="nameTxt" autocomplete="off" type="text"  name="name" class="required width-p40" maxlength="20" />
 										<span class="color-red">*</span>
                                     </td>
                                     <td class="ltd4">类型 </td>
@@ -103,5 +103,8 @@
                 </div>
             </div>
         </div>
+        <center>
+        <t:Footer></t:Footer>
+     </center>
   </body>
 </html>

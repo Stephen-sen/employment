@@ -116,16 +116,24 @@ function doQuery(){
 										<c:if test="${type eq 'company'}">
               							<a href="${path}/jobController/detail.do?id=${item.id}" class="btn1 btn-small">详细</a>
               							<c:if test="${item.status != '1'}">
+              							<c:if test="${fn:contains(btnStr, '05xg_yfbjob')}" >
               							<a href="${path}/jobController/find.do?id=${item.id}" class="btn1 btn-small">修改</a>
+              							</c:if>
+              							<c:if test="${fn:contains(btnStr, '05del_yfbjob')}" >
               							<a href="${path}/jobController/delete.do?id=${item.id}&&type=company" class="btn1 btn-small">删除</a>
+              							</c:if>
               							</c:if>
               							</c:if>
               							<c:if test="${type eq 'persional'}">
               							 <c:if test="${item.status != '1'}">
+              							 <c:if test="${fn:contains(btnStr, '08jy_ability')}" >
               							 <a href="${path}/stuAbiController/view.do?job.id=${item.id}" class="btn1 btn-small">就业能力评价</a>
               							 </c:if>
+              							 </c:if>
 										  <c:if test="${item.status eq '1'}">
+										   <c:if test="${fn:contains(btnStr, '08resetjy_ability')}" >
 										   <a href="${path}/stuAbiController/reAnalysisView.do?job.id=${item.id}" class="btn1 btn-small">重新评价</a>
+										   </c:if>
 										   <a href="${path}/stuAbiController/seeResult.do?job.id=${item.id}" class="btn1 btn-small">查看结果</a>
 										  </c:if>
               							
@@ -141,5 +149,8 @@ function doQuery(){
         </div>
         </div>
     </div>
+    <center>
+        <t:Footer></t:Footer>
+     </center>
   </body>
 </html>

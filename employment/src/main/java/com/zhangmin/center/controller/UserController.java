@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.action.support.BaseController;
 import com.alibaba.fastjson.JSONArray;
+import com.zhangmin.base.entity.Role;
 import com.zhangmin.base.entity.UserRole;
+import com.zhangmin.base.service.RoleService;
 import com.zhangmin.base.service.UserRoleService;
 import com.zhangmin.center.entity.Major;
 import com.zhangmin.center.entity.UserInfo;
@@ -52,6 +53,8 @@ public class UserController  extends BaseController{
 	private MajorService majorService;
 	@Autowired
 	private UserRoleService userRoleService;
+	@Autowired
+	private RoleService roleService;
 	
 	private MD5 md5 = new MD5();
 	/**
@@ -68,7 +71,9 @@ public class UserController  extends BaseController{
 	public ModelAndView addView(HttpServletRequest request) throws Exception{
 		ModelAndView mav=new ModelAndView("user/regist");
 		List<Major> majorList=majorService.majorList();
+		List<Role> roleList=roleService.roleList();
 		mav.addObject("majorList", majorList);
+		mav.addObject("roleList", roleList);
 		return mav;
 		}
 	
@@ -142,6 +147,7 @@ public class UserController  extends BaseController{
 		try{
 			
 			userInfoService.deleteUser(userInfo.getId());
+			userRoleService.deleteUserRoleByUserId(userInfo.getId());
 			view=list(userInfo,pageNo,request);
 		}
 		catch (Exception e) {
@@ -292,6 +298,7 @@ public class UserController  extends BaseController{
 				 
 				UserRole userRole = new UserRole();
 				userRole.setUser(userInfo);
+				userRole.setRole(userInfo.getRole());
 				userRoleService.saveUserRole(userRole);
 				view=registList(new UserInfo(),pageNo,request);
 		}
@@ -403,7 +410,17 @@ public class UserController  extends BaseController{
 		}
 		return String.valueOf(JSONArray.toJSON(result));
 	}
-	
+	/**
+	 * Ajax判断注册的用户是否已经存在
+	 * @Description: TODO
+	 * @param @param userInfo
+	 * @param @param request
+	 * @param @return   
+	 * @return Object  
+	 * @throws
+	 * @author 张敏
+	 * @date 2015年5月3日
+	 */
 	@RequestMapping(value="/userController/checkUserName")
 	public@ResponseBody Object ajaxGetcheckUserName(UserInfo userInfo,HttpServletRequest request){
 		List<String> result = new ArrayList<String>();

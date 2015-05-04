@@ -52,8 +52,12 @@
 										<td> ${item.staffNum} </td>
 										<td> ${item.address} </td>
 										<td>
+										<c:if test="${fn:contains(btnStr, '04xg_company')}" >
               							<a href="${path}/companyController/find.do?id=${item.id}" class="btn1 btn-small">修改</a>
+              							</c:if>
+              							<c:if test="${fn:contains(btnStr, '04del_company')}" >
               							<a href="${path}/companyController/delete.do?id=${item.id}" class="btn1 btn-small">删除</a>
+              							</c:if>
               							</td>
             						</tr>
                                 </c:forEach>
@@ -65,5 +69,8 @@
         </div>
         </div>
     </div>
+    <center>
+        <t:Footer></t:Footer>
+     </center>
   </body>
 </html>

@@ -154,7 +154,7 @@ $(document).ready(function() {
                           <tr>
                             <td height="35" >&nbsp;</td>
                             <td width="20%" height="35" ><input name="Submit" type="submit" class="button" id="Submit" value="登 陆"> </td>
-                            <td width="67%" class="top_hui_text"><input name="cs" type="button" class="button" id="cs" value="取 消" onClick="showConfirmMsg1()"></td>
+                            <td width="67%" class="top_hui_text"><input name="cs" type="reset" class="button" id="cs" value="重置" onClick="showConfirmMsg1()"></td>
                           </tr>
                         </table>
                         <br>

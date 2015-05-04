@@ -88,4 +88,13 @@ public class RoleService {
 		}
 		return null;
 	}
+	
+	public List<Role> roleList(){
+		String hql = "from Role where flag = 'y' and type is null";
+		List<Role> roleList = roleDao.find(hql);
+		if(roleList.size()>0){
+			return roleList;
+		}
+		return null;
+	}
 }

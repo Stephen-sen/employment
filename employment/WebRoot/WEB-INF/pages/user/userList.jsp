@@ -101,6 +101,7 @@ function deleteAction(id){
 									<th>注册日期</th>
                                     <th>最后登录日期</th>
                                     <th>状态</th>
+                                    <th>注册类型</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
@@ -125,17 +126,28 @@ function deleteAction(id){
 										<c:if test="${item.status == 1}">正常</c:if> 
 										<c:if test="${item.status == 2}">注销</c:if> 
 										 </td>
+										 <td> ${item.role.name} </td>
 										<td>
               							<c:if test="${item.status == 1}">
-              							<a href="${path }/userController/detail.do?id=${item.id }">详细</a>
-              							<a href="${path }/userController/find.do?id=${item.id }">修改</a>
-              							<a href="${path }/userController/resetPasw.do?id=${item.id }">密码重置</a>
-              							<a href="${path }/userController/statusMan.do?id=${item.id }">注销</a>
+              							<a href="${path }/userController/detail.do?id=${item.id }" class="btn1 btn-small">详细</a>
+              							<c:if test="${fn:contains(btnStr, '01xg_user')}" >
+              							<a href="${path }/userController/find.do?id=${item.id }" class="btn1 btn-small">修改</a>
+              							</c:if>
+              							<c:if test="${fn:contains(btnStr, '01resetPwd')}" >
+              							<a href="${path }/userController/resetPasw.do?id=${item.id }" class="btn1 btn-small">密码重置</a>
+              							</c:if>
+              							<c:if test="${fn:contains(btnStr, '01zx_user')}" >
+              							<a href="${path }/userController/statusMan.do?id=${item.id }" class="btn1 btn-small">注销</a>
+              							</c:if>
               							</c:if>
               							<c:if test="${item.status == 2}">
-              							<a href="${path }/userController/statusMan.do?id=${item.id }">恢复</a>
+              							<c:if test="${fn:contains(btnStr, '01hf_user')}" >
+              							<a href="${path }/userController/statusMan.do?id=${item.id }" class="btn1 btn-small">恢复</a>
               							</c:if>
-              							<a href="javaScript:deleteAction('${item.id }')">删除</a>
+              							</c:if>
+              							<c:if test="${fn:contains(btnStr, '01del_user')}" >
+              							<a href="javaScript:deleteAction('${item.id }')" class="btn1 btn-small">删除</a>
+              							</c:if>
               							</td>
             							</tr>
                                     </tr>
@@ -147,6 +159,10 @@ function deleteAction(id){
 			</div>
         </div>
         </div>
+       
     </div>
+     <center >
+        <t:Footer></t:Footer>
+        </center>
   </body>
 </html>

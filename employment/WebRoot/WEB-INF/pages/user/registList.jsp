@@ -99,6 +99,7 @@ $(document).ready(function() {
 									<th>邮箱</th>
                                     <th>注册日期</th>
                                     <th>状态</th>
+                                    <th>注册类型</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
@@ -124,14 +125,18 @@ $(document).ready(function() {
 										<c:if test="${item.status == 1 || item.status == 2}">已通过</c:if> 
 										<c:if test="${item.status == 3}">不通过</c:if> 
 										 </td>
+										 <td> ${item.role.name} </td>
 										<td>
               							<c:if test="${item.status == 0}">
+              							<c:if test="${fn:contains(btnStr, '02sh_pass')}" >
               							<a href="${path}/userController/registPass.do?status=1&&id=${item.id}" class="btn1 btn-small">审核通过</a>
+              							</c:if>
+              							<c:if test="${fn:contains(btnStr, '02sh_noPass')}" >
               							<a href="${path}/userController/registPass.do?status=3&&id=${item.id}" class="btn1 btn-small">不通过</a>
+              							</c:if>
               							</c:if>
               							</td>
             </tr>
-                                    </tr>
                                 </c:forEach>
                             </tbody>
                         </table>
@@ -141,5 +146,8 @@ $(document).ready(function() {
         </div>
         </div>
     </div>
+     <center>
+        <t:Footer></t:Footer>
+     </center>
   </body>
 </html>

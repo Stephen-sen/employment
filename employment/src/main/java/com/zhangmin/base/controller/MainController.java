@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.action.support.BaseController;
-import com.zhangmin.constant.Stat;
 
 
 /**

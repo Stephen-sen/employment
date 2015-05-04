@@ -36,6 +36,7 @@
                                     <th>序号</th>
 									<th>菜单名称</th>
 									<th>菜单URL</th>
+									<th>按钮代号</th>
 									<th>菜单类型</th>
 									<th>上级菜单</th>
 									<th>菜单描述</th>
@@ -50,12 +51,21 @@
                                         </td>
                                         <td> ${item.name} </td> 
                                         <td> ${item.url} </td> 
-                                        <td> ${item.menuType} </td> 
+                                        <td> ${item.buttonCode} </td> 
+                                        <td>
+                                         <c:if test="${item.menuType == '01'}">一级菜单</c:if>
+                                         <c:if test="${item.menuType == '02'}">二级菜单</c:if>
+                                         <c:if test="${item.menuType == '03'}">按钮</c:if>
+                                          </td> 
                                         <td> ${item.preId.name} </td> 
 										<td> ${item.description} </td>
 										<td>
+										<c:if test="${fn:contains(btnStr, '09xg_menu')}" >
               							<a href="${path}/menuController/find.do?id=${item.id}" class="btn1 btn-small">修改</a>
+              							</c:if>
+              							<c:if test="${fn:contains(btnStr, '09del_menu')}" >
               							<a href="${path}/menuController/delete.do?id=${item.id}" class="btn1 btn-small">删除</a>
+              							</c:if>
               							</td>
             						</tr>
                                 </c:forEach>
@@ -67,5 +77,8 @@
         </div>
         </div>
     </div>
+    <center>
+        <t:Footer></t:Footer>
+     </center>
   </body>
 </html>

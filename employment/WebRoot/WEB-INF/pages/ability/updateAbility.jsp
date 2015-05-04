@@ -89,5 +89,8 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>
+        <center>
+        <t:Footer></t:Footer>
+     </center>
   </body>
 </html>

@@ -35,7 +35,7 @@
 			type="java.lang.String" not-null="false" unique="false" length="2">
 		</property>
 		<property name="buttonCode" column="button_code" type="java.lang.String"
-			length="10" />
+			length="30" />
 			
 			<many-to-one name="preId" not-null="false" update="true"
 			lazy="false" insert="true" cascade="none">

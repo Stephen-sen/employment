@@ -86,6 +86,14 @@ public class AbilityService {
 		return abilityDao.find(hql);
 	}
 	
+	/**
+	 * @Description: key，value的形式保存一级、二级素质项
+	 * @param @return   
+	 * @return Map  
+	 * @throws
+	 * @author 张敏
+	 * @date 2015年5月4日
+	 */
 	@SuppressWarnings("unchecked")
 	public Map findFistAbilityList(){
 		List<Ability> firstAbilityList = findPreAbility();

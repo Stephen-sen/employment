@@ -10,7 +10,7 @@
 	String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ path + "/"; 
 %>
 
-<title>${title }就业能力分析后台管理${user.userName}</title>
+<title>毕业生就业能力评价系统</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Cache-Control" content="no-store" />
 <meta http-equiv="Pragma" content="no-cache" />
@@ -26,9 +26,9 @@
 <link rel="stylesheet" type="text/css" href="${path}/themes/vtip/vtip.css">
 <script type="text/javascript" src="${path}/themes/js/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="${path}/themes/js/jquery.metadata.js"></script>
-<script type="text/javascript" src="${path}/themes/jqueryui/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript" src="${path}/themes/jqueryui/js/jquery-ui-1.10.3.custom.js"></script>
 <script type="text/javascript" src="${path}/themes/jqueryui/ui/i18n/jquery.ui.datepicker-zh-CN.min.js"></script>
-<script type="text/javascript" src="${path}/themes/jqueryui/My97DatePicker/WdatePicker.js"/>"></script>
+<script type="text/javascript" src="${path}/themes/jqueryui/My97DatePicker/WdatePicker.js"/></script>
 <script type="text/javascript" src="${path}/themes/jqueryui/ui/jquery.ui.autocomplete.min.js"></script>
 <script type="text/javascript" src="${path}/themes/js/global.js"></script>
 <script type="text/javascript" src="${path}/themes/js/rowspan.js"></script>
@@ -58,9 +58,11 @@ function back(){
 		if(${messagecode == '04'}){
 			jqueryUIAlert("密码错误!");}
 		if(${messagecode == '05'}){
-			jqueryUIAlert("未找匹配的用户名!");}
+			jqueryUIAlert("未找到匹配的用户名!");}
 		if(${messagecode == '06'}){
 			jqueryUIAlert("验证码错误!");}
+		if(${messagecode == '07'}){
+			jqueryUIAlert("验证码不能为空!");}
 	})
 	
 	function jqueryUIAlert(msg){

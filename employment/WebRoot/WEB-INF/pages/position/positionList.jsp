@@ -48,8 +48,12 @@
                                         <td> ${item.name} </td> 
 										<td> ${item.description} </td>
 										<td>
+										<c:if test="${fn:contains(btnStr, '03xg_position')}" >
               							<a href="${path}/positionController/find.do?id=${item.id}" class="btn1 btn-small">修改</a>
+              							</c:if>
+              							<c:if test="${fn:contains(btnStr, '03del_position')}" >
               							<a href="${path}/positionController/delete.do?id=${item.id}" class="btn1 btn-small">删除</a>
+              							</c:if>
               							</td>
             						</tr>
                                 </c:forEach>
@@ -61,5 +65,8 @@
         </div>
         </div>
     </div>
+    <center>
+        <t:Footer></t:Footer>
+     </center>
   </body>
 </html>

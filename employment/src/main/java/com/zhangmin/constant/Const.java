@@ -33,6 +33,7 @@ public class Const {
 	public static String USER_PASSWORD_FAIL = "04"; // 密码错误
 	public static String USER_USERNAME_NOT_FOUND = "05";// 未找匹配的用户名
 	public static String USER_VALIDATION_CODE = "06"; // 验证码错误
+	public static String USER_VALIDATION_CODE_NULL = "07"; // 验证码为空
 	
 	public static final int SUCCESS = 100;
   	public static final int FAILURE = 101;

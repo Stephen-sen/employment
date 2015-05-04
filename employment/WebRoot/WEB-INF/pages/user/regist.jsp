@@ -34,6 +34,7 @@
 					if('true' == item){
 						jqueryUIAlert("该用户已存在！");
 						$('#cnNameTxt').val("");
+						return;
 						}
 				});
 			}
@@ -92,18 +93,20 @@
 	                                           <c:forEach var="item" items="${majorList}">
 	                                           <option value="${item.id }">${item.name }</option>
 	                                           </c:forEach>
-												</select>
+										</select>
+										<span class="color-red">*</span>
 									</td>
                                     <td class="ltd4">出生日期</td>
                                     <td class="rtd4">
-                                        <input  name="birthDate" class="width-p40" type="text" autocomplete="off"
+                                        <input  name="birthDate" class="required width-p40" type="text" autocomplete="off"
 												onfocus="WdatePicker({skin:'whyGreen',readOnly:'true'})" />
+												<span class="color-red">*</span>
                                     </td>
                                 </tr>
 								 <tr>
                                     <td class="ltd4">电话 </td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="telTxt" type="text"  name="tel" class=" width-p40" maxlength="50" />
+                                        <input  autocomplete="off" id="telTxt" type="text"  name="tel" class="required  width-p40" maxlength="50" />
                                         <span class="color-red">*</span>
                                     </td>
                                     <td class="ltd4">邮箱</td>
@@ -114,19 +117,29 @@
                                 <tr>
                                     <td class="ltd4">密码</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="passwordText" type="password"  name="passWord" class=" width-p40" maxlength="50" />
+                                        <input  autocomplete="off" id="passwordText" type="password"  name="passWord" class="required  width-p40" maxlength="50" />
                                         <span class="color-red">*</span>
                                     </td>
                                     <td class="ltd4">确认密码</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="passwordText1" type="password"  name="passWord1" class=" width-p40" maxlength="100"/>
+                                        <input  autocomplete="off" id="passwordText1" type="password"  name="passWord1" class="required  width-p40" maxlength="100"/>
                                         <span class="color-red">*</span>
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td class="ltd4">注册类型 </td>
+                                    <td class="rtd4">
+                                       <select id="roleSelect" name="role.id" class="required width-p40">
+	                                           <option value="">---请选择---</option>
+	                                           <c:forEach var="item" items="${roleList}">
+	                                           <option value="${item.id }">${item.name }</option>
+	                                           </c:forEach>
+										</select>
+                                        <span class="color-red">*</span>
+                                    </td>
                                     <td class="ltd4">地址 </td>
-                                    <td class="rtd4" colspan="3">
-                                        <input  autocomplete="off" id="addressTxt" type="text"  name="address" class=" width-p80" maxlength="50" />
+                                    <td class="rtd4">
+                                        <input  autocomplete="off" id="addressTxt" type="text"  name="address" class="required  width-p80" maxlength="50" />
                                         <span class="color-red">*</span>
                                     </td>
                                 </tr>
@@ -144,5 +157,8 @@
                 </div>
             </div>
         </div>
+        <center>
+        <t:Footer></t:Footer>
+     </center>
   </body>
 </html>

@@ -14,6 +14,17 @@ $(document).ready(function() {
 	$("#menuTypeSelect").val("${menuInfo.menuType}");
 	initMenu();
 	$("#preIdSelcet").val("${menuInfo.preId.id}");
+	if($("#menuTypeSelect").val()=='03'){
+		$("#menu").hide();
+		$("#menuId").hide();
+		$("#buttonCode").show();
+		$("#buttonCodeId").show();
+	}else{
+		$("#menu").show();
+		$("#menuId").show();
+		$("#buttonCode").hide();
+		$("#buttonCodeId").hide();
+	}
 })
 function initMenu() {
 	$("#preIdSelcet").html("");
@@ -63,29 +74,35 @@ function initMenu() {
                                         </font>
                                     </td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td class="ltd4">菜单名称</td>
                                     <td class="rtd4">
-                                        <input  autocomplete="off" id="nameTxt" autocomplete="off" type="text"  name="name" value="${menuInfo.name }" class="required width-p40" maxlength="20" />
+                                        <input  autocomplete="off" id="nameTxt" autocomplete="off" type="text"  name="name"value="${menuInfo.name }" class="required width-p40" maxlength="20" />
 										<span class="color-red">*</span>
                                     </td>
-                                    <td class="ltd4">菜单URL</td>
-                                    <td>
-                                     <input  autocomplete="off" id="urlTxt" type="text"  name="url" value="${menuInfo.url }" class="width-p80" maxlength="255" />
-                                    </td>
-                                </tr>
-                                <tr>
                                     <td class="ltd4">菜单类型</td>
                                     <td class="rtd4">
                                  <select id="menuTypeSelect" name="menuType" class="required width-p40" onchange="initMenu()">
                                     <option value="">---请选择---</option>
                                     <option value="01">一级菜单</option>
                                     <option value="02">二级菜单</option>
+                                    <option value="03">按钮</option>
                                 </select>
 										<span class="color-red">*</span>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td class="ltd4"  id="menuId">菜单URL</td>
+                                    <td class="rtd4" id="menu">
+                                     <input  autocomplete="off" id="urlTxt" type="text"  name="url"value="${menuInfo.url}" class="width-p80" maxlength="255" />
+                                    </td>
+                                     <td class="ltd4" id="buttonCode"  style="display:none" >按钮代号</td>
+                                     <td class="rtd4" id="buttonCodeId"  style="display:none">
+                                     <input  autocomplete="off" id="buttonCodeTxt" type="text"  name="buttonCode" value="${menuInfo.buttonCode }"class="width-p40" maxlength="30" />
+                                     <span class="color-red">*</span>
+                                    </td>
                                     <td class="ltd4">上级菜单 </td>
-                                    <td>
+                                    <td class="rtd4">
                                      <select id="preIdSelcet" name="preId.id" class="required width-p40">
                                     <option value="">---请选择---</option>
                                 	</select>
@@ -114,5 +131,8 @@ function initMenu() {
                 </div>
             </div>
         </div>
+        <center>
+        <t:Footer></t:Footer>
+     </center>
   </body>
 </html>

@@ -11,6 +11,9 @@
 		<property name="name" column="name" update="true" insert="true"
 			type="java.lang.String" not-null="false" unique="false" length="200">
 		</property>
+		<property name="type" column="type" update="true" insert="true"
+			type="java.lang.String" not-null="false" unique="false" length="3">
+		</property>
 		<property name="description" column="description" update="true"
 			insert="true" type="java.lang.String" not-null="false" unique="false"
 			length="36">

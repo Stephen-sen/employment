@@ -130,6 +130,15 @@ public class UserInfoService {
 		return new Page(startIndex, totalSize, pageSize, dbList);
 	}
 	
+	/**
+	 * @Description: 根据查询条件查询信息
+	 * @param @param userInfo
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author 张敏
+	 * @date 2015年5月3日
+	 */
 	public String  hqlCondition(UserInfo userInfo){
 		StringBuffer hql=new StringBuffer();
 		hql.append("from UserInfo where flag ='y'");

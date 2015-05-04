@@ -56,5 +56,10 @@
 			lazy="false" insert="true" cascade="none">
 			<column name="major_id"/>
 		</many-to-one>
+		
+		<many-to-one name="role" not-null="false" update="true"
+			lazy="false" insert="true" cascade="none">
+			<column name="role_id"/>
+		</many-to-one>
 	</class>
 </hibernate-mapping>
